@@ -2,27 +2,31 @@
 
 if (Meteor.isClient) {
 
-  Template.addPlayerForm.events({
-    'submit form': function(event){
-      event.preventDefault();
-      console.log("Form submitted");
-      console.log(event.type);
-      var playerNameVar = event.target.playerName.value;
-      console.log(playerNameVar);
-    }
-  });
-
-// ( "#test option:selected" ).text();
-
-  // Template.form.events({
+  // Template.addPlayerForm.events({
   //   'submit form': function(event){
   //     event.preventDefault();
   //     console.log("Form submitted");
   //     console.log(event.type);
-  //     var formSubmit = event.target.formSubmit;
-  //     console.log(formSubmit);
+  //     var playerNameVar = event.target.playerName.value;
+  //     console.log(playerNameVar);
   //   }
   // });
+
+// ( "#test option:selected" ).text();
+
+  Template.form.events({
+    'submit form': function(event){
+      event.preventDefault();
+      var field1 = $( "#form_select1 option:selected" ).text();
+      var field2 = $( "#form_select2 option:selected" ).text();
+      var field3 = $( "#form_select3 option:selected" ).text();
+      var field4 = $( "#form_select4 option:selected" ).text();
+      console.log("Form submitted");
+      console.log(event.type);
+      // var formSubmit = event.target.formSubmit;
+      console.log(field1, field2, field3, field4);
+    }
+  });
 
 
 
