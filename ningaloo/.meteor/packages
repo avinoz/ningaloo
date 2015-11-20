@@ -22,3 +22,5 @@ accounts-ui
 accounts-password
 bootstrap
 iron:router
+dburles:google-maps
+mdg:geolocation
