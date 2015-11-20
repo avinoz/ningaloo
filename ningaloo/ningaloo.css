@@ -1,0 +1,43 @@
+/* CSS declarations go here */
+html {
+  font-family: sans-serif;
+}
+
+a {
+  text-decoration: none!important;
+}
+
+body {
+  position: absolute;
+  width: 100%;
+}
+
+h1 {
+  text-align: center;
+}
+
+.m_container {
+  max-width: 800px;
+  height: 100vh;
+  margin: 0 auto;
+  background: #fafafa;
+}
+
+select {
+  height: 20px;
+  width: 150px;
+  margin: 0;
+  box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+  background: #f8f8f8;
+  color:#888;
+  border:none;
+  outline:none;
+  display: inline-block;
+  appearance:none;
+  cursor:pointer;
+}
+
+#form_container {
+  width: 200px;
+  margin: 0 auto;
+}
