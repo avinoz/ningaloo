@@ -5,21 +5,26 @@ Template.list.helpers({
     }
   });
 
-  Template.list.events({
-    "submit .new-task": function(event) {
-      // Prevent default browser form submit
-      event.preventDefault();
+Template.list.events({
+  "submit .new-task": function(event) {
+    // Prevent default browser form submit
+    event.preventDefault();
 
-      // Get value from form element
-      var text = event.target.text.value;
+    // Get value from form element
+    var text = event.target.text.value;
 
-      // Insert a task into the collection
-      Tasks.insert({
-        text: text,
-        createdAt: new Date() // current time
-      });
+    // Insert a task into the collection
+    Tasks.insert({
+      text: text,
+      createdAt: new Date() // current time
+    });
 
-      // Clear form
-      event.target.text.value = "";
-    }
-  });
+    // Clear form
+    event.target.text.value = "";
+  }
+});
+
+Template.registerHelper('fromNow', function(date) {
+  if (date)
+    return moment(date).fromNow(true);
+});
