@@ -1,5 +1,10 @@
 Router.configure({
-  layoutTemplate: 'layout'
+  // if($(window).height() < 1400){
+    layoutTemplate: 'layout'
+    // console.log($(window))
+  // } else {
+  //   layoutTemplate'desktop'
+  // }
 });
 
 Router.map(function(){
@@ -7,9 +12,8 @@ Router.map(function(){
   this.route('form', {path: '/form'});
   this.route('list', {path: '/list'});
   this.route('map', {path: '/map'});
-  // this.route('itempage',{path:'/itempage/id=:_id'} );
 });
 Router.route('/itempage/:_id', function () {
   var item = Tasks.findOne({_id: this.params._id});
   this.render('itempage', {data: item});
-})
+});

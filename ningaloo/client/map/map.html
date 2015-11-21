@@ -1,4 +1,10 @@
 <template name="map">
+  <div class="map_append">
+    <p id="coord_cont"></p>
+    <div id="lat"></div>
+    <div id="lon"></div>
+  </div>
+
   <div class="map-container">
     {{#unless geolocationError}}
       {{> googleMap name="map" options=mapOptions}}
@@ -6,10 +12,5 @@
       Geolocation failed: {{geolocationError}}
     {{/unless}}
   </div>
-  <div id="lat">
 
-  </div>
-  <div id="lon">
-    
-  </div>
 </template>
