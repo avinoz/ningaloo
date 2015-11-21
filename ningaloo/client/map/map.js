@@ -7,8 +7,8 @@ Template.map.helpers({
     let latLng = Geolocation.latLng();
     var pulse = JSON.stringify(latLng)
 
-    $('#lat').html(latLng.lat)
-    $('#lon').html(latLng.lng)
+    $('#lat').html(latLng.lat.toFixed(5))
+    $('#lon').html(latLng.lng.toFixed(5))
     $('#coord_cont').html("Current Coordinates")
 
     console.log(latLng)

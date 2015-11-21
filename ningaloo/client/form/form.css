@@ -16,6 +16,10 @@ form {
   font-size: 1em;
 }
 
+textarea {
+  max-width: 200px;
+}
+
 select {
   height: 20px;
   width: 150px;
