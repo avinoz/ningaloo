@@ -1,4 +1,13 @@
-var MAP_ZOOM = 20;
+
+
+Mapbox.load();
+Tracker.autorun(function () {
+  if (Mapbox.loaded()) {
+    L.mapbox.accessToken = 'pk.eyJ1IjoiYXZpbm96IiwiYSI6ImNpZnVvcmV1YzIzcWx1cGtxZ2Z5cWlrMTYifQ.VB-HMZg5gUGTydcXDGvgOw';
+    var map = L.mapbox.map('map', 'avinoz.o11688nh');
+  }
+});
+
 
 Template.map.helpers({
   geolocationError: function() {
@@ -22,45 +31,44 @@ Template.map.helpers({
         zoom: MAP_ZOOM
       };
     }
-
   }
 });
 
 
 
+// var MAP_ZOOM = 20;
 
+// Meteor.startup(function() {
+//   GoogleMaps.load();
+// });
 
-Meteor.startup(function() {
-  GoogleMaps.load();
-});
+// Template.map.onCreated(function() {
+//   var self = this;
 
-Template.map.onCreated(function() {
-  var self = this;
+//   GoogleMaps.ready('map', function(map) {
+//     var marker;
 
-  GoogleMaps.ready('map', function(map) {
-    var marker;
+//     // Create and move the marker when latLng changes.
+//     self.autorun(function() {
+//       var latLng = Geolocation.latLng();
+//       if (! latLng)
+//         return;
 
-    // Create and move the marker when latLng changes.
-    self.autorun(function() {
-      var latLng = Geolocation.latLng();
-      if (! latLng)
-        return;
+//       // If the marker doesn't yet exist, create it.
+//       if (! marker) {
+//         marker = new google.maps.Marker({
+//           position: new google.maps.LatLng(latLng.lat, latLng.lng),
+//           map: map.instance
+//         });
+//       }
+//       // The marker already exists, so we'll just change its position.
+//       else {
+//         marker.setPosition(latLng);
+//       }
 
-      // If the marker doesn't yet exist, create it.
-      if (! marker) {
-        marker = new google.maps.Marker({
-          position: new google.maps.LatLng(latLng.lat, latLng.lng),
-          map: map.instance
-        });
-      }
-      // The marker already exists, so we'll just change its position.
-      else {
-        marker.setPosition(latLng);
-      }
-
-      // Center and zoom the map view onto the current position.
-      map.instance.setCenter(marker.getPosition());
-      map.instance.setZoom(MAP_ZOOM);
-    });
-  });
-});
+//       // Center and zoom the map view onto the current position.
+//       map.instance.setCenter(marker.getPosition());
+//       map.instance.setZoom(MAP_ZOOM);
+//     });
+//   });
+// });
