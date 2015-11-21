@@ -8,14 +8,10 @@ form {
   margin-top: 50px;
 }
 
-input {
-  margin: 10px;
-}
-
 select {
   height: 20px;
   width: 150px;
-  margin: 50;
+  margin: 50px;
   box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
   background: #f8f8f8;
   color:#888;
@@ -25,4 +21,3 @@ select {
   appearance:none;
   cursor:pointer;
 }
-
