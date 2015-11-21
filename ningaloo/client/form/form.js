@@ -14,58 +14,6 @@ if (Meteor.isClient) {
     delete Session.keys.division;
   }
 
-  // Template.addPlayerForm.events({
-  //   'submit form': function(event){
-  //     event.preventDefault();
-  //     console.log("Form submitted");
-  //     console.log(event.type);
-  //     var playerNameVar = event.target.playerName.value;
-  //     console.log(playerNameVar);
-  //   }
-  // });
-
-// ( "#test option:selected" ).text();
-
-// ########## TESTING THE MAP CALL
-  // Template.map.helpers({
-  //   geolocationError: function() {
-  //     var error = Geolocation.error();
-  //     return error && error.message;
-  //   },
-  //   mapOptions: function() {
-  //     let latLng = Geolocation.latLng();
-    
-  //     var pulse1 = JSON.stringify(latLng.lat)
-  //     var pulse2 = JSON.stringify(latLng.lng)
-  //     console.log(pulse1, pulse2)
-
-  //     console.log(latLng)
-  //     // Initialize the map once we have the latLng.
-  //     if (GoogleMaps.loaded() && latLng) {
-  //       return {
-  //         center: new google.maps.LatLng(latLng.lat, latLng.lng),
-  //         zoom: MAP_ZOOM
-  //       };
-  //     }
-  //   }
-  // });
-
-  // Template.map.events({
-  //   'submit form': function(event){
-  //     event.preventDefault();
-  //     console.log(pulse) 
-  //        $('.map_append').append(pulse1)
-
-  //   }
-  // });
-
-
-
-// ###############
-
-
-
-
   Template.form.events({
     'submit form': function(event){
       event.preventDefault();
@@ -85,11 +33,14 @@ if (Meteor.isClient) {
       $('.form_append4').append(field4)
 
 
-      // ### CREATES K/V OBJECT 
+      // ### CREATES K/V OBJECT
       var turtlelog = {division: field1, section: field2, subsection: field3, turtleSpecies: field4, latLng:{lat:field5,lon:field6}}
       console.log(turtlelog)
 
-
+      Tasks.insert({
+        turtlelog: turtlelog,
+        createdAt: new Date() // current time
+      });
 
     },
     "change #form_select1":function(e){
@@ -105,6 +56,10 @@ if (Meteor.isClient) {
       Session.set("subsection",subsection)
     }
   });
+
+
+
+
 
 
 /// DATA TEMP
