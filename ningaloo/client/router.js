@@ -10,7 +10,6 @@ Router.map(function(){
   // this.route('itempage',{path:'/itempage/id=:_id'} );
 });
 Router.route('/itempage/:_id', function () {
-  console.log("hey from route definition");
-  var item = Items.findOne({_id: this.params._id});
+  var item = Tasks.findOne({_id: this.params._id});
   this.render('itempage', {data: item});
 })
