@@ -8,6 +8,14 @@ form {
   margin-top: 50px;
 }
 
+.form_append {
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  margin: auto;
+  font-size: 1em;
+}
+
 select {
   height: 20px;
   width: 150px;
