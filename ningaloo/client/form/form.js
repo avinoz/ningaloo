@@ -1,5 +1,3 @@
-
-
 if (Meteor.isClient) {
 
   // Template.addPlayerForm.events({
@@ -14,6 +12,7 @@ if (Meteor.isClient) {
 
 // ( "#test option:selected" ).text();
 
+
   Template.form.events({
     'submit form': function(event){
       event.preventDefault();
@@ -27,6 +26,9 @@ if (Meteor.isClient) {
       console.log(field1, field2, field3, field4);
     }
   });
+
+
+
 
 
 
