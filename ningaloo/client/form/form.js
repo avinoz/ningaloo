@@ -37,13 +37,13 @@ if (Meteor.isClient) {
       console.log(turtlelog)
 
       // ADDS OBJ TO DB
-      // Tasks.insert({
-      //   turtlelog: turtlelog,
-      //   createdAt: new Date() // CURRENT TIME
-      // });
+      Tasks.insert({
+        turtlelog: turtlelog,
+        createdAt: new Date() // CURRENT TIME
+      });
 
       // // AFTER SUBMIT REDIRECT
-      // Router.go('/list');
+      Router.go('/list');
 
     },
     "change #form_select1":function(e){
