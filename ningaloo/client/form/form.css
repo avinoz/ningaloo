@@ -1,0 +1,31 @@
+
+form {
+  display: block;
+  /*background-color: red;*/
+  width: 200px;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.form_append {
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  margin: auto;
+  font-size: 1em;
+}
+
+select {
+  height: 20px;
+  width: 150px;
+  margin: 50px;
+  box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+  background: #f8f8f8;
+  color:#888;
+  border:none;
+  outline:none;
+  display: inline-block;
+  appearance:none;
+  cursor:pointer;
+}

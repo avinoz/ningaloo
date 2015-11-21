@@ -1,12 +1,30 @@
 <template name="form">
+  <form>
+    {{>form_s1}}
+    {{>form_s2}}
+    {{>form_s3}}
+    {{>form_s4}}
+    <input type="submit" value="Log!">
+  </form>
+  
+  <div class="form_append1">
+  <p></p>
+  </div>
 
-{{>addPlayerForm}}
+  <div class="form_append2">
+  <p></p>
+  </div>
 
-<!-- <form>
-  {{>formSubmit}}
-  <input type="text" name="playerName">
-  <input type="submit" value="Send">
-</form> -->
+  <div class="form_append3">
+  <p></p>
+  </div>
+
+  <div class="form_append4">
+  <p></p>
+  </div>
+
+  <div class="map_append">
+    <p>{{>map}}</p>
+  </div>
 
 </template>
-

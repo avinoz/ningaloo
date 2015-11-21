@@ -1,6 +1,20 @@
-/* CSS declarations go here */
-html {
-  font-family: sans-serif;
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  font-weight: 300;
+  font-size: 100%;
+  font-style: normal;
+  color: #444;
+  background-color: #315481;
+  background-attachment: fixed;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  padding: 0;
+  margin: 0;
 }
 
 a {
@@ -8,62 +22,13 @@ a {
   color: white;
 }
 
-body {
-  position: absolute;
-  width: 100%;
-}
-
 h1 {
   text-align: center;
 }
 
 .container {
-  max-width: 800px;
-  height: 100vh;
+  max-width: 600px;
   margin: 0 auto;
-  background: #D8D8D8
-}
-
-/*########### NAV BAR #########*/
-
-.navbar {
-  height: 100px;
-  width: 100%;
-  background-color: darkgray;
-}
-
-ul {
-  float: left;
-  display: inline-block;
-  font-size:
-}
-
-li {
-  float: left;
-  display: inline-block;
-  padding: 10px;
-  margin: 5px;
-  background-color: gray;
-  color: white;
-}
-
-/*########### NAV BAR #########*/
-
-select {
-  height: 20px;
-  width: 150px;
-  margin: 0;
-  box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
-  background: #f8f8f8;
-  color:#888;
-  border:none;
-  outline:none;
-  display: inline-block;
-  appearance:none;
-  cursor:pointer;
-}
-
-#form_container {
-  width: 200px;
-  margin: 0 auto;
+  min-height: 100%;
+  background: #D8D8D8;
 }
