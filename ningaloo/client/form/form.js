@@ -23,9 +23,6 @@ if (Meteor.isClient) {
       var field4 = $( "#form_select4 option:selected" ).text();
       var field5 = $( '#lat' ).text();
       var field6 = $( '#lon' ).text();
-      console.log("Form submitted");
-      console.log(event.type);
-      console.log(field1, field2, field3, field4);
 
       $('.form_append1').append(field1)
       $('.form_append2').append(field2)
@@ -33,14 +30,18 @@ if (Meteor.isClient) {
       $('.form_append4').append(field4)
 
 
-      // ### CREATES K/V OBJECT
+      // CREATES K/V OBJECT
       var turtlelog = {division: field1, section: field2, subsection: field3, turtleSpecies: field4, latLng:{lat:field5,lon:field6}}
       console.log(turtlelog)
 
+      // ADDS OBJ TO DB
       Tasks.insert({
         turtlelog: turtlelog,
-        createdAt: new Date() // current time
+        createdAt: new Date() // CURRENT TIME
       });
+
+      // AFTER SUBMIT REDIRECT
+      Router.go('/list');
 
     },
     "change #form_select1":function(e){
@@ -55,6 +56,7 @@ if (Meteor.isClient) {
       var subsection = $( "#form_select3 option:selected" ).text();
       Session.set("subsection",subsection)
     }
+
   });
 
 
