@@ -1,3 +1,18 @@
 <template name="list">
-  List of all entries
+
+<!-- NOT NEEDED -->
+    <form class="new-task">
+      <input type="text" name="text" placeholder="Type Notes Here" />
+    </form>
+<!-- NOT NEEDED -->
+
+    <div class="task-list">
+      <ul>
+        {{#each tasks}}
+          {{> task}}
+        {{/each}}
+      </ul>
+    </div>
 </template>
+
+
