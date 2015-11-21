@@ -1,3 +1,8 @@
+.navbar a {
+  text-decoration: none!important;
+  color: white;
+}
+
 
 .navbar {
 background: #d2edf4;

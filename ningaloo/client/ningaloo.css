@@ -19,11 +19,12 @@ body {
 
 a {
   text-decoration: none!important;
-  color: white;
+  color: gray;
 }
 
 h1 {
   text-align: center;
+  color: white;
 }
 
 .container {

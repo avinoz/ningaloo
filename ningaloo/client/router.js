@@ -7,4 +7,5 @@ Router.map(function(){
   this.route('form', {path: '/form'});
   this.route('list', {path: '/list'});
   this.route('map', {path: '/map'});
+  this.route('itempage', {path: '/itempage'});
 });
