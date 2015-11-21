@@ -3,8 +3,8 @@ body {
   font-weight: 300;
   font-size: 100%;
   font-style: normal;
-  color: #444;
-  background-color: #315481;
+  /*color: #444;*/
+  background-color: gray;
   background-attachment: fixed;
 
   position: absolute;

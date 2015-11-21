@@ -29,3 +29,19 @@ select {
   appearance:none;
   cursor:pointer;
 }
+
+.append_cont {
+  width: 200px;
+  text-align: center;
+  margin: 0 auto;
+  /*background-color: red;*/
+}
+
+.map_cont {
+  /*visibility: hidden;*/
+  width: 100%;
+  background-color: #D2D2D2;
+  padding: 5px;
+  color: gray;
+  margin-top: 20px;
+}
