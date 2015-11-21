@@ -36,14 +36,14 @@ if (Meteor.isClient) {
       var turtlelog = {division: field1, section: field2, subsection: field3, turtleSpecies: field4, notes:field7,latLng:{lat:field5,lon:field6}}
       console.log(turtlelog)
 
-      // ADDS OBJ TO DB
-      // Tasks.insert({
-      //   turtlelog: turtlelog,
-      //   createdAt: new Date() // CURRENT TIME
-      // });
+      //ADDS OBJ TO DB
+      Tasks.insert({
+        turtlelog: turtlelog,
+        createdAt: new Date() // CURRENT TIME
+      });
 
-      // // AFTER SUBMIT REDIRECT
-      // Router.go('/list');
+      // AFTER SUBMIT REDIRECT
+      Router.go('/list');
 
     },
     "change #form_select1":function(e){

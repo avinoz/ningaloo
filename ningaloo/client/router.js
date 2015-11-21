@@ -1,3 +1,4 @@
+console.log("Hello from router.js");
 Router.configure({
   // if($(window).height() < 1400){
     layoutTemplate: 'layout'
