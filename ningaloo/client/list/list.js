@@ -1,26 +1,18 @@
 Template.list.helpers({
-    tasks: function () {
+    tasks: function (e) {
             // Show newest tasks at the top
+      console.log(this);
+      console.log(e);
       return Tasks.find({}, {sort: {createdAt: -1}});
     }
   });
 
-Template.list.events({
-  "submit .new-task": function(event) {
-    // Prevent default browser form submit
-    event.preventDefault();
-
-    // Get value from form element
-    var text = event.target.text.value;
-
-    // Insert a task into the collection
-    Tasks.insert({
-      text: text,
-      createdAt: new Date() // current time
-    });
-
-    // Clear form
-    event.target.text.value = "";
+Template.task.events({
+  "click a.item":function(e){
+    console.log(this);
+    e.preventDefault();
+    console.log(e.currentTarget);
+    Router.go("/itempage/"+this._id)
   }
 });
 

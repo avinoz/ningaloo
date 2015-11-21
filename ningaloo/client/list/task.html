@@ -1,3 +1,7 @@
 <template name="task">
-  <li>{{turtlelog.subsection}}, {{fromNow createdAt}}</li>
+  <li>
+    <a href="/itempage/{{_id}}" class="item">
+      {{turtlelog.subsection}}, {{fromNow createdAt}}
+    </a>
+  </li>
 </template>

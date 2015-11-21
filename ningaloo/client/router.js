@@ -12,18 +12,8 @@ Router.map(function(){
   this.route('form', {path: '/form'});
   this.route('list', {path: '/list'});
   this.route('map', {path: '/map'});
-  this.route('desktop', {path: '/desktop'});
 });
-
-// Router.map(function() {
-//   if (Meteor.isCordova) {
-//     this.route('home', {path: '/'});
-//     this.route('form', {path: '/form'});
-//     this.route('list', {path: '/list'});
-//     this.route('map', {path: '/map'});
-//   }
-
-//   if (Meteor.isClient) {
-//     this.route('desktop', {path:'/desktop'});
-//   }
-// }
+Router.route('/itempage/:_id', function () {
+  var item = Tasks.findOne({_id: this.params._id});
+  this.render('itempage', {data: item});
+});
