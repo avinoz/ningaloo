@@ -36,10 +36,9 @@ if (Meteor.isClient) {
       var field4 = $( "#form_select4 option:selected" ).text();
       console.log("Form submitted");
       console.log(event.type);
-      // var formSubmit = event.target.formSubmit;
       console.log(field1, field2, field3, field4);
 
-      
+
 
       var turtlelog = {division: field1}
     },
