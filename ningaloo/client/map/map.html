@@ -1,15 +1,14 @@
 <template name="map">
-  <div class="map-container">
+  <div class="map_cont">
     {{#unless geolocationError}}
       {{> googleMap name="map" options=mapOptions}}
     {{else}}
       Geolocation failed: {{geolocationError}}
     {{/unless}}
-  </div>
-  <div id="lat">
 
+    <p id="coord_cont"></p>
+    <div id="lat"></div>
+    <div id="lon"></div>
   </div>
-  <div id="lon">
-    
-  </div>
+
 </template>
