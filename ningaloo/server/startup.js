@@ -53,4 +53,10 @@ Meteor.startup(function(e){
     console.log(divs);
   }
   ///////////////////////////
-});
+  console.log(Meteor.settings.mapBoxKey)
+
+    Meteor.methods({
+    'getMapBoxKey': function() {
+    return Meteor.settings.mapBoxKey
+    }
+  });
