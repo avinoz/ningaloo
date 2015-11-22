@@ -1,3 +1,4 @@
+console.log("Hello from router.js");
 Router.configure({
   layoutTemplate: 'layout'
 });

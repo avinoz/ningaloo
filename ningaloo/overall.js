@@ -10,7 +10,3 @@ if (Meteor.isServer) {
 if (Meteor.isClient) {
 
 }
-
-// if (Meteor.isCordova) {
-	
-// }

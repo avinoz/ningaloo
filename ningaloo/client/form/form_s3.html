@@ -2,7 +2,7 @@
   <select id="form_select3">
     <option value disable selected>--Subsections--</option>
     {{#if sectionSelected}}
-    {{#each subsections}}
+    {{#each subsections divisionSelected sectionSelected}}
       <option value="subsection">{{name}}</option>
     {{/each}}
     {{/if}}
