@@ -1,4 +1,4 @@
-console.log("Hello from router.js");
+
 Router.configure({
   layoutTemplate: 'layout'
 });
@@ -8,6 +8,7 @@ Router.map(function(){
   this.route('form', {path: '/form'});
   this.route('list', {path: '/list'});
   this.route('map', {path: '/map'});
+  this.route('desktop', {path: '/desktop'});
 });
 
 Router.route('/itempage/:_id', function () {

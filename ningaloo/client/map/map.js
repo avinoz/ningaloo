@@ -14,38 +14,55 @@ Template.map.onRendered(function () {
         if (!error) {
           L.mapbox.accessToken = result
           let map = L.mapbox.map('map', 'avinoz.o7nj93k2');
-          map.setView([-21.854578, 114.103581], 12)
+          map.setView([-21.854578, 114.103581], 12, {pan: {animate: true, duration: 2}, zoom: {animate: true}})
           // ADDS PIN TO MAP WITH HARD-CODE LAT/LNG
-          L.marker([-21.847727, 114.033028]).addTo(map);
-          L.marker([-21.830199, 114.062726]).addTo(map);
-          L.marker([-21.834502, 114.054314]).addTo(map);
-          L.marker([-21.810967, 114.091414]).addTo(map);
-          L.marker([-21.880068, 113.995091]).addTo(map);
-          // L.market([latLng.lat, latLng.lng])
+          // L.marker([-21.847727, 114.033028]).addTo(map);
+
+          // ALLOWS MARKERS COLOR CHANGE
+          var myLayer = L.mapbox.featureLayer().addTo(map);
+          var geoJson = [{
+            type: 'Feature',
+            "geometry": { "type": "Point", "coordinates": [114.033028, -21.847727]},
+            "properties": {
+              // "image": "images/trans.png",
+              "marker-color": "#ff8888",
+              "title": "Turtle Town",
+              "url": "https://en.wikipedia.org/wiki/Chicago"
+              // "marker-size": "large",
+            }
+            }, {
+            type: 'Feature',
+            "geometry": { "type": "Point", "coordinates": [114.091414, -21.810967]},
+            "properties": {
+              // "image": "images/trans.png",
+              "title": "Flipped Turtle",
+              "url": "https://en.wikipedia.org/wiki/Chicago",
+              "marker-color": "#7ec0ee"
+          }
+            }];
+
+            // ADDS POPUP WINDOW
+
+            myLayer.on('layeradd', function(e) {
+              var marker = e.layer,
+                  feature = marker.feature;
+
+              var popupContent = '<a target="_blank" class="popup" href="' + feature.properties.url + '">' + feature.properties.title + '</a>'; //'<img src="' + feature.properties.image + '" />' +
+
+              // http://leafletjs.com/reference.html#popup
+              marker.bindPopup(popupContent,{
+                  closeButton: false,
+                  minWidth: 100,
+                  keepInView: true,
+              });
+            });
+
+        // ADDS DATA TO MAP
+        myLayer.setGeoJSON(geoJson);
         } else {
           console.log(error)
         }
       })
-
-      // ##### JSON STYLE OPTION FOR ADDING A PIN TO THE MAP
-      // L.mapbox.featureLayer({
-      //   type: 'Feature',
-      //   geometry: {
-      //     type: 'Point',
-      //     coordinates: [
-      //     -22.03501,
-      //     113.54410
-      //     ]
-      //   },
-
-      //   properties: {
-      //     title: 'Ningaloo',
-      //     description: '',
-      //     'marker-size': 'large',
-      //     'marker-color': '#BE9A6B',
-      //     'marker-symbol': 'default'
-      //   }
-      // }).addto(map)
     }
   });
 
