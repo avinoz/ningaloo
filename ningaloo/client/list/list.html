@@ -1,25 +1,27 @@
 <template name="list">
-  <div id="list-options">
-    <div id="sort">
-      Sort by:{{> sortingFields}}
+  <div class="container">
+    <div id="list-options">
+      <div id="sort">
+        Sort by:{{> sortingFields}}
+      </div>
+      <div id="filter">
+        {{> form_s1}}
+        {{> form_s2_all}}
+      </div>
     </div>
-    <div id="filter">
-      {{> form_s1}}
-      {{> form_s2_all}}
+    <div class="task-list">
+      <ul>
+        {{#if sortingBy}}
+          {{#each sortTasks sortingBy sortOrder}}
+            {{> task}}
+          {{/each}}
+        {{else}}
+          {{#each tasks}}
+            {{> task}}
+          {{/each}}
+        {{/if}}
+      </ul>
     </div>
-  </div>
-  <div class="task-list">
-    <ul>
-      {{#if sortingBy}}
-        {{#each sortTasks sortingBy sortOrder}}
-          {{> task}}
-        {{/each}}
-      {{else}}
-        {{#each tasks}}
-          {{> task}}
-        {{/each}}
-      {{/if}}
-    </ul>
   </div>
 </template>
 <template name="sortingFields">

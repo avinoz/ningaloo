@@ -1,9 +1,6 @@
 
-
-
-
 Meteor.startup(function(e){
-  ///////////////////////////
+
   console.log("Divisions is empty? "+Divisions.find().count===0);
   if(Divisions.find().count()===0){
     var divisions = [

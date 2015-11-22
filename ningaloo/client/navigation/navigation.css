@@ -3,12 +3,12 @@
   color: white;
 }
 
-
 .navbar {
-background: #d2edf4;
-background-image: linear-gradient(to bottom, #d0edf5, #e1e5f0 100%);
-padding: 20px 15px 15px 15px;
-position: relative;
+  background: #d2edf4;
+  background-image: linear-gradient(to bottom, #d0edf5, #e1e5f0 100%);
+  padding: 20px 15px 15px 15px;
+  position: relative;
+  z-index: 2;
 }
 
 ul {

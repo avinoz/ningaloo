@@ -1,3 +1,12 @@
+
+// CONVERTES MAP TO MOBILE VIEW
+Template.map.onRendered(function () {
+  $('#map.mapbox').css("width", "600px")
+  $('#map.mapbox').css("top", "620px")
+  $('#map.mapbox').css("height", "500px")
+  $('#map.mapbox').css("z-index", "2")
+});
+
 if(Session.get("section")){
   Session.set("section",undefined);
   delete Session.keys.section;
@@ -48,14 +57,13 @@ Template.form.events({
   }
 
 });
-/// DATA TEMP
+/// DYNAMIC DATA SORTING
 
 Template.form_s1.helpers({
   divisions: function(){
     return Divisions.find().fetch();
   }
 });
-
 Template.form_s2_all.helpers({
   allSections:function(){
     return Sections.find().fetch();

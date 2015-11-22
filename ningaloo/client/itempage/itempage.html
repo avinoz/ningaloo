@@ -1,21 +1,23 @@
 <template name='itempage'>
-<table id="itempage">
-  <tr id="place">
-    <td id="division">{{turtlelog.division}}</td>
-    <td>></td>
-    <td id="section">{{turtlelog.section}}</td>
-    <td>></td>
-    <td id="subsection">{{turtlelog.subsection}}</td>
-  </tr>
-  <tr>
-    <td id="species">{{turtlelog.turtleSpecies}}</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td id="date">{{fromNow createdAt}} ago</td>
-  </tr>
-  <tr>
-    <td id="notes" colspan="5">{{turtlelog.notes}}</td>
-  </tr>
-</table>
+  <div class="container">
+    <table id="itempage">
+      <tr id="place">
+        <td id="division">{{turtlelog.division}}</td>
+        <td>></td>
+        <td id="section">{{turtlelog.section}}</td>
+        <td>></td>
+        <td id="subsection">{{turtlelog.subsection}}</td>
+      </tr>
+      <tr>
+        <td id="species">{{turtlelog.turtleSpecies}}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td id="date">{{fromNow createdAt}} ago</td>
+      </tr>
+      <tr>
+        <td id="notes" colspan="5">{{turtlelog.notes}}</td>
+      </tr>
+    </table>
+  </div>
 </template>
