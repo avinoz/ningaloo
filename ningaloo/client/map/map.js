@@ -1,11 +1,16 @@
 
-
 Mapbox.load();
 Tracker.autorun(function () {
   if (Mapbox.loaded()) {
-    L.mapbox.accessToken = Session.get('mapBoxKey');
-    console.log(test)
-    var map = L.mapbox.map('map', 'avinoz.o11688nh');
+
+    Meteor.call('getMapBoxKey', function(error, result){
+      if (!error) {
+        L.mapbox.accessToken = result
+        let map = L.mapbox.map('map', 'avinoz.o11688nh');
+      } else {
+        console.log(error)
+      }
+    })
   }
 });
 
