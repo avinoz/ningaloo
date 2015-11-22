@@ -17,9 +17,23 @@
 }
 
 #map.mapbox {
-    position: absolute;
-    top: 620px;
-    bottom: 0;
-    width: 600px;
-    height: 500px
+  position: absolute;
+  top: 620px;
+  bottom: 0;
+  width: 600px;
+  height: 500px
 }
+
+.leaflet-popup-tip-container {
+  visibility: hidden;
+}
+
+.leaflet-popup-content-wrapper {
+  background-color: none;
+}
+
+.leaflet-popup-content {
+  text-align: center;
+  /*background-color: red;*/
+}
+

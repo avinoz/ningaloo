@@ -17,10 +17,10 @@ body {
   margin: 0;
 }
 
-a {
+/*a {
   text-decoration: none!important;
   color: gray;
-}
+}*/
 
 h1 {
   text-align: center;
@@ -33,6 +33,7 @@ h1 {
   min-height: 100%;
   background: #D8D8D8;
 }
-table#itempage{
+
+table #itempage{
   border:yellow 1px dotted;
 }
