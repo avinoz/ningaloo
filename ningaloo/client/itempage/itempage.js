@@ -1,1 +1,1 @@
-console.log($(this))
+console.log("Hello from itempage.js");
