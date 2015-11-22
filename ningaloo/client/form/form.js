@@ -10,6 +10,7 @@ if(Session.get("division")){
   Session.set("division",undefined);
   delete Session.keys.division;
 }
+Meteor.subscribe('divisions');
 Template.form.events({
   'submit form': function(event){
     event.preventDefault();
@@ -20,13 +21,6 @@ Template.form.events({
     var field5 = $( '#lat' ).text();
     var field6 = $( '#lon' ).text();
     var field7 = $('textarea').val();
-
-    console.log(field7)
-    // $('.form_append1').append(field1)
-    // $('.form_append2').append(field2)
-    // $('.form_append3').append(field3)
-    // $('.form_append4').append(field4)
-
 
     // CREATES K/V OBJECT
     var turtlelog = {division: field1, section: field2, subsection: field3, turtleSpecies: field4, notes:field7,latLng:{lat:field5,lon:field6}}
@@ -54,12 +48,6 @@ Template.form.events({
   }
 
 });
-
-
-
-
-
-
 /// DATA TEMP
 
 Template.form_s1.helpers({
@@ -68,7 +56,16 @@ Template.form_s1.helpers({
   }
 });
 
+Template.form_s2_all.helpers({
+  allSections:function(){
+    return Sections.find().fetch();
+  }
+});
+Template.form_s2_all.events({
+  "change form_s2":function(){
 
+  }
+});
 Template.form_s2.helpers({
  sections: function(div_id){
   return Divisions.find({name:div_id}).fetch()[0].sections;
@@ -89,8 +86,8 @@ Template.form_s3.helpers({
       }
     }
     return;
-   },divisionSelected:getDiv,
-  //[{name: "Batemans Bay"}, {name: "Boat Harbor"}, {name: "Brooke-Graveyards"}, {name: "Bundera"}, {name: "Bungleup Beach"}, {name: "Burrows-Jurabi Point"}, {name: "Five Mile North-Five Mile Carpark"}, {name: "Graveyards Burrows"}, {name: "Hunters-Mauritius"}, {name: "Jacobz South-Wobiri"}, {name: "Janes Bay South"}, {name: "Mauritius-Jacobz South"}, {name: "Mildura Wreck-North West Carpark"}, {name: "Neils Beach"}, {name: "North West Carpark-Surf Beach"}, {name: "Rolly Beach"}, {name: "Surf Beach-Hunters"}, {name: "Trisel-Five Mile Carpark"}],
+  },
+  divisionSelected:getDiv,
   sectionSelected:getSec
 });
 

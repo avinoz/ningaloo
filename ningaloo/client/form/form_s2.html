@@ -2,9 +2,16 @@
   <select id="form_select2">
     <option value disable selected>--Sections--</option>
     {{#if divisionSelected}}
-    {{#each sections divisionSelected}}
-      <option value="section">{{name}}</option>
-    {{/each}}
+      {{#each sections divisionSelected}}
+        <option value="section">{{name}}</option>
+      {{/each}}
     {{/if}}
+  </select>
+</template>
+<template name="form_s2_all" form="data_form">
+  <select id="form_select2">
+      {{#each allSections}}
+        <option value="section">{{name}}</option>
+      {{/each}}
   </select>
 </template>

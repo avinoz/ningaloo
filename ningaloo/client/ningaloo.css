@@ -34,5 +34,10 @@ h1 {
   background: #D8D8D8;
 }
 table#itempage{
-  border:yellow 1px dotted;
+  /*border:yellow 1px dotted;*/
+}table#itempage td{
+  /*border:blue 1px solid;*/
+  text-align: center;
+}table#itempage td.map{
+  height:100px;
 }
