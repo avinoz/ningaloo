@@ -1,3 +1,7 @@
+
+
+Session.set('mapBoxKey', Meteor.settings.mapBoxKey);
+
 Meteor.startup(function(e){
   ///////////////////////////
   console.log("Divisions is empty? "+Divisions.find().count===0);

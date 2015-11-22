@@ -3,7 +3,8 @@
 Mapbox.load();
 Tracker.autorun(function () {
   if (Mapbox.loaded()) {
-    L.mapbox.accessToken = 'pk.eyJ1IjoiYXZpbm96IiwiYSI6ImNpZnVvcmV1YzIzcWx1cGtxZ2Z5cWlrMTYifQ.VB-HMZg5gUGTydcXDGvgOw';
+    L.mapbox.accessToken = Session.get('mapBoxKey');
+    console.log(test)
     var map = L.mapbox.map('map', 'avinoz.o11688nh');
   }
 });
