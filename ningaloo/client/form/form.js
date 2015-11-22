@@ -38,12 +38,27 @@ Template.form.events({
     var turtlelog = {division: field1, section: field2, subsection: field3, turtleSpecies: field4, notes:field7,latLng:{lat:field5,lon:field6}}
     console.log(turtlelog)
     //ADDS OBJ TO DB
-    Tasks.insert({
-      turtlelog: turtlelog,
-      createdAt: new Date() // CURRENT TIME
-    });
+
+    // ###### CONFIRM BEFORE DATA INSERT
+    var turtletext = JSON.stringify(turtlelog, null, 4)
+
+    new Confirmation({
+      message: turtletext,
+      title: "Confirmation",
+      cancelText: "Cancel",
+      okText: "Ok",
+      success: true // whether the button should be green or red
+      }, function (ok) {
+        // ok is true if the user clicked on "ok", false otherwise
+      });
+
+    // ######### UNCOMMENT DB INSERTION AFTER TESTING!!
+    // Tasks.insert({
+    //   turtlelog: turtlelog,
+    //   createdAt: new Date() // CURRENT TIME
+    // });
     // AFTER SUBMIT REDIRECT
-    Router.go('/list');
+    // Router.go('/list');
 
   },
   "change #form_select1":function(e){
@@ -73,8 +88,8 @@ Template.form_s1.helpers({
 Template.form_s2.helpers({
  sections: function(div_id){
   return Divisions.find({name:div_id}).fetch()[0].sections;
- },
- divisionSelected:getDiv
+},
+divisionSelected:getDiv
 });
 
 Template.form_s3.helpers({
@@ -90,7 +105,7 @@ Template.form_s3.helpers({
       }
     }
     return;
-   },divisionSelected:getDiv,
+  },divisionSelected:getDiv,
   //[{name: "Batemans Bay"}, {name: "Boat Harbor"}, {name: "Brooke-Graveyards"}, {name: "Bundera"}, {name: "Bungleup Beach"}, {name: "Burrows-Jurabi Point"}, {name: "Five Mile North-Five Mile Carpark"}, {name: "Graveyards Burrows"}, {name: "Hunters-Mauritius"}, {name: "Jacobz South-Wobiri"}, {name: "Janes Bay South"}, {name: "Mauritius-Jacobz South"}, {name: "Mildura Wreck-North West Carpark"}, {name: "Neils Beach"}, {name: "North West Carpark-Surf Beach"}, {name: "Rolly Beach"}, {name: "Surf Beach-Hunters"}, {name: "Trisel-Five Mile Carpark"}],
   sectionSelected:getSec
 });
@@ -103,10 +118,10 @@ Template.form_s4.helpers({
   }
 });
 function getDiv(){
-      console.log("divisionSelected firing");
-      return Session.get("division");
+  console.log("divisionSelected firing");
+  return Session.get("division");
 }
 function getSec(){
-    console.log("sectionSelected firing");
-    return Session.get("section");
+  console.log("sectionSelected firing");
+  return Session.get("section");
 }
