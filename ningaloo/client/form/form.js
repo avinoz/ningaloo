@@ -40,7 +40,7 @@ Template.form.events({
     //ADDS OBJ TO DB
 
     // ###### CONFIRM BEFORE DATA INSERT
-    var turtletext = JSON.stringify(turtlelog, null, 4)
+    var turtletext = JSON.stringify(turtlelog, null, "\t")
 
     new Confirmation({
       message: turtletext,
@@ -50,6 +50,14 @@ Template.form.events({
       success: true // whether the button should be green or red
       }, function (ok) {
         // ok is true if the user clicked on "ok", false otherwise
+        if (ok)
+        Tasks.insert({
+          turtlelog: turtlelog,
+          createdAt: new Date() // CURRENT TIME
+        })
+        // AFTER CONFIRM REDIRECT
+        if (ok)
+        Router.go('/list');
       });
 
     // ######### UNCOMMENT DB INSERTION AFTER TESTING!!
