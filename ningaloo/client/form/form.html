@@ -1,42 +1,34 @@
 <template name="form">
+  <form>
+    {{>form_s1}}
+    {{>form_s2}}
+    {{>form_s3}}
+    {{>form_s4}}
+    <textarea autofocus required name="tur_notes" placeholder="Notes"></textarea>
 
-</template>
+    <input type="submit" value="Log!">
+  </form>
 
+  <div class="append_cont">
+      <p>{{> map}}</p>
 <!--
+    <div class="form_append1">
+    <p></p>
+    </div>
 
-<template name="form_section1" form="data_form">
-  <select>
-    <option value disable selected>--Divisions--</option>
-    {{#each divisions}}
-      <option value="division">{{name}}</option>
-    {{/each}}
-  </select>
-</template>
+    <div class="form_append2">
+    <p></p>
+    </div>
 
-<template name="form_section2" form="data_form">
-  <select>
-  <option value disable selected>--Sections--</option>
-    {{#each sections}}
-      <option value="section">{{name}}</option>
-    {{/each}}
-  </select>
-</template>
+    <div class="form_append3">
+    <p></p>
+    </div>
 
-<template name="form_section3" form="data_form">
-  <select>
-    <option value disable selected>--Subsections--</option>
-    {{#each subsections}}
-      <option value="subsection">{{name}}</option>
-    {{/each}}
-  </select>
-</template>
+    <div class="form_append4">
+    <p></p>
+    </div> -->
 
-<template name="form_section4" form="data_form">
-  <select>
-    <option value disable selected>--Turtle Species--</option>
-    {{#each turtleSpecies}}
-      <option value="turtleSpecies">{{name}}</option>
-    {{/each}}
-  </select>
+
+  </div>
+
 </template>
- -->

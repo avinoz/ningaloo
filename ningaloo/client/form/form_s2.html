@@ -1,0 +1,10 @@
+<template name="form_s2" form="data_form">
+  <select id="form_select2">
+    <option value disable selected>--Sections--</option>
+    {{#if divisionSelected}}
+    {{#each sections}}
+      <option value="section">{{name}}</option>
+    {{/each}}
+    {{/if}}
+  </select>
+</template>

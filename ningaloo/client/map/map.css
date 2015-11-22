@@ -1,0 +1,25 @@
+.map_append {
+  display: block;
+  width: 200px;
+  text-align: center;
+  margin: 0 auto;
+  background-color: #D2D2D2;
+  padding: 5px;
+  color: gray;
+  margin-top: 20px;
+}
+
+.map-container {
+  width: 800px;
+  max-width: 100%;
+  height: 500px;
+  margin-top: 20px;
+}
+
+#map.mapbox {
+    position: absolute;
+    top: 620px;
+    bottom: 0;
+    width: 600px;
+    height: 500px
+}

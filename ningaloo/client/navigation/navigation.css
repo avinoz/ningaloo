@@ -1,0 +1,27 @@
+.navbar a {
+  text-decoration: none!important;
+  color: white;
+}
+
+
+.navbar {
+background: #d2edf4;
+background-image: linear-gradient(to bottom, #d0edf5, #e1e5f0 100%);
+padding: 20px 15px 15px 15px;
+position: relative;
+}
+
+ul {
+  float: left;
+  display: inline-block;
+  font-size:
+}
+
+li {
+  float: left;
+  display: inline-block;
+  padding: 5px 30px 5px 30px;
+  margin: 5px;
+  background-color: gray;
+  color: white;
+}

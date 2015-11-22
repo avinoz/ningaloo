@@ -1,0 +1,28 @@
+@media (max-width: 600px) {
+  .task-list li {
+    padding: 12px 15px;
+  }
+
+  .search {
+    width: 150px;
+    clear: both;
+  }
+
+  .new-task input {
+    padding-bottom: 5px;
+  }
+}
+
+#login-buttons {
+  display: block;
+}
+
+.task-list li {
+  position: relative;
+  width: 80%;
+  list-style: none;
+  /*padding: 5px;*/
+  border-bottom: #eee solid 1px;
+  background-color: white;
+  color: gray;
+}
