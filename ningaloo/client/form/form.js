@@ -20,7 +20,6 @@ if(Session.get("division")){
   delete Session.keys.division;
 }
 
-
 // FORMATS OBJECTS TO SEND TO DB VIA LIST
 Template.form.events({
   'submit form': function(event){
@@ -31,43 +30,32 @@ Template.form.events({
     var field4 = $( "#form_select4 option:selected" ).text();
     var field5 = $( '#lat' ).text();
     var field6 = $( '#lon' ).text();
-    var field7 = $('textarea').val();
-    // var field8 =
+    var field7 = $( 'textarea' ).val();
 
     // CREATES K/V OBJECT
     var turtlelog = {division: field1, section: field2, subsection: field3, turtleSpecies: field4, notes:field7,latLng:{lat:field5,lon:field6}}
+
     console.log(turtlelog)
     //ADDS OBJ TO DB
 
     // ###### CONFIRM BEFORE DATA INSERT
     var turtletext = JSON.stringify(turtlelog, null, "\t")
-
     new Confirmation({
       message: turtletext,
       title: "Confirmation",
       cancelText: "Cancel",
-      okText: "Ok",
+      okText: "Confirm",
       success: true // whether the button should be green or red
       }, function (ok) {
         // ok is true if the user clicked on "ok", false otherwise
-        if (ok)
         Tasks.insert({
           turtlelog: turtlelog,
           createdAt: new Date() // CURRENT TIME
         })
-        // AFTER CONFIRM REDIRECT
-        if (ok)
-        Router.go('/list');
+        Router.go('/list')
       });
 
-    // ######### UNCOMMENT DB INSERTION AFTER TESTING!!
-    // Tasks.insert({
-    //   turtlelog: turtlelog,
-    //   createdAt: new Date() // CURRENT TIME
-    // });
-    // AFTER SUBMIT REDIRECT
-    // Router.go('/list');
-
+  // PORTS DATA FROM BELOW TO OPTION SELECT
   },
   "change #form_select1":function(e){
     var division = $( "#form_select1 option:selected" ).text();
@@ -81,11 +69,10 @@ Template.form.events({
     var subsection = $( "#form_select3 option:selected" ).text();
     Session.set("subsection",subsection)
   }
-
 });
 
 
-/// DYNAMIC DATA SORTING
+/// DYNAMIC DATA SORTING LOGIC
 
 Template.form_s1.helpers({
   divisions: function(){
