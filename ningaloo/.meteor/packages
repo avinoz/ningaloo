@@ -29,3 +29,6 @@ mdg:camera
 pauloborges:mapbox@2.1.5
 
 mrt:leaflet
+cfs:standard-packages
+cfs:gridfs
+cfs:filesystem
