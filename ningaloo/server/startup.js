@@ -1,3 +1,7 @@
+
+
+
+
 Meteor.startup(function(e){
   ///////////////////////////
   console.log("Divisions is empty? "+Divisions.find().count===0);
@@ -53,4 +57,15 @@ Meteor.startup(function(e){
     console.log(divs);
   }
   ///////////////////////////
+
+  // var key = Meteor.settings.mapBoxKey
+  // console.log(key)
+  // Session.set('mapBoxKey', Meteor.settings.mapBoxKey);
+  // console.log(Session.get('mapBoxKey'));
+
+    Meteor.methods({
+    'getMapBoxKey': function() {
+    return Meteor.settings.mapBoxKey
+    }
+  });
 });
