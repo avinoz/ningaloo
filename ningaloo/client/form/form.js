@@ -1,3 +1,12 @@
+
+// CONVERTES MAP TO MOBILE VIEW
+Template.map.onRendered(function () {
+  $('#map.mapbox').css("width", "600px")
+  $('#map.mapbox').css("top", "620px")
+  $('#map.mapbox').css("height", "500px")
+  $('#map.mapbox').css("z-index", "2")
+});
+
 if(Session.get("section")){
   Session.set("section",undefined);
   delete Session.keys.section;
@@ -10,6 +19,9 @@ if(Session.get("division")){
   Session.set("division",undefined);
   delete Session.keys.division;
 }
+
+
+// FORMATS OBJECTS TO SEND TO DB VIA LIST
 Template.form.events({
   'submit form': function(event){
     event.preventDefault();
@@ -20,13 +32,7 @@ Template.form.events({
     var field5 = $( '#lat' ).text();
     var field6 = $( '#lon' ).text();
     var field7 = $('textarea').val();
-
-    console.log(field7)
-    // $('.form_append1').append(field1)
-    // $('.form_append2').append(field2)
-    // $('.form_append3').append(field3)
-    // $('.form_append4').append(field4)
-
+    // var field8 =
 
     // CREATES K/V OBJECT
     var turtlelog = {division: field1, section: field2, subsection: field3, turtleSpecies: field4, notes:field7,latLng:{lat:field5,lon:field6}}
@@ -56,18 +62,13 @@ Template.form.events({
 });
 
 
-
-
-
-
-/// DATA TEMP
+/// DYNAMIC DATA SORTING
 
 Template.form_s1.helpers({
   divisions: function(){
     return Divisions.find().fetch();
   }
 });
-
 
 Template.form_s2.helpers({
  sections: function(div_id){

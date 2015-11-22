@@ -9,6 +9,7 @@ Router.map(function(){
   this.route('list', {path: '/list'});
   this.route('map', {path: '/map'});
   this.route('desktop', {path: '/desktop'});
+  this.route('test', {path: '/test'});
 });
 
 Router.route('/itempage/:_id', function () {
