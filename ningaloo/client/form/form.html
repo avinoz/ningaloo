@@ -1,15 +1,16 @@
 <template name="form">
-  <div class='container'>
-      {{> takePhoto}}
-    <form>
-      {{>form_s1}}
-      {{>form_s2}}
-      {{>form_s3}}
-      {{>form_s4}}
-      <textarea autofocus name="tur_notes" placeholder="Notes"></textarea>
+  <div class="container">
+  <form>
+    {{>form_s1}}
+    {{>form_s2}}
+    {{>form_s3}}
+    {{>form_s4}}
 
-      <input type="submit" value="Log!">
-    </form>
+    <textarea autofocus name="tur_notes" placeholder="Notes"></textarea>
+
+    <input type="submit" value="Log!">
+    {{> takePhoto}}
+  </form>
     <div class="append_cont">
       <p>{{> map}}</p>
     </div>

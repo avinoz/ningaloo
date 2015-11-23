@@ -33,15 +33,11 @@ h1 {
   min-height: 100%;
   background: #D8D8D8;
 }
-
-table #itempage{
-  border:yellow 1px dotted;
+table#itempage{
+  /*border:yellow 1px dotted;*/
+}table#itempage td{
+  /*border:blue 1px solid;*/
+  text-align: center;
+}table#itempage td.map{
+  height:100px;
 }
-
-/*COLOR CODES {
-  color: #e7ebeb; light gray
-  color: #8ecbbe; light green
-  color: #5ebea5; medium green
-  color: #2aa285; dark green
-  color: #ea6782; red
-}*/
