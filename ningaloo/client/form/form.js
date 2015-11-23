@@ -19,7 +19,9 @@ if(Session.get("division")){
   Session.set("division",undefined);
   delete Session.keys.division;
 }
+
 Meteor.subscribe('divisions');
+
 // FORMATS OBJECTS TO SEND TO DB VIA LIST
 Template.form.events({
   'submit form': function(event){
@@ -32,21 +34,30 @@ Template.form.events({
     var field6 = $( '#lon' ).text();
     var field7 = $('textarea').val();
 
+    // var field8 =
+
+    // CREATES K/V OBJECT
+    var turtlelog = {division: field1, section: field2, subsection: field3, turtleSpecies: field4, notes:field7,latLng:{lat:field5,lon:field6}}
+    console.log(turtlelog)
+
+
     // CREATES K/V OBJECT
     // console.log(turtlelog)
+
     //ADDS OBJ TO DB
     var thing = document.getElementById("photo").src;
     var image_id="No Image";
     Images.insert(thing, function (err, fileObj) {
-        if(err){
-          console.log(err);
-        }
-        if(fileObj){
-          console.log("File saved!");
-          console.log(fileObj);
-          image_id = fileObj._id;
-          var turtlelog = {img_id:image_id,division: field1, section: field2, subsection: field3, turtleSpecies: field4, notes:field7,latLng:{lat:field5,lon:field6}};
-          var turtletext = JSON.stringify(turtlelog, null, "\t")
+      if(err){
+        console.log(err);
+      }
+      if(fileObj){
+        console.log("File saved!");
+        console.log(fileObj);
+        image_id = fileObj._id;
+        var turtlelog = {img_id: image_id, division: field1, section: field2, subsection: field3, turtleSpecies: field4, notes: field7,latLng: {lat:field5,lon:field6}};
+
+        var turtletext = JSON.stringify(turtlelog, null, 2)
 
     // AFTER SUBMIT REDIRECT
 
@@ -70,27 +81,34 @@ Template.form.events({
 
         }
       });
-
-    Session.set("photo",undefined);
-    // }
-
-
-  // PORTS DATA FROM BELOW TO OPTION SELECT
-  },
-  "change #form_select1":function(e){
-    var division = $( "#form_select1 option:selected" ).text();
-    Session.set("division",division)
-  },
-  "change #form_select2":function(e){
-    var section = $( "#form_select2 option:selected" ).text();
-    Session.set("section",section)
-  },
-  "change #form_select3":function(e){
-    var subsection = $( "#form_select3 option:selected" ).text();
-    Session.set("subsection",subsection)
   }
 });
+
+Session.set("photo",undefined);
+
+ // PORTS DATA FROM BELOW TO OPTION SELECT
+
+},
+"change #form_select1":function(e){
+  var division = $( "#form_select1 option:selected" ).text();
+  Session.set("division",division)
+},
+"change #form_select2":function(e){
+  var section = $( "#form_select2 option:selected" ).text();
+  Session.set("section",section)
+},
+"change #form_select3":function(e){
+  var subsection = $( "#form_select3 option:selected" ).text();
+  Session.set("subsection",subsection)
+}
+
+});
+
+
+
+
 /// DYNAMIC DATA SORTING LOGIC
+
 
 Template.form_s1.helpers({
   divisions: function(){
