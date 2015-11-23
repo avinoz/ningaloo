@@ -59,4 +59,8 @@ Meteor.startup(function(e){
       return Meteor.settings.mapBoxKey
     }
   });
+  ///////////////////////////
+  Meteor.publish('divisions',function(){
+    return Divisions.find({});
+  })
 });

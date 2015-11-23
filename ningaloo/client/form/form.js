@@ -20,6 +20,7 @@ if(Session.get("division")){
   delete Session.keys.division;
 }
 
+Meteor.subscribe('divisions');
 
 // FORMATS OBJECTS TO SEND TO DB VIA LIST
 Template.form.events({
@@ -32,15 +33,37 @@ Template.form.events({
     var field5 = $( '#lat' ).text();
     var field6 = $( '#lon' ).text();
     var field7 = $('textarea').val();
+
     // var field8 =
 
     // CREATES K/V OBJECT
     var turtlelog = {division: field1, section: field2, subsection: field3, turtleSpecies: field4, notes:field7,latLng:{lat:field5,lon:field6}}
     console.log(turtlelog)
+
+
+    // CREATES K/V OBJECT
+    // console.log(turtlelog)
+
     //ADDS OBJ TO DB
+    var thing = document.getElementById("photo").src;
+    var image_id="No Image";
+    Images.insert(thing, function (err, fileObj) {
+      if(err){
+        console.log(err);
+      }
+      if(fileObj){
+        console.log("File saved!");
+        console.log(fileObj);
+        image_id = fileObj._id;
+        var turtlelog = {img_id: image_id, division: field1, section: field2, subsection: field3, turtleSpecies: field4, notes: field7,latLng: {lat:field5,lon:field6}};
+
+        var turtletext = JSON.stringify(turtlelog, null, 2)
+
+    // AFTER SUBMIT REDIRECT
 
     // ###### CONFIRM BEFORE DATA INSERT
-    var turtletext = JSON.stringify(turtlelog, null, 2)
+
+    // var turtletext = JSON.stringify(turtlelog, null, 2)
 
     new Confirmation({
       message: turtletext,
@@ -48,42 +71,61 @@ Template.form.events({
       cancelText: "Cancel",
       okText: "Confirm",
       success: true // whether the button should be green or red
-      }, function (ok) {
+    }, function (ok) {
         // ok is true if the user clicked on "ok", false otherwise
         if (ok)
-        Tasks.insert({
-          turtlelog: turtlelog,
+          Tasks.insert({
+            turtlelog: turtlelog,
           createdAt: new Date() // CURRENT TIME
         })
         // AFTER CONFIRM REDIRECT
         if (ok)
-        Router.go('/list');
+          Router.go('/list');
       });
-  },
-  "change #form_select1":function(e){
-    var division = $( "#form_select1 option:selected" ).text();
-    Session.set("division",division)
-  },
-  "change #form_select2":function(e){
-    var section = $( "#form_select2 option:selected" ).text();
-    Session.set("section",section)
-  },
-  "change #form_select3":function(e){
-    var subsection = $( "#form_select3 option:selected" ).text();
-    Session.set("subsection",subsection)
   }
+});
+
+Session.set("photo",undefined);
+
+ // PORTS DATA FROM BELOW TO OPTION SELECT
+
+},
+"change #form_select1":function(e){
+  var division = $( "#form_select1 option:selected" ).text();
+  Session.set("division",division)
+},
+"change #form_select2":function(e){
+  var section = $( "#form_select2 option:selected" ).text();
+  Session.set("section",section)
+},
+"change #form_select3":function(e){
+  var subsection = $( "#form_select3 option:selected" ).text();
+  Session.set("subsection",subsection)
+}
 
 });
 
 
-/// DYNAMIC DATA SORTING
+
+
+/// DYNAMIC DATA SORTING LOGIC
+
 
 Template.form_s1.helpers({
   divisions: function(){
     return Divisions.find().fetch();
   }
 });
+Template.form_s2_all.helpers({
+  allSections:function(){
+    return Sections.find().fetch();
+  }
+});
+Template.form_s2_all.events({
+  "change form_s2":function(){
 
+  }
+});
 Template.form_s2.helpers({
  sections: function(div_id){
   return Divisions.find({name:div_id}).fetch()[0].sections;
@@ -104,8 +146,8 @@ Template.form_s3.helpers({
       }
     }
     return;
-  },divisionSelected:getDiv,
-  //[{name: "Batemans Bay"}, {name: "Boat Harbor"}, {name: "Brooke-Graveyards"}, {name: "Bundera"}, {name: "Bungleup Beach"}, {name: "Burrows-Jurabi Point"}, {name: "Five Mile North-Five Mile Carpark"}, {name: "Graveyards Burrows"}, {name: "Hunters-Mauritius"}, {name: "Jacobz South-Wobiri"}, {name: "Janes Bay South"}, {name: "Mauritius-Jacobz South"}, {name: "Mildura Wreck-North West Carpark"}, {name: "Neils Beach"}, {name: "North West Carpark-Surf Beach"}, {name: "Rolly Beach"}, {name: "Surf Beach-Hunters"}, {name: "Trisel-Five Mile Carpark"}],
+  },
+  divisionSelected:getDiv,
   sectionSelected:getSec
 });
 
