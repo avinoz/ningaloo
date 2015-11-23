@@ -1,8 +1,11 @@
-var imageStore = new FS.Store.GridFS("images");
+// var imageStore = new FS.Store.GridFS("images");
+// Images = new FS.Collection("images", {
+//   stores: [imageStore]
+// });
 Images = new FS.Collection("images", {
-  stores: [imageStore]
+  stores: [new FS.Store.FileSystem("images")]
 });
-FS.debug=true;
+// FS.debug=true;
 Images.deny({
  insert: function(){
  return false;

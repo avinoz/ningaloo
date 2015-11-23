@@ -30,4 +30,4 @@ pauloborges:mapbox@2.1.5
 mrt:leaflet
 cfs:standard-packages
 matdutour:popup-confirm
-cfs:gridfs
+cfs:filesystem
