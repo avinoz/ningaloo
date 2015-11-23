@@ -44,7 +44,8 @@ Template.map.onRendered(function () {
               return "#EF6583"
             }
           }
-          // TESTING DYNAMIC MARKERS ########
+          // TESTING DYNAMIC MARKERS STATUS:WORKING ########
+          // Marker position is reflected by latLng positions in turtlelog object
           var points_array = []
           Tasks.find({}).forEach(function(obj, idx,arr){
             console.log(idx);
