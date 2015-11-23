@@ -62,5 +62,9 @@ Meteor.startup(function(e){
   ///////////////////////////
   Meteor.publish('divisions',function(){
     return Divisions.find({});
-  })
+  });
+  
+  Meteor.publish("turtlelogs", function(){
+    return TurtleLogs.find({})
+  });
 });
