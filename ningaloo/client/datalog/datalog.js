@@ -1,6 +1,8 @@
-Template.datalog.turtlelogs = function() {
-  return TurtleLogs.find({}, {limit:100}); 
-}
+Template.datalog.helpers({
+	turtlelogs:function(t) {
+  	return TurtleLogs.find({}, {limit:100}); 
+	}
+})
 
 Template.datalog.events({
   "click .clickable-row":function(e){
@@ -11,3 +13,6 @@ Template.datalog.events({
   }
 });
 
+console.log("hello from datalog.js");
+
+Meteor.subscribe("turtlelogs")
