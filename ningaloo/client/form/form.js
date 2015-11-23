@@ -20,6 +20,7 @@ if(Session.get("division")){
   delete Session.keys.division;
 }
 Meteor.subscribe('divisions');
+// FORMATS OBJECTS TO SEND TO DB VIA LIST
 Template.form.events({
   'submit form': function(event){
     event.preventDefault();
@@ -33,15 +34,28 @@ Template.form.events({
 
     // CREATES K/V OBJECT
     var turtlelog = {division: field1, section: field2, subsection: field3, turtleSpecies: field4, notes:field7,latLng:{lat:field5,lon:field6}}
+
     console.log(turtlelog)
     //ADDS OBJ TO DB
-    Tasks.insert({
-      turtlelog: turtlelog,
-      createdAt: new Date() // CURRENT TIME
-    });
-    // AFTER SUBMIT REDIRECT
-    Router.go('/list');
 
+    // ###### CONFIRM BEFORE DATA INSERT
+    var turtletext = JSON.stringify(turtlelog, null, "\t")
+    new Confirmation({
+      message: turtletext,
+      title: "Confirmation",
+      cancelText: "Cancel",
+      okText: "Confirm",
+      success: true // whether the button should be green or red
+      }, function (ok) {
+        // ok is true if the user clicked on "ok", false otherwise
+        Tasks.insert({
+          turtlelog: turtlelog,
+          createdAt: new Date() // CURRENT TIME
+        })
+        Router.go('/list')
+      });
+
+  // PORTS DATA FROM BELOW TO OPTION SELECT
   },
   "change #form_select1":function(e){
     var division = $( "#form_select1 option:selected" ).text();
@@ -55,9 +69,8 @@ Template.form.events({
     var subsection = $( "#form_select3 option:selected" ).text();
     Session.set("subsection",subsection)
   }
-
 });
-/// DYNAMIC DATA SORTING
+/// DYNAMIC DATA SORTING LOGIC
 
 Template.form_s1.helpers({
   divisions: function(){
@@ -77,8 +90,8 @@ Template.form_s2_all.events({
 Template.form_s2.helpers({
  sections: function(div_id){
   return Divisions.find({name:div_id}).fetch()[0].sections;
- },
- divisionSelected:getDiv
+},
+divisionSelected:getDiv
 });
 
 Template.form_s3.helpers({
@@ -107,10 +120,10 @@ Template.form_s4.helpers({
   }
 });
 function getDiv(){
-      console.log("divisionSelected firing");
-      return Session.get("division");
+  console.log("divisionSelected firing");
+  return Session.get("division");
 }
 function getSec(){
-    console.log("sectionSelected firing");
-    return Session.get("section");
+  console.log("sectionSelected firing");
+  return Session.get("section");
 }

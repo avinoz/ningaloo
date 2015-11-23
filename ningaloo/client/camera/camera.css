@@ -1,5 +1,75 @@
-/*.camera-popup {
+.capture {
+  text-decoration: none;
+  color: #16A384;
+  cursor: pointer;
+}
+
+.capture:hover {
+  text-decoration: none;
+  color: #88CBD0;
+}
+
+#capture_div {
+  width: 120px;
+  height: 20px;
+  background-color: white;
+  margin: 0 auto;
+  text-align: center;
+  border-radius: 10px;
+  vertical-align: middle;
+}
+
+.button.shutter {
+  background-color: black;
+  border-radius: 1px;
+  border: none;
+}
+
+.button.cancel {
+  background-color: gray;
+  border-radius: 1px;
+  border: none;
+}
+
+.photo-preview {
+  width: 400px;
+}
+
+.camera-popup {
+  border-radius: 1px;
+}
+ /* button {
+    color: white;
+    padding: 6px 8px;
+    border-radius: 5px;
+
+    background-color: @camera-buttons-color;
+    border: 1px solid @camera-buttons-color-border;
+
+    &:active {
+      background-color: @camera-buttons-color-active;
+      border: 1px solid @camera-buttons-color-active-border;
+    }
+  }
+}
+
+.camera-overlay {
+  z-index: 999;
   position: fixed;
-  top: 0px;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+#video {
+  width: 360px;
+}
+
+.viewfinder {
+  width: 320px;
   background-color: red;
 }*/
