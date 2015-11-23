@@ -59,10 +59,12 @@ Template.form.events({
             success: true // whether the button should be green or red
             }, function (ok) {
               // ok is true if the user clicked on "ok", false otherwise
-              Tasks.insert({
-                turtlelog: turtlelog,
-                createdAt: new Date() // CURRENT TIME
-              })
+              if(ok){
+                Tasks.insert({
+                  turtlelog: turtlelog,
+                  createdAt: new Date() // CURRENT TIME
+                });
+              }
               Router.go('/list')
             });
 

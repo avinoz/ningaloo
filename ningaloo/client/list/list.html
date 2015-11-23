@@ -5,8 +5,8 @@
         Sort by:{{> sortingFields}}
       </div>
       <div id="filter">
-        {{> form_s1}}
-        {{> form_s2_all}}
+        <!-- {{> form_s1}}
+        {{> form_s2_all}} -->
       </div>
     </div>
     <div class="task-list">
@@ -25,12 +25,12 @@
   </div>
 </template>
 <template name="sortingFields">
-  <button id="sortOrder">Reverse Order</button>
   <select id="sortingSelect">
     {{#each fields}}
       <option value={{fieldName}}>{{fieldName}}</option>
     {{/each}}
   </select>
+  <button id="sortOrder">reverse</button>
 </template>
 
 

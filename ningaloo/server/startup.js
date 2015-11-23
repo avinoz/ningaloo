@@ -63,4 +63,7 @@ Meteor.startup(function(e){
   Meteor.publish('divisions',function(){
     return Divisions.find({});
   })
+  Meteor.publish('images',function(){
+    return Images.find({});
+  })
 });
