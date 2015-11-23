@@ -46,7 +46,7 @@ Template.form.events({
       message: turtletext,
       title: "Confirmation",
       cancelText: "Cancel",
-      okText: "Ok",
+      okText: "Confirm",
       success: true // whether the button should be green or red
       }, function (ok) {
         // ok is true if the user clicked on "ok", false otherwise
