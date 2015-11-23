@@ -35,5 +35,9 @@ h1 {
 }
 
 table #itempage{
-  border:yellow 1px dotted;
+  /*border:yellow 1px dotted;*/
+}
+.thumbnail{
+  width:40vw;
+  height:40vw;
 }
