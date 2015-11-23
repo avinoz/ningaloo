@@ -20,7 +20,6 @@ if(Session.get("division")){
   delete Session.keys.division;
 }
 
-
 // FORMATS OBJECTS TO SEND TO DB VIA LIST
 Template.form.events({
   'submit form': function(event){
@@ -31,8 +30,7 @@ Template.form.events({
     var field4 = $( "#form_select4 option:selected" ).text();
     var field5 = $( '#lat' ).text();
     var field6 = $( '#lon' ).text();
-    var field7 = $('textarea').val();
-    // var field8 =
+    var field7 = $( 'textarea' ).val();
 
     // CREATES K/V OBJECT
     // console.log(turtlelog)
@@ -48,11 +46,21 @@ Template.form.events({
           console.log(fileObj);
           image_id = fileObj._id;
           var turtlelog = {img_id:image_id,division: field1, section: field2, subsection: field3, turtleSpecies: field4, notes:field7,latLng:{lat:field5,lon:field6}};
-          Tasks.insert({
-            turtlelog: turtlelog,
-            createdAt: new Date() // CURRENT TIME
-          });
-              Router.go('/list');
+          var turtletext = JSON.stringify(turtlelog, null, "\t")
+          new Confirmation({
+            message: turtletext,
+            title: "Confirmation",
+            cancelText: "Cancel",
+            okText: "Confirm",
+            success: true // whether the button should be green or red
+            }, function (ok) {
+              // ok is true if the user clicked on "ok", false otherwise
+              Tasks.insert({
+                turtlelog: turtlelog,
+                createdAt: new Date() // CURRENT TIME
+              })
+              Router.go('/list')
+            });
 
         }
       });
@@ -61,6 +69,10 @@ Template.form.events({
     // }
     // AFTER SUBMIT REDIRECT
 
+    // ###### CONFIRM BEFORE DATA INSERT
+
+
+  // PORTS DATA FROM BELOW TO OPTION SELECT
   },
   "change #form_select1":function(e){
     var division = $( "#form_select1 option:selected" ).text();
@@ -74,11 +86,10 @@ Template.form.events({
     var subsection = $( "#form_select3 option:selected" ).text();
     Session.set("subsection",subsection)
   }
-
 });
 
 
-/// DYNAMIC DATA SORTING
+/// DYNAMIC DATA SORTING LOGIC
 
 Template.form_s1.helpers({
   divisions: function(){
@@ -89,8 +100,8 @@ Template.form_s1.helpers({
 Template.form_s2.helpers({
  sections: function(div_id){
   return Divisions.find({name:div_id}).fetch()[0].sections;
- },
- divisionSelected:getDiv
+},
+divisionSelected:getDiv
 });
 
 Template.form_s3.helpers({
@@ -106,7 +117,7 @@ Template.form_s3.helpers({
       }
     }
     return;
-   },divisionSelected:getDiv,
+  },divisionSelected:getDiv,
   //[{name: "Batemans Bay"}, {name: "Boat Harbor"}, {name: "Brooke-Graveyards"}, {name: "Bundera"}, {name: "Bungleup Beach"}, {name: "Burrows-Jurabi Point"}, {name: "Five Mile North-Five Mile Carpark"}, {name: "Graveyards Burrows"}, {name: "Hunters-Mauritius"}, {name: "Jacobz South-Wobiri"}, {name: "Janes Bay South"}, {name: "Mauritius-Jacobz South"}, {name: "Mildura Wreck-North West Carpark"}, {name: "Neils Beach"}, {name: "North West Carpark-Surf Beach"}, {name: "Rolly Beach"}, {name: "Surf Beach-Hunters"}, {name: "Trisel-Five Mile Carpark"}],
   sectionSelected:getSec
 });
@@ -119,10 +130,10 @@ Template.form_s4.helpers({
   }
 });
 function getDiv(){
-      console.log("divisionSelected firing");
-      return Session.get("division");
+  console.log("divisionSelected firing");
+  return Session.get("division");
 }
 function getSec(){
-    console.log("sectionSelected firing");
-    return Session.get("section");
+  console.log("sectionSelected firing");
+  return Session.get("section");
 }

@@ -1,14 +1,18 @@
 Template.takePhoto.events({
   'click .capture': function(){
-    MeteorCamera.getPicture({}, function(error, data) {
+
+    var cameraOptions = {
+      width: 800,
+      height: 600
+    };
+
+    MeteorCamera.getPicture(cameraOptions, function(error, data) {
       if(!error){
   		  Session.set('photo', data);
       }else{
         console.log(error);
       }
 		});
-  	// console.log("Button clicked.");
-    // console.log(error);
   }
 });
 
