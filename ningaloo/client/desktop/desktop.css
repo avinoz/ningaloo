@@ -1,0 +1,62 @@
+
+#map {
+  position:absolute;
+  top:0;
+  bottom:0;
+  width:40%;
+}
+
+#marker-list {
+  position:absolute;
+  top: 130px;
+  left: 40%;
+  height: (100%-130px);
+  width: 10%;
+  bottom:0;
+  overflow-x:auto;
+  background:#2aa285;
+  margin:0;
+  padding:5px;
+}
+
+#marker-list li {
+  padding:5px;
+  margin:0;
+  list-style-type:none;
+  width: 100%;
+  background-color: #8ecbbe;
+  margin: 1px;
+}
+
+#marker-list li:hover {
+  background:#5ebea5;
+}
+
+.dataview {
+  width: 50%;
+  height: (80%-130px);
+  position: absolute;
+  top: 130px;
+  background-color: #ea6782;
+  right: 0px;
+  bottom: 0px;
+  /*z-index: 2px;*/
+}
+
+.indiview {
+  width: 50%;
+  height: 300px;
+  position: absolute;
+  background-color: lightgray;
+  right: 0px;
+  bottom: 0;
+  z-index: 1px;
+}
+
+/*COLOR CODES {
+  color: #e7ebeb; light gray
+  color: #8ecbbe; light green
+  color: #5ebea5; medium green
+  color: #2aa285; dark green
+  color: #ea6782; red
+}*/

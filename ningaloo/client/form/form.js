@@ -59,15 +59,6 @@ Template.form.events({
         if (ok)
         Router.go('/list');
       });
-
-    // ######### (OLD) DB INSERTION BEFORE CONFIRM POP-UP
-    // Tasks.insert({
-    //   turtlelog: turtlelog,
-    //   createdAt: new Date() // CURRENT TIME
-    // });
-    // AFTER SUBMIT REDIRECT
-    // Router.go('/list');
-
   },
   "change #form_select1":function(e){
     var division = $( "#form_select1 option:selected" ).text();
