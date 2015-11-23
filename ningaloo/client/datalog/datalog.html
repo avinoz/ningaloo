@@ -1,0 +1,41 @@
+<template name="datalog">
+  <!-- <div class = "container"> -->
+  	<!-- <div class="row"> -->
+  		<!-- <div class="page-header"> -->
+  			<!-- <h1> ningaloo<small>Database</small></h1> -->
+      <!-- </div> -->
+  		    <div class="span12">
+            <table class="table table-striped table-condensed table-hover table-bordered">
+              <thead>
+              <tr>
+                <th>date</th>
+                <th>division</th>
+                <th>section</th>
+                <th>subsection</th>
+                <th>turtle species</th>
+                <th>nest ID</th>
+                <!-- <th>t. latitude</th> -->
+                <!-- <th>t. longitude</th> -->
+                <th>coordinates</th>
+              </tr>
+            </thead>
+            <tbody>
+                {{#each turtlelogs}}
+                <tr>
+                  <td>{{date}}</td>
+                  <td>{{division}}</td>
+                  <td>{{section}}</td>
+                  <td>{{subsection}}</td>
+                  <td>{{species}}</td>
+                  <td>{{nest_ID}}</td>
+                  <!-- <td>{{latitude}}</td> -->
+                  <!-- <td>{{longitude}}</td> -->
+                  <td>{{loc.coordinates}}</td>
+              </tr>
+              {{/each}}
+            </tbody>
+			   </table>
+  		</div>
+  	<!-- </div> -->
+  <!-- </div> -->
+</template>

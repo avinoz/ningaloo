@@ -1,0 +1,1 @@
+TurtleLogs = new Meteor.Collection('turtlelogs');
