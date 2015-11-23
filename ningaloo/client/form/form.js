@@ -40,7 +40,7 @@ Template.form.events({
     //ADDS OBJ TO DB
 
     // ###### CONFIRM BEFORE DATA INSERT
-    var turtletext = JSON.stringify(turtlelog, null, "\t")
+    var turtletext = JSON.stringify(turtlelog, null, 2)
 
     new Confirmation({
       message: turtletext,
@@ -60,7 +60,7 @@ Template.form.events({
         Router.go('/list');
       });
 
-    // ######### UNCOMMENT DB INSERTION AFTER TESTING!!
+    // ######### (OLD) DB INSERTION BEFORE CONFIRM POP-UP
     // Tasks.insert({
     //   turtlelog: turtlelog,
     //   createdAt: new Date() // CURRENT TIME
