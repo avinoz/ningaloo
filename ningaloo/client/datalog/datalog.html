@@ -20,8 +20,11 @@
               </tr>
             </thead>
             <tbody>
+           
                 {{#each turtlelogs}}
-                <tr>
+                <!-- <a href="/itempage/{{_id}}" class="item"> -->
+                <tr class="clickable-row" data-href="/itempage/{{_id}}">
+                  <!-- <td>{{_id}}</td> -->
                   <td>{{date}}</td>
                   <td>{{division}}</td>
                   <td>{{section}}</td>
@@ -32,8 +35,9 @@
                   <!-- <td>{{longitude}}</td> -->
                   <td>{{loc.coordinates}}</td>
               </tr>
+              
               {{/each}}
-            </tbody>
+                        </tbody>
 			   </table>
   		</div>
   	<!-- </div> -->
