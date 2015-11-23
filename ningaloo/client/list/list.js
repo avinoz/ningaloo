@@ -2,7 +2,7 @@ console.log("Hello from list.js");
 Meteor.subscribe("tasks");
 Template.list.helpers({
     tasks: function (e) {
-      return Tasks.find({}, {sort: {createdAt: -1}});
+      return Tasks.find({}, {sort: {createdAt: 1}});
     },
     sortTasks:function(field,order){
       if(field==="date"){
