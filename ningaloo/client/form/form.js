@@ -33,27 +33,45 @@ Template.form.events({
     var field7 = $('textarea').val();
 
     // CREATES K/V OBJECT
-    var turtlelog = {division: field1, section: field2, subsection: field3, turtleSpecies: field4, notes:field7,latLng:{lat:field5,lon:field6}}
-
-    console.log(turtlelog)
+    // console.log(turtlelog)
     //ADDS OBJ TO DB
+    var thing = document.getElementById("photo").src;
+    var image_id="No Image";
+    Images.insert(thing, function (err, fileObj) {
+        if(err){
+          console.log(err);
+        }
+        if(fileObj){
+          console.log("File saved!");
+          console.log(fileObj);
+          image_id = fileObj._id;
+          var turtlelog = {img_id:image_id,division: field1, section: field2, subsection: field3, turtleSpecies: field4, notes:field7,latLng:{lat:field5,lon:field6}};
+          var turtletext = JSON.stringify(turtlelog, null, "\t")
+
+    // AFTER SUBMIT REDIRECT
 
     // ###### CONFIRM BEFORE DATA INSERT
-    var turtletext = JSON.stringify(turtlelog, null, "\t")
-    new Confirmation({
-      message: turtletext,
-      title: "Confirmation",
-      cancelText: "Cancel",
-      okText: "Confirm",
-      success: true // whether the button should be green or red
-      }, function (ok) {
-        // ok is true if the user clicked on "ok", false otherwise
-        Tasks.insert({
-          turtlelog: turtlelog,
-          createdAt: new Date() // CURRENT TIME
-        })
-        Router.go('/list')
+          new Confirmation({
+            message: turtletext,
+            title: "Confirmation",
+            cancelText: "Cancel",
+            okText: "Confirm",
+            success: true // whether the button should be green or red
+            }, function (ok) {
+              // ok is true if the user clicked on "ok", false otherwise
+              Tasks.insert({
+                turtlelog: turtlelog,
+                createdAt: new Date() // CURRENT TIME
+              })
+              Router.go('/list')
+            });
+
+        }
       });
+
+    Session.set("photo",undefined);
+    // }
+
 
   // PORTS DATA FROM BELOW TO OPTION SELECT
   },
