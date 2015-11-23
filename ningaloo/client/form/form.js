@@ -37,58 +37,48 @@ Template.form.events({
     // var field8 =
 
     // CREATES K/V OBJECT
-    var turtlelog = {division: field1, section: field2, subsection: field3, turtleSpecies: field4, notes:field7,latLng:{lat:field5,lon:field6}}
-    console.log(turtlelog)
-
-
-    // CREATES K/V OBJECT
+    // var turtlelog = {division: field1, section: field2, subsection: field3, turtleSpecies: field4, notes:field7,latLng:{lat:field5,lon:field6}}
     // console.log(turtlelog)
+    var image_id="No Image";
+    var thing = document.getElementById("photo").src;
+    Images.insert(thing, function (err, fileObj) {
+            if(err){
+              console.log(err);
+            }
+            if(fileObj){
+              console.log("File saved!");
+              console.log(fileObj);
+              image_id = fileObj._id;
+              var turtlelog = {img_id: image_id, division: field1, section: field2, subsection: field3, turtleSpecies: field4, notes: field7,latLng: {lat:field5,lon:field6}};
+              var turtletext = JSON.stringify(turtlelog, null, 2);
+              return new Confirmation({
+                message: turtletext,
+                title: "Confirmation",
+                cancelText: "Cancel",
+                okText: "Confirm",
+                success: true // whether the button should be green or red
+                },
+                function (ok) {
+                  // ok is true if the user clicked on "ok", false otherwise
+                  if(ok){
+                    console.log(turtlelog);
+                    Tasks.insert({
+                      turtlelog: turtlelog,
+                      createdAt: new Date() // CURRENT TIME
+                    });
+                    Session.set("photo",undefined);
+                    // Router.go('/list');
+                  }//if(ok) sl
+                });//confirmation callback close
+            }
+          });
+    // CREATES K/V OBJECT
 
     //ADDS OBJ TO DB
-    var thing = document.getElementById("photo").src;
-    var image_id="No Image";
-    Images.insert(thing, function (err, fileObj) {
-      if(err){
-        console.log(err);
-      }
-      if(fileObj){
-        console.log("File saved!");
-        console.log(fileObj);
-        image_id = fileObj._id;
-        var turtlelog = {img_id: image_id, division: field1, section: field2, subsection: field3, turtleSpecies: field4, notes: field7,latLng: {lat:field5,lon:field6}};
+    // CONFIRM BEFORE DATA INSERT
 
-        var turtletext = JSON.stringify(turtlelog, null, 2)
-
-    // AFTER SUBMIT REDIRECT
-
-    // ###### CONFIRM BEFORE DATA INSERT
-          new Confirmation({
-            message: turtletext,
-            title: "Confirmation",
-            cancelText: "Cancel",
-            okText: "Confirm",
-            success: true // whether the button should be green or red
-            }, function (ok) {
-              // ok is true if the user clicked on "ok", false otherwise
-              if(ok){
-                Tasks.insert({
-                  turtlelog: turtlelog,
-                  createdAt: new Date() // CURRENT TIME
-                });
-              }
-              Router.go('/list')
-            });
-
-        }
-      });
-  }
-});
-
-Session.set("photo",undefined);
-
+    },//submit form callback close
  // PORTS DATA FROM BELOW TO OPTION SELECT
-
-},
 "change #form_select1":function(e){
   var division = $( "#form_select1 option:selected" ).text();
   Session.set("division",division)
@@ -102,7 +92,8 @@ Session.set("photo",undefined);
   Session.set("subsection",subsection)
 }
 
-});
+});//template.form.events close
+
 
 
 
