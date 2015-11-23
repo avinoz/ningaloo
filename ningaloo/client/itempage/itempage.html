@@ -15,11 +15,23 @@
         <td id="notes" colspan="3">{{turtlelog.notes}}</td>
       </tr>
       <tr>
+        <td colspan="5">{{> imageView id=turtlelog.img_id}}</td>
+      </tr>
+      <tr>
         <td id="map" colspan="3">
           {{turtlelog.latLng.lat}},
           {{turtlelog.latLng.lon}}
         </td>
       </tr>
     </table>
+  </div>
+</template>
+<template name="imageView">
+  <div class="imageView">
+    {{#each getImage id}}
+      <div>
+          <img src="{{this.url}}" alt="" class="thumbnail" />
+      </div>
+    {{/each}}
   </div>
 </template>

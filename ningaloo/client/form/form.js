@@ -35,23 +35,31 @@ Template.form.events({
     // var field8 =
 
     // CREATES K/V OBJECT
-    var turtlelog = {division: field1, section: field2, subsection: field3, turtleSpecies: field4, notes:field7,latLng:{lat:field5,lon:field6}}
-    console.log(turtlelog)
+    // console.log(turtlelog)
     //ADDS OBJ TO DB
-    Tasks.insert({
-      turtlelog: turtlelog,
-      createdAt: new Date() // CURRENT TIME
-    });
-    var files = event.target.files;
-    console.log("uploading "+files);
-    for (var i = 0, ln = files.length; i < ln; i++) {
-      Images.insert(files[i], function (err, fileObj) {
-        console.log("uploading "+files[i]);
-        // Inserted new doc with ID fileObj._id, and kicked off the data upload using HTTP
+    var thing = document.getElementById("photo").src;
+    var image_id="No Image";
+    Images.insert(thing, function (err, fileObj) {
+        if(err){
+          console.log(err);
+        }
+        if(fileObj){
+          console.log("File saved!");
+          console.log(fileObj);
+          image_id = fileObj._id;
+          var turtlelog = {img_id:image_id,division: field1, section: field2, subsection: field3, turtleSpecies: field4, notes:field7,latLng:{lat:field5,lon:field6}};
+          Tasks.insert({
+            turtlelog: turtlelog,
+            createdAt: new Date() // CURRENT TIME
+          });
+              Router.go('/list');
+
+        }
       });
-    }
+
+    Session.set("photo",undefined);
+    // }
     // AFTER SUBMIT REDIRECT
-    Router.go('/list');
 
   },
   "change #form_select1":function(e){

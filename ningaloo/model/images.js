@@ -1,8 +1,3 @@
-// var imageStore = new FS.Store.GridFS(“images”);
-
-// Images = new FS.Collection(“images”, {
-//  stores: [imageStore]
-// });
 Images = new FS.Collection("images", {
   stores: [new FS.Store.FileSystem("images", {path: "~/uploads"})]
 });
@@ -35,7 +30,3 @@ Images.allow({
  return true;
  }
 });
-/*
-meteor add cfs:standard-packages
-meteor add cfs:gridfs
-*/
