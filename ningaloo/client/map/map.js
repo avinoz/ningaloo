@@ -34,7 +34,7 @@ Template.map.onRendered(function () {
           var statusColor = function(obj){
             var now = new Date();
             var daysAgo = millisecondsToDays(now)-millisecondsToDays(obj.createdAt);
-            
+
             if(daysAgo<=7){
               return "#8ECBBE"
             }else if(daysAgo<=45){
@@ -63,30 +63,30 @@ Template.map.onRendered(function () {
           // TESTING DYNAMIC MARKERS STATUS:WORKING ########
           // Marker position is reflected by latLng positions in turtlelog object
 
-          var points_array2 = []
-          Tasks.find({}).forEach(function(obj, idx, arr){
-            // console.log(obj)
-            // console.log(idx);
-            // console.log(obj.turtlelog.latLng);
-            if(obj.turtlelog.latLng.lat.length!==0){
-            var geoJson2 = {
-              type:'Feature',
-              "geometry":{
-                "type":"Point",
-                "coordinates":[obj.turtlelog.latLng.lon, obj.turtlelog.latLng.lat]
-              },
-              "properties":{
-                "marker-color":statusColor(obj),
-                "title":obj.turtlelog.turtleSpecies,
-                "url":""
-              }
-            }
-            console.log(geoJson2);
+          // var points_array2 = []
+          // TurtleLogs.find({}).forEach(function(obj, idx, arr){
+          //   // console.log(obj)
+          //   // console.log(idx);
+          //   // console.log(obj.turtlelog.latLng);
+          //   if(obj.turtlelog.latLng.lat.length!==0){
+          //   var geoJson2 = {
+          //     type:'Feature',
+          //     "geometry":{
+          //       "type":"Point",
+          //       "coordinates":[obj.turtlelog.latLng.lon, obj.turtlelog.latLng.lat]
+          //     },
+          //     "properties":{
+          //       "marker-color":statusColor(obj),
+          //       "title":obj.turtlelog.turtleSpecies,
+          //       "url":""
+          //     }
+          //   }
+          //   console.log(geoJson2);
             
 
-              points_array2.push(geoJson2);
-            }
-          });
+          //     points_array2.push(geoJson2);
+          //   }
+          // });
 
           var points_array = []
           TurtleLogs.find({}).forEach(function(obj, idx, arr){
@@ -101,7 +101,7 @@ Template.map.onRendered(function () {
                 "coordinates":[obj.loc.coordinates[0], obj.loc.coordinates[1]]
               },
               "properties":{
-                "marker-color":"#D3D3D3",
+                "marker-color": statusColor(obj),
                 "title":obj.species,
                 "url":""
               }
@@ -112,6 +112,7 @@ Template.map.onRendered(function () {
               points_array.push(geoJson);
             }
           });
+          
 
           function coord(v) {
             var coords = v.replace(trimSpace, '').split(splitSpace),
@@ -172,7 +173,7 @@ Template.map.onRendered(function () {
 
         // ADDS DATA TO MAP
         myLayer.setGeoJSON(points_array);
-        myLayer.setGeoJSON(points_array2); //LIVE DATA ARRAY FEEDING FROM TASKS COLLECTION (***WILL NOT DISPLAY IF 'points_array' is being used first)
+        // myLayer.setGeoJSON(points_array2); //LIVE DATA ARRAY FEEDING FROM TASKS COLLECTION (***WILL NOT DISPLAY IF 'points_array' is being used first)
       } else {
         console.log(error)
       }
@@ -180,12 +181,12 @@ Template.map.onRendered(function () {
 }
 });
 
-this.autorun(function () {
-  if (Mapbox.loaded()) {
-    geojson = Tasks.find().fetch()
-    view.featureLayer.setGeoJSON(geojson);
-  }
-});
+// this.autorun(function () {
+//   if (Mapbox.loaded()) {
+//     geojson = Tasks.find().fetch()
+//     view.featureLayer.setGeoJSON(geojson);
+//   }
+// });
 });
 
 
