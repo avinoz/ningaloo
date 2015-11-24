@@ -34,13 +34,7 @@ Template.form.events({
     var field6 = $( '#lon' ).text();
     var field7 = $('textarea').val();
 
-    // var field8 =
-
     // CREATES K/V OBJECT
-
-
-    // CREATES K/V OBJECT
-    // console.log(turtlelog)
 
     //ADDS OBJ TO DB
     var thing = document.getElementById("photo").src;
@@ -54,13 +48,6 @@ Template.form.events({
         console.log(fileObj);
         image_id = fileObj._id;
         var turtlelog = {
-          //date
-          //species
-          //nestid
-          //loc
-            //coordinates
-              //0-longitude
-              //1-latitude
           date : new Date(),
           img_id: image_id,
           division: field1,
@@ -76,10 +63,6 @@ Template.form.events({
         var turtletext = JSON.stringify(turtlelog, null, 2)
 
     // AFTER SUBMIT REDIRECT
-
-    // ###### CONFIRM BEFORE DATA INSERT
-
-    // var turtletext = JSON.stringify(turtlelog, null, 2)
 
     new Confirmation({
       message: turtletext,
@@ -114,10 +97,7 @@ Session.set("photo",undefined);
   var subsection = $( "#form_select3 option:selected" ).text();
   Session.set("subsection",subsection)
 }
-
 });
-
-
 
 
 /// DYNAMIC DATA SORTING LOGIC
