@@ -2,7 +2,8 @@ console.log("Hello from list.js");
 Meteor.subscribe("turtlelogs");
 Template.list.helpers({
     turtlelogs: function (e) {  //change in list.html
-      return TurtleLogs.find({}, {sort: {createdAt: -1}});
+      // return TurtleLogs.find({}, {sort: {date: -1}});
+      return TurtleLogs.find({}, {img_id: {$exists: true}});
     },
     sortLogs:function(field,order){ //change in list.html
       var orderString = order>0?"asc":"desc";

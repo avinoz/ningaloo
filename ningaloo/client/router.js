@@ -14,6 +14,15 @@ Router.map(function(){
 });
 
 Router.route('/itempage/:_id', function () {
-  var item = TurtleLogs.findOne({_id: this.params._id});
+  console.log(this.params._id);
+  var find;
+  try{
+    find = new Meteor.Collection.ObjectID(this.params._id);
+  }catch(err){
+    console.log(err);
+    find = {_id:this.params._id};
+  }
+  var item = TurtleLogs.findOne(find);
+  console.log("Item is :"+item);
   this.render('itempage', {data: item});
 });

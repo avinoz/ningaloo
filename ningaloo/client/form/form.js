@@ -91,7 +91,7 @@ Template.form.events({
         // ok is true if the user clicked on "ok", false otherwise
         if (ok){
           TurtleLogs.insert(turtlelog)
-          // Router.go('/list');
+          Router.go('/list');
         }
       });
   }
@@ -175,7 +175,6 @@ function getDiv(){
   return Session.get("division");
 }
 function getSec(){
-  debugger;
   console.log("sectionSelected firing");
   return Session.get("section");
 }
