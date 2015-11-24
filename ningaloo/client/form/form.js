@@ -37,10 +37,6 @@ Template.form.events({
     var lonfield6 = parseFloat(field6);
 
 
-    // var field8 =
-
-    // CREATES K/V OBJECT
-    // console.log(turtlelog)
     var image_id="No Image";
     var thing = document.getElementById("photo").src;
     Images.insert(thing, function (err, fileObj) {
@@ -65,8 +61,6 @@ Template.form.events({
         };
 
         var turtletext = JSON.stringify(turtlelog, null, 2)
-
-        // ###### CONFIRM BEFORE DATA INSERT
 
         new Confirmation({
           message: turtletext,
@@ -100,9 +94,7 @@ Template.form.events({
   Session.set("subsection",subsection)
 }
 
-});//template.form.events close
-
-
+});
 
 
 

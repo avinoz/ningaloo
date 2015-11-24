@@ -1,4 +1,4 @@
-@media (max-width: 600px) {
+/*@media (max-width: 600px) {
   .task-list li {
     padding: 12px 15px;
   }
@@ -21,8 +21,7 @@
   position: relative;
   width: 80%;
   list-style: none;
-  /*padding: 5px;*/
   border-bottom: #eee solid 1px;
   background-color: white;
   color: gray;
-}
+}*/
