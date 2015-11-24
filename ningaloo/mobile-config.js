@@ -1,3 +1,4 @@
+App.accessRule("blob:*");
 App.info({
   name: 'Ningaloo',
   description: 'Tracking turtle nests one at a time.',
@@ -6,7 +7,6 @@ App.info({
   website: 'http://aviocollective.com',
   version: '0.0.1'
 });
-
 App.icons({
   // iOS
   'iphone': 'resources/icons/icon-60x60.png',
