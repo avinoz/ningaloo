@@ -1,4 +1,3 @@
-
 Meteor.startup(function(e){
 
   console.log("Divisions is empty? "+Divisions.find().count===0);
@@ -63,7 +62,7 @@ Meteor.startup(function(e){
   Meteor.publish('divisions',function(){
     return Divisions.find({});
   });
-  
+  ///////////////////////////
   Meteor.publish("turtlelogs", function(){
     return TurtleLogs.find({})
   });
