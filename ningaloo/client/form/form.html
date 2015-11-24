@@ -1,5 +1,6 @@
 <template name="form">
   <div class='container'>
+      {{> takePhoto}}
     <form>
       {{>form_s1}}
       {{>form_s2}}
@@ -9,10 +10,9 @@
 
       <input type="submit" value="Log!">
 
-      {{> takePhoto}}
     </form>
     <div class="append_cont">
-      <p>{{> map}}</p>
+      <!-- <p>{{> map}}</p> -->
     </div>
   </div>
 </template>
