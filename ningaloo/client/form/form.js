@@ -34,14 +34,6 @@ Template.form.events({
     var field6 = $( '#lon' ).text();
     var field7 = $('textarea').val();
 
-    // CREATES K/V OBJECT
-<<<<<<< HEAD
-
-    //ADDS OBJ TO DB
-    var thing = document.getElementById("photo").src;
-=======
-    // console.log(turtlelog)
->>>>>>> master
     var image_id="No Image";
     var thing = document.getElementById("photo").src;
     Images.insert(thing, function (err, fileObj) {
