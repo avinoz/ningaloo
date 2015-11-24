@@ -1,9 +1,8 @@
-body {
+/*body {
   font-family: 'Roboto', Arial, sans-serif;
   font-weight: 300;
   font-size: 100%;
   font-style: normal;
-  /*color: #444;*/
   background-color: gray;
   background-attachment: fixed;
 
@@ -16,11 +15,6 @@ body {
   padding: 0;
   margin: 0;
 }
-
-/*a {
-  text-decoration: none!important;
-  color: gray;
-}*/
 
 h1 {
   text-align: center;
@@ -37,9 +31,9 @@ h1 {
   text-align: center;
 }
 table #itempage{
-  /*border:yellow 1px dotted;*/
 }
 .thumbnail{
   width:40vw;
   height:40vw;
 }
+*/

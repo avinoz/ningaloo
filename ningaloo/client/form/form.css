@@ -1,7 +1,6 @@
-
+/*
 form {
   display: block;
-  /*background-color: red;*/
   width: 200px;
   text-align: center;
   margin: 0 auto;
@@ -33,9 +32,5 @@ select {
   appearance:none;
   cursor:pointer;
 }
-
-/*.map_cont {
-  visibility: hidden;
-
-}
 */
+
