@@ -30,6 +30,7 @@ Template.map.onRendered(function () {
             var days = hours/24;
             return days;
           };
+
           var statusColor = function(obj){
             var now = new Date();
             var daysAgo = millisecondsToDays(now)-millisecondsToDays(obj.createdAt);
@@ -41,21 +42,38 @@ Template.map.onRendered(function () {
             }else if(daysAgo<=60){
               return "#2AA285"
             }else{
-              return "#EF6583"
+              return "#D3D3D3"
             }
           }
+
+          // var statusColorLogs = function(obj){
+          //   var now = new Date();
+          //   var daysAgo = millisecondsToDays(now)-millisecondsToDays(new Date(obj.date));
+            
+          //   if(daysAgo<=7){
+          //     return "#8ECBBE"
+          //   }else if(daysAgo<=45){
+          //     return "#5EBEA5"
+          //   }else if(daysAgo<=60){
+          //     return "#2AA285"
+          //   }else{
+          //     return "#EF6583"
+          //   }
+          // }
           // TESTING DYNAMIC MARKERS STATUS:WORKING ########
           // Marker position is reflected by latLng positions in turtlelog object
-          var points_array = []
-          // Tasks.find({}).forEach(function(obj, idx,arr){
-          //   console.log(idx);
-          //   console.log(obj.turtlelog.latLng);
+
+          // var points_array2 = []
+          // TurtleLogs.find({}).forEach(function(obj, idx, arr){
+          //   // console.log(obj)
+          //   // console.log(idx);
+          //   // console.log(obj.turtlelog.latLng);
           //   if(obj.turtlelog.latLng.lat.length!==0){
-          //   var geoJson = {
+          //   var geoJson2 = {
           //     type:'Feature',
           //     "geometry":{
           //       "type":"Point",
-          //       "coordinates":[obj.turtlelog.latLng.lon,obj.turtlelog.latLng.lat]
+          //       "coordinates":[obj.turtlelog.latLng.lon, obj.turtlelog.latLng.lat]
           //     },
           //     "properties":{
           //       "marker-color":statusColor(obj),
@@ -63,12 +81,38 @@ Template.map.onRendered(function () {
           //       "url":""
           //     }
           //   }
-          //   console.log(geoJson);
+          //   console.log(geoJson2);
+            
 
-
-          //     points_array.push(geoJson);
+          //     points_array2.push(geoJson2);
           //   }
           // });
+
+          var points_array = []
+          TurtleLogs.find({}).forEach(function(obj, idx, arr){
+            // console.log(obj)
+            // console.log(idx);
+            // console.log(obj.turtlelog.latLng);
+            if(obj.loc.coordinates.length!==0){
+            var geoJson = {
+              type:'Feature',
+              "geometry":{
+                "type":"Point",
+                "coordinates":[obj.loc.coordinates[0], obj.loc.coordinates[1]]
+              },
+              "properties":{
+                "marker-color": statusColor(obj),
+                "title":obj.species,
+                "url":""
+              }
+            }
+            // console.log(geoJson);
+            
+
+              points_array.push(geoJson);
+            }
+          });
+          
 
           function coord(v) {
             var coords = v.replace(trimSpace, '').split(splitSpace),
@@ -117,7 +161,7 @@ Template.map.onRendered(function () {
               var marker = e.layer,
               feature = marker.feature;
 
-              var popupContent = '<a target="_blank" class="popup" href="' + feature.properties.url + '">' + feature.properties.title + '</a>'; //'<img src="' + feature.properties.image + '" />' +
+              var popupContent = '<a target="_blank" class="popup" href="' + feature.properties.url + '">' + feature.properties.title + '</a>' + '<p>' + feature.geometry.coordinates + '</p>'; //'<img src="' + feature.properties.image + '" />' +
 
               // http://leafletjs.com/reference.html#popup
               marker.bindPopup(popupContent,{
@@ -129,6 +173,7 @@ Template.map.onRendered(function () {
 
         // ADDS DATA TO MAP
         myLayer.setGeoJSON(points_array);
+        // myLayer.setGeoJSON(points_array2); //LIVE DATA ARRAY FEEDING FROM TASKS COLLECTION (***WILL NOT DISPLAY IF 'points_array' is being used first)
       } else {
         console.log(error)
       }

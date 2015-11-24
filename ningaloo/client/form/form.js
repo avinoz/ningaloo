@@ -35,15 +35,19 @@ Template.form.events({
     var field7 = $('textarea').val();
 
     // CREATES K/V OBJECT
+<<<<<<< HEAD
 
     //ADDS OBJ TO DB
     var thing = document.getElementById("photo").src;
+=======
+    // console.log(turtlelog)
+>>>>>>> master
     var image_id="No Image";
+    var thing = document.getElementById("photo").src;
     Images.insert(thing, function (err, fileObj) {
-      if(err){
+     if(err){
         console.log(err);
-      }
-      if(fileObj){
+      }else if(fileObj){
         console.log("File saved!");
         console.log(fileObj);
         image_id = fileObj._id;
@@ -62,29 +66,25 @@ Template.form.events({
 
         var turtletext = JSON.stringify(turtlelog, null, 2)
 
-    // AFTER SUBMIT REDIRECT
-
-    new Confirmation({
-      message: turtletext,
-      title: "Confirmation",
-      cancelText: "Cancel",
-      okText: "Confirm",
-      success: true // whether the button should be green or red
-    }, function (ok) {
-        // ok is true if the user clicked on "ok", false otherwise
-        if (ok){
-          TurtleLogs.insert(turtlelog)
-          // Router.go('/list');
-        }
-      });
+        new Confirmation({
+          message: turtletext,
+          title: "Confirmation",
+          cancelText: "Cancel",
+          okText: "Confirm",
+          success: true // whether the button should be green or red
+        }, function (ok) {
+            // ok is true if the user clicked on "ok", false otherwise
+            if (ok){
+              TurtleLogs.insert(turtlelog)
+              // AFTER SUBMIT REDIRECT
+              Router.go('/list');
+            }
+        });
   }
 });
 
-Session.set("photo",undefined);
-
+},//submit form callback close
  // PORTS DATA FROM BELOW TO OPTION SELECT
-
-},
 "change #form_select1":function(e){
   var division = $( "#form_select1 option:selected" ).text();
   Session.set("division",division)
@@ -97,7 +97,9 @@ Session.set("photo",undefined);
   var subsection = $( "#form_select3 option:selected" ).text();
   Session.set("subsection",subsection)
 }
+
 });
+
 
 
 /// DYNAMIC DATA SORTING LOGIC
@@ -155,7 +157,6 @@ function getDiv(){
   return Session.get("division");
 }
 function getSec(){
-  debugger;
   console.log("sectionSelected firing");
   return Session.get("section");
 }
