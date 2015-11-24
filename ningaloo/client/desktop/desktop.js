@@ -1,7 +1,7 @@
 
 Mapbox.load();
 
-Template.map.onRendered(function () {
+Template.desktop.onRendered(function () {
   Mapbox.debug = true;
   Mapbox.load({
     plugins: ['Leaflet']
@@ -190,7 +190,7 @@ Template.map.onRendered(function () {
 });
 
 
-Template.map.helpers({
+Template.desktop.helpers({
   geolocationError: function() {
     var error = Geolocation.error();
     return error && error.message;
