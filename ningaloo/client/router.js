@@ -14,6 +14,6 @@ Router.map(function(){
 });
 
 Router.route('/itempage/:_id', function () {
-  var item = Tasks.findOne({_id: this.params._id});
+  var item = TurtleLogs.findOne({_id: this.params._id});
   this.render('itempage', {data: item});
 });
