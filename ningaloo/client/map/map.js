@@ -42,7 +42,7 @@ Template.map.onRendered(function () {
             }else if(daysAgo<=60){
               return "#2AA285"
             }else{
-              return "#EF6583"
+              return "#D3D3D3"
             }
           }
 
@@ -101,7 +101,7 @@ Template.map.onRendered(function () {
                 "coordinates":[obj.loc.coordinates[0], obj.loc.coordinates[1]]
               },
               "properties":{
-                "marker-color":statusColor(obj),
+                "marker-color":"#D3D3D3",
                 "title":obj.species,
                 "url":""
               }
@@ -172,7 +172,7 @@ Template.map.onRendered(function () {
 
         // ADDS DATA TO MAP
         myLayer.setGeoJSON(points_array);
-        myLayer.setGeoJSON(points_array2); //SHOULD PRINT UPDATED LAT/LNG BUT NOT PRESENTLLY FUNCTIONAL
+        myLayer.setGeoJSON(points_array2); //LIVE DATA ARRAY FEEDING FROM TASKS COLLECTION (***WILL NOT DISPLAY IF 'points_array' is being used first)
       } else {
         console.log(error)
       }
