@@ -46,20 +46,7 @@ Template.desktop.onRendered(function () {
             }
           }
 
-          // var statusColorLogs = function(obj){
-          //   var now = new Date();
-          //   var daysAgo = millisecondsToDays(now)-millisecondsToDays(new Date(obj.date));
-            
-          //   if(daysAgo<=7){
-          //     return "#8ECBBE"
-          //   }else if(daysAgo<=45){
-          //     return "#5EBEA5"
-          //   }else if(daysAgo<=60){
-          //     return "#2AA285"
-          //   }else{
-          //     return "#EF6583"
-          //   }
-          // }
+         
           // TESTING DYNAMIC MARKERS STATUS:WORKING ########
           // Marker position is reflected by latLng positions in turtlelog object
 
