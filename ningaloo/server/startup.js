@@ -66,4 +66,7 @@ Meteor.startup(function(e){
   Meteor.publish("turtlelogs", function(){
     return TurtleLogs.find({})
   });
+  Meteor.publish("images", function(){
+    return Images.find({})
+  });
 });
