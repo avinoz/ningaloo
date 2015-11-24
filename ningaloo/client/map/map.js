@@ -33,7 +33,7 @@ Template.map.onRendered(function () {
           var statusColor = function(obj){
             var now = new Date();
             var daysAgo = millisecondsToDays(now)-millisecondsToDays(obj.createdAt);
-            
+
             if(daysAgo<=7){
               return "#8ECBBE"
             }else if(daysAgo<=45){
@@ -47,28 +47,28 @@ Template.map.onRendered(function () {
           // TESTING DYNAMIC MARKERS STATUS:WORKING ########
           // Marker position is reflected by latLng positions in turtlelog object
           var points_array = []
-          Tasks.find({}).forEach(function(obj, idx,arr){
-            console.log(idx);
-            console.log(obj.turtlelog.latLng);
-            if(obj.turtlelog.latLng.lat.length!==0){
-            var geoJson = {
-              type:'Feature',
-              "geometry":{
-                "type":"Point",
-                "coordinates":[obj.turtlelog.latLng.lon,obj.turtlelog.latLng.lat]
-              },
-              "properties":{
-                "marker-color":statusColor(obj),
-                "title":obj.turtlelog.turtleSpecies,
-                "url":""
-              }
-            }
-            console.log(geoJson);
-            
+          // Tasks.find({}).forEach(function(obj, idx,arr){
+          //   console.log(idx);
+          //   console.log(obj.turtlelog.latLng);
+          //   if(obj.turtlelog.latLng.lat.length!==0){
+          //   var geoJson = {
+          //     type:'Feature',
+          //     "geometry":{
+          //       "type":"Point",
+          //       "coordinates":[obj.turtlelog.latLng.lon,obj.turtlelog.latLng.lat]
+          //     },
+          //     "properties":{
+          //       "marker-color":statusColor(obj),
+          //       "title":obj.turtlelog.turtleSpecies,
+          //       "url":""
+          //     }
+          //   }
+          //   console.log(geoJson);
 
-              points_array.push(geoJson);
-            }
-          });
+
+          //     points_array.push(geoJson);
+          //   }
+          // });
 
           function coord(v) {
             var coords = v.replace(trimSpace, '').split(splitSpace),
@@ -136,12 +136,12 @@ Template.map.onRendered(function () {
 }
 });
 
-this.autorun(function () {
-  if (Mapbox.loaded()) {
-    geojson = Tasks.find().fetch()
-    view.featureLayer.setGeoJSON(geojson);
-  }
-});
+// this.autorun(function () {
+//   if (Mapbox.loaded()) {
+//     geojson = Tasks.find().fetch()
+//     view.featureLayer.setGeoJSON(geojson);
+//   }
+// });
 });
 
 

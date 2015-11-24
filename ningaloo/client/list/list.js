@@ -1,19 +1,16 @@
 console.log("Hello from list.js");
-Meteor.subscribe("tasks");
+Meteor.subscribe("turtlelogs");
 Template.list.helpers({
-    tasks: function (e) {
-      return Tasks.find({}, {sort: {createdAt: -1}});
+    turtlelogs: function (e) {  //change in list.html
+      return TurtleLogs.find({}, {sort: {createdAt: -1}});
     },
-    sortTasks:function(field,order){
-      if(field==="date"){
-        return Tasks.find({},{sort:{createdAt:order}});
-      }else{
-        var orderString = order>0?"asc":"desc";
-        var o = {}
-        o['turtlelog.'+field]=order;
-        var sort = {sort:o};
-        return Tasks.find({},sort);
-      }
+    sortLogs:function(field,order){ //change in list.html
+      var orderString = order>0?"asc":"desc";
+      var o = {}
+      o[field]=order;
+      var sort = {sort:o};
+      return TurtleLogs.find({},sort);
+
     },
     sortingBy:function(){
       return Session.get("sortingBy");
@@ -46,7 +43,7 @@ Template.sortingFields.helpers({
     {fieldName:"division"},
     {fieldName:"section"},
     {fieldName:"subsection"},
-    {fieldName:"turtleSpecies"}
+    {fieldName:"species"}
 
   ]
 });
