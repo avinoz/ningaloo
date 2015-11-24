@@ -240,3 +240,25 @@ Template.desktop.helpers({
 //     });
 //   });
 // });
+
+// Sort by turtle species button selection
+// Template.speciesbutton.helpers({
+  // species: function(e) {
+    // return TurtleLogs.find({},findSpecies)
+  // }
+  // findSpecies: function(field, species){
+  //   var o = {};
+  //   o[field] = 
+
+  // }
+// });
+
+Template.speciesbutton.events({
+  "click #speciesSelect" : function(e){
+    var what = $('input[name="species"]:checked', '#speciesSelect').val();
+    console.log(what);
+   // Session.set("findSpecies", select)
+  }
+});
+
+
