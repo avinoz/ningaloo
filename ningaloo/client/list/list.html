@@ -5,18 +5,16 @@
         Sort by:{{> sortingFields}}
       </div>
       <div id="filter">
-        {{> form_s1}}
-        {{> form_s2_all}}
       </div>
     </div>
     <div class="task-list">
       <ul>
         {{#if sortingBy}}
-          {{#each sortTasks sortingBy sortOrder}}
+          {{#each sortLogs sortingBy sortOrder}}
             {{> task}}
           {{/each}}
         {{else}}
-          {{#each tasks}}
+          {{#each turtlelogs}}
             {{> task}}
           {{/each}}
         {{/if}}
