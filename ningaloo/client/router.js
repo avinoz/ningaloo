@@ -23,6 +23,6 @@ Router.route('/itempage/:_id', function () {
     find = {_id:this.params._id};
   }
   var item = TurtleLogs.findOne(find);
-  console.log("Item is :"+item);
+  console.log(item);
   this.render('itempage', {data: item});
 });

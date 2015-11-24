@@ -5,6 +5,7 @@
         Sort by:{{> sortingFields}}
       </div>
       <div id="filter">
+        <button id="hasImages">Has Image</button>
       </div>
     </div>
     <div class="task-list">
@@ -14,9 +15,15 @@
             {{> task}}
           {{/each}}
         {{else}}
-          {{#each turtlelogs}}
-            {{> task}}
-          {{/each}}
+          {{#if filteringBy}}
+            {{#each filterLogs}}
+              {{> task}}
+            {{/each}}
+          {{else}}
+            {{#each turtlelogs}}
+              {{> task}}
+            {{/each}}
+          {{/if}}
         {{/if}}
       </ul>
     </div>
