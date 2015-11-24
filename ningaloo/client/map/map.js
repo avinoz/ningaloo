@@ -16,7 +16,7 @@ Template.map.onRendered(function () {
           let map = L.mapbox.map('map', 'avinoz.o7nj93k2');
           map.setView([-21.854578, 114.103581], 12, {pan: {animate: true, duration: 2}, zoom: {animate: true}})
           // ADDS PIN TO MAP WITH HARD-CODE LAT/LNG
-          // L.marker([-21.788816, 114.159740]).addTo(map);
+          // L.marker([37.784920, -122.398024]).addTo(map);
 
 
 
@@ -33,7 +33,7 @@ Template.map.onRendered(function () {
 
           var statusColor = function(obj){
             var now = new Date();
-            var daysAgo = millisecondsToDays(now)-millisecondsToDays(obj.createdAt);
+            var daysAgo = millisecondsToDays(now)-millisecondsToDays(obj.date);
 
             if(daysAgo<=7){
               return "#8ECBBE"

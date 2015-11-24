@@ -1,7 +1,7 @@
 
 Mapbox.load();
 
-Template.desktop.onRendered(function () {
+Template.map.onRendered(function () {
   Mapbox.debug = true;
   Mapbox.load({
     plugins: ['Leaflet']
@@ -16,7 +16,7 @@ Template.desktop.onRendered(function () {
           let map = L.mapbox.map('map', 'avinoz.o7nj93k2');
           map.setView([-21.854578, 114.103581], 12, {pan: {animate: true, duration: 2}, zoom: {animate: true}})
           // ADDS PIN TO MAP WITH HARD-CODE LAT/LNG
-          // L.marker([-21.788816, 114.159740]).addTo(map);
+          // L.marker([37.784920, -122.398024]).addTo(map);
 
 
 
@@ -33,7 +33,7 @@ Template.desktop.onRendered(function () {
 
           var statusColor = function(obj){
             var now = new Date();
-            var daysAgo = millisecondsToDays(now)-millisecondsToDays(obj.createdAt);
+            var daysAgo = millisecondsToDays(now)-millisecondsToDays(obj.date);
 
             if(daysAgo<=7){
               return "#8ECBBE"
@@ -46,6 +46,20 @@ Template.desktop.onRendered(function () {
             }
           }
 
+          // var statusColorLogs = function(obj){
+          //   var now = new Date();
+          //   var daysAgo = millisecondsToDays(now)-millisecondsToDays(new Date(obj.date));
+            
+          //   if(daysAgo<=7){
+          //     return "#8ECBBE"
+          //   }else if(daysAgo<=45){
+          //     return "#5EBEA5"
+          //   }else if(daysAgo<=60){
+          //     return "#2AA285"
+          //   }else{
+          //     return "#EF6583"
+          //   }
+          // }
           // TESTING DYNAMIC MARKERS STATUS:WORKING ########
           // Marker position is reflected by latLng positions in turtlelog object
 
@@ -114,14 +128,17 @@ Template.desktop.onRendered(function () {
             type: 'Feature',
             "geometry": { "type": "Point", "coordinates": [114.033028, -21.847727]},
             "properties": {
+              // "image": "images/trans.png",
               "marker-color": "#ff8888",
               "title": "Turtle Town",
               "url": "https://en.wikipedia.org/wiki/Chicago"
+              // "marker-size": "large",
             }
           }, {
             type: 'Feature',
             "geometry": { "type": "Point", "coordinates": [114.091414, -21.810967]},
             "properties": {
+              // "image": "images/trans.png",
               "title": "Flipped Turtle",
               "url": "https://en.wikipedia.org/wiki/Chicago",
               "marker-color": "#7ec0ee"
@@ -130,6 +147,7 @@ Template.desktop.onRendered(function () {
             type: 'Feature',
             "geometry": { "type": "Point", "coordinates": [1, 1]},
             "properties": {
+              // "image": "images/trans.png",
               "title": "Flipped Turtle",
               "url": "https://en.wikipedia.org/wiki/Chicago",
               "marker-color": "#7ec0ee"
@@ -172,7 +190,7 @@ Template.desktop.onRendered(function () {
 });
 
 
-Template.desktop.helpers({
+Template.map.helpers({
   geolocationError: function() {
     var error = Geolocation.error();
     return error && error.message;
