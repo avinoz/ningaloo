@@ -4,12 +4,91 @@
 
   <div class="dataview">DATA VIEW
 
-  	<p> hayyyyyy </p>
+  	<!-- <p> hayyyyyy </p> -->
+
+    <div class="buttonsort">
+
+      <div id="tutlespeciesbutton">
+        <button>
+          <a href="">GREEN</a>
+        </button>
+        <button>
+          <a href="">HAWKSBILL</a>
+        </button>
+        <button>
+         <a href="">LOGGERHEAD</a>
+        </button>
+        <button>
+          <a href="">LOGGERHEAD</a>
+        </button>
+      </div>
+
+      <div id="incubation_sort">
+        <button>
+          <a href="">7 DAYS</a>
+        </button>
+        <button>
+          <a href="">45 DAYS</a>
+        </button>
+        <button>
+          <a href="">60+ DAYS</a>
+        </button>
+        <button>
+          <a href="">RESCUE</a>
+        </button>
+      </div>
+    </div>
+
+    <div id="location_sort">
+      <div>
+        <select id="divisionsort">
+          <option value disable selected>--Divisions--</option>
+          <!-- {{#each divisions}} -->
+          <!-- <option value="division">{{name}}</option> -->
+          <!-- {{/each}} -->
+          <option value="cape range">Cape Range</option>
+          <option value="northwest cape">Northwest Cape</option>
+        </select>
+      </div>
+      <div>
+        <select id="section_sort">
+          <option value disable selected>--Sections--</option>
+          <!-- {{#if divisionSelected}} -->
+          <!-- {{#each sections divisionSelected}} -->
+          <!-- <option value="section">{{name}}</option> -->
+            <option value="graveyards">Graveyards</option>
+            <option value="bungelup">Bungelup</option>
+            <option value="hunters">Hunters</option>
+            <option value="lighthouse bay">Lighthouse Bay</option>
+            <option value="Tandabiddi">Tandabiddi</option>
+          <!-- {{/each}} -->
+          <!-- {{/if}} -->
+        </select>
+      </div>
+      <div>
+        <select id="subsection_sort">
+          <option value disable selected>--Subsections--</option>
+          <!-- {{#if sectionSelected}}
+          {{#each subsections divisionSelected sectionSelected}}
+          <option value="subsection">{{name}}</option>
+          {{/each}}
+          {{/if}} -->
+          <option value="brooke - graveyards">Brooke - Graveyards</option>
+          <option value="five mile north">Five Mile North - Five Mile Carpark</option>
+          <option value="graveyards burrows">Graveyards Burrows</option>
+          <option value="trisel - five mile carpark">Trisel - Five Mile Carpark</option>
+          <option value="hunters - mauritius">Hunters - Mauritius</option>
+          <option value="jacobz south - wobiri">Jacobz Sourth Wobiri</option>
+          <option value="mauritius - jacobz south">Mauritius - Jacobz South</option>
+          <option value="mildura wreck - north west carpark">Mildura Wreck - North West Carpark</option>
+          <option value="north west carpark - surf beach">North West Carpark - Surf Beach</option>
+          <option value="surf beach - hunters">Surf Beach - Hunters</option>
+          <option value="burrows - jurabi point">Burrows - Jurabi Point</option>
+        </select>
+      </div>
+    </div>
+</div>
 
 
-
-
-
-  </div>
-  <div class="indiview">INDIVIDUAL ENTRY</div>
+<div class="indiview">INDIVIDUAL ENTRY</div>
 </template>

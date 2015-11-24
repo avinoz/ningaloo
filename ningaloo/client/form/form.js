@@ -37,30 +37,17 @@ Template.form.events({
     // var field8 =
 
     // CREATES K/V OBJECT
-
-
-    // CREATES K/V OBJECT
     // console.log(turtlelog)
-
-    //ADDS OBJ TO DB
-    var thing = document.getElementById("photo").src;
     var image_id="No Image";
+    var thing = document.getElementById("photo").src;
     Images.insert(thing, function (err, fileObj) {
-      if(err){
+     if(err){
         console.log(err);
-      }
-      if(fileObj){
+      }else if(fileObj){
         console.log("File saved!");
         console.log(fileObj);
         image_id = fileObj._id;
         var turtlelog = {
-          //date
-          //species
-          //nestid
-          //loc
-            //coordinates
-              //0-longitude
-              //1-latitude
           date : new Date(),
           img_id: image_id,
           division: field1,
@@ -75,33 +62,27 @@ Template.form.events({
 
         var turtletext = JSON.stringify(turtlelog, null, 2)
 
-    // AFTER SUBMIT REDIRECT
+        // ###### CONFIRM BEFORE DATA INSERT
 
-    // ###### CONFIRM BEFORE DATA INSERT
-
-    // var turtletext = JSON.stringify(turtlelog, null, 2)
-
-    new Confirmation({
-      message: turtletext,
-      title: "Confirmation",
-      cancelText: "Cancel",
-      okText: "Confirm",
-      success: true // whether the button should be green or red
-    }, function (ok) {
-        // ok is true if the user clicked on "ok", false otherwise
-        if (ok){
-          TurtleLogs.insert(turtlelog)
-          // Router.go('/list');
-        }
-      });
+        new Confirmation({
+          message: turtletext,
+          title: "Confirmation",
+          cancelText: "Cancel",
+          okText: "Confirm",
+          success: true // whether the button should be green or red
+        }, function (ok) {
+            // ok is true if the user clicked on "ok", false otherwise
+            if (ok){
+              TurtleLogs.insert(turtlelog)
+              // AFTER SUBMIT REDIRECT
+              Router.go('/list');
+            }
+        });
   }
 });
 
-Session.set("photo",undefined);
-
+},//submit form callback close
  // PORTS DATA FROM BELOW TO OPTION SELECT
-
-},
 "change #form_select1":function(e){
   var division = $( "#form_select1 option:selected" ).text();
   Session.set("division",division)
@@ -115,7 +96,8 @@ Session.set("photo",undefined);
   Session.set("subsection",subsection)
 }
 
-});
+});//template.form.events close
+
 
 
 
@@ -175,7 +157,6 @@ function getDiv(){
   return Session.get("division");
 }
 function getSec(){
-  debugger;
   console.log("sectionSelected firing");
   return Session.get("section");
 }
