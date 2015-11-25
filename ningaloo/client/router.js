@@ -23,3 +23,5 @@ Router.route('/itempage/:_id', function () {
   var item = TurtleLogs.findOne(find);
   this.render('itempage', {data: item});
 });
+
+

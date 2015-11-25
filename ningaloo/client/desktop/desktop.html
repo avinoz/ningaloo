@@ -1,13 +1,16 @@
 <template name='desktop'>
   <div id='map'></div>
+
   <ul id='marker-list'></ul>
 
   <div class="dataview">DATA VIEW
 
+  	{{>speciesbutton}}
+
     <div class="buttonsort">
 
-      <div id="tutlespeciesbutton">
-        <button>
+<!--       <div id="tutlespeciesbutton">
+        <button id="Green">
           <a href="">GREEN</a>
         </button>
         <button>
@@ -19,7 +22,7 @@
         <button>
           <a href="">UNIDENTIFIED</a>
         </button>
-      </div>
+      </div> -->
 
       <div id="incubation_sort">
         <button>
@@ -109,11 +112,35 @@
       </div>
 </div>
 
+<div class="indiview">
+  <p>INDIVIDUAL ENTRY</p>
+
+  {{> map}}
+</div>
+
+</template>
+
+<template name="speciesbutton">
+    {{> loginButtons}}
+
+  <form id="speciesSelect">
+	<input type="radio" name="species" value="Green" > Green<br>
+  <input type="radio" name="species" value="Hawksbill"> Hawksbill<br>
+  <input type="radio" name="species" value="Loggerhead"> Loggerhead<br>
+  <input type="radio" name="species" value="Unidentified"> Unidentified<br>
+<!--     <button>
+     <a href="">Loggerhead</a>
+    </button>
+    <button>
+      <a href="">Unidentified</a>
+    </button> -->
+  </form>
 
 <!-- <div class="indiview">
       <div>
         {{> itempage}}
       </div>
 </div> -->
+
 
 </template>
