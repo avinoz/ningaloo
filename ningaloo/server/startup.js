@@ -52,13 +52,13 @@ Meteor.startup(function(e){
     var divs = Divisions.find().fetch();
     console.log(divs);
   }
-  ///////////////////////////
+
   Meteor.methods({
     'getMapBoxKey': function() {
       return Meteor.settings.mapBoxKey
     }
   });
-  ///////////////////////////
+
   Meteor.publish('divisions',function(){
     return Divisions.find({});
   })
@@ -66,6 +66,6 @@ Meteor.startup(function(e){
     return Images.find({});
   });
   Meteor.publish("turtlelogs", function(){
-    return TurtleLogs.find({})
+    return TurtleLogs.find({});
   });
 });
