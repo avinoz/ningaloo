@@ -1,57 +1,179 @@
+h4 {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 200;
+  /*margin: 10%;*/
+  font-size: 1.1em;
+  line-height: 1.5em;
+}
+
+.raleway{
+  font-family: 'Raleway', sans-serif;
+  font-weight: 200;
+}
 
 #map {
   position:absolute;
   top:0;
   bottom:0;
-  width:40%;
+  right: 0px;
+  width:50%;
+}
+
+/* LEFT CONTAINER */
+
+#d-left-con {
+  position: absolute;
+  background: #8ecbbe;
+  top: 0;
+  bottom: 0;
+  width: 20%;
+  text-align: center;
+  z-index: 1;
+  margin: 0 auto;
+  box-shadow: 3px 0px 2px #888888;
+}
+
+#d-logo {
+  font-size: 2.7vw;
+  /*font-size: 3.3em;*/
+  color: white;
+  padding-top: 15%;
+}
+
+#fsearch {
+  color: #2aa285;
+  font-size: 1.4em;
+  resize:none;
+  text-align: left;
+
+  position: absolute;
+  height: 3vh;
+  bottom: 77%;
+  margin: 0 15% 0 15%;
+  background: #8ecbbe;
+  border-radius: 0;
+  width: 70%;
+  border-bottom: 2px solid #2aa285;
 }
 
 #marker-list {
-  position:absolute;
-  top: 130px;
-  left: 40%;
-  height: (100%-130px);
-  width: 10%;
+  text-align: left;
+  position: absolute;
+  left: 0;
+  top: 26%;
+  z-index: 2;
+  height: 70%;
+  width: 100%;
   bottom:0;
-  overflow-x:auto;
-  background:#2aa285;
+  overflow-x: hidden;
   margin:0;
-  padding:5px;
 }
 
 #marker-list li {
-  padding:5px;
+  border-bottom: solid 1px gray;
   margin:0;
   list-style-type:none;
   width: 100%;
-  background-color: #8ecbbe;
-  margin: 1px;
+  background-color: white;
+  color: black;
+  font-size: 1.2em;
+  padding: 2.5%;
+  padding-left: 5%;
+  cursor: pointer;
 }
 
 #marker-list li:hover {
   background:#5ebea5;
+  color: white;
 }
 
-.dataview {
-  width: 50%;
-  height: (80%-130px);
-  position: absolute;
-  top: 130px;
-  background-color: #ea6782;
-  right: 0px;
-  bottom: 0px;
-  /*z-index: 2px;*/
+#marker-list li:active {
+  background: #383c3d;
+  color: white;
 }
 
-.indiview {
-  width: 50%;
-  height: 300px;
+#copyright {
+  font-size: .8em;
+  text-decoration: none;
+  color: black;
   position: absolute;
-  background-color: lightgray;
-  right: 0px;
+  bottom: 2%;
+  text-align: center;
+  width: 100%;
+  color: black;
+  cursor: pointer;
+}
+
+/* MIDDLE CONTAINER */
+
+#dataview {
+  width: 30%;
+  position: absolute;
+  background-color: #bdbdbd;
+  box-shadow: 3px 0px 2px #888888;
+  text-align: center;
+  margin: 0 auto;
+  left: 20%;
   bottom: 0;
-  z-index: 1px;
+  top: 0;
 }
+
+/* INDIVIEW */
+
+#indiview {
+  width: 80%;
+  left: 10%;
+  bottom: 12%;
+  height: 50%;
+  position: absolute;
+  background-color: #383c3d;
+}
+
+#indi-l {
+  position: absolute;
+  height: 100%;
+  width: 45%;
+  color: #999999;
+  text-align: right;
+  box-sizing: border-box;
+  padding: 3%;
+  /*background: blue;*/
+}
+
+#indi-r {
+  position: absolute;
+  text-align: left;
+  right: 0;
+  width: 55%;
+  height: 100%;
+  color: white;
+  box-sizing: border-box;
+  padding: 3%;
+}
+
+#indi-date {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  z-index: 5;
+  margin: 1% 5% 0 0 ;
+  color: white;
+}
+
+#indi-img {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50%;
+  background: gray;
+  overflow: hidden;
+  box-sizing: border-box;
+  border: 2px solid #383c3d;
+}
+
+
+
+
 
 /*COLOR CODES {
   color: #e7ebeb; light gray
