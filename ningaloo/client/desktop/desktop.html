@@ -5,7 +5,6 @@
 
   <div class="dataview">DATA VIEW
 
-  	<!-- <p> hayyyyyy </p> -->
   	{{>speciesbutton}}
 
     <div class="buttonsort">
@@ -21,7 +20,7 @@
          <a href="">LOGGERHEAD</a>
         </button>
         <button>
-          <a href="">LOGGERHEAD</a>
+          <a href="">UNIDENTIFIED</a>
         </button>
       </div> -->
 
@@ -88,7 +87,29 @@
           <option value="burrows - jurabi point">Burrows - Jurabi Point</option>
         </select>
       </div>
-    </div>
+        <div>
+          <div class="turtle-list">
+            <ul>
+              
+                {{#each turtlelogs}}
+                  {{> task}}
+                  <tr class="toggle-row" data-href="/itempage/{{_id}}">
+                  <!-- <td>{{_id}}</td> -->
+                  <td>{{date}}</td>
+                  <td>{{division}}</td>
+                  <td>{{section}}</td>
+                  <td>{{subsection}}</td>
+                  <td>{{species}}</td>
+                  <td>{{nest_ID}}</td>
+                  <!-- <td>{{latitude}}</td> -->
+                  <!-- <td>{{longitude}}</td> -->
+                  <td>{{loc.coordinates}}</td>
+              </tr>
+                {{/each}}
+            </ul>
+          </div>
+            </div>
+      </div>
 </div>
 
 <div class="indiview">
@@ -114,5 +135,12 @@
       <a href="">Unidentified</a>
     </button> -->
   </form>
+
+<!-- <div class="indiview">
+      <div>
+        {{> itempage}}
+      </div>
+</div> -->
+
 
 </template>

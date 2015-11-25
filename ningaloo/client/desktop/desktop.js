@@ -47,20 +47,7 @@ Template.desktop.onRendered(function () {
             }
           }
 
-          // var statusColorLogs = function(obj){
-          //   var now = new Date();
-          //   var daysAgo = millisecondsToDays(now)-millisecondsToDays(new Date(obj.date));
 
-          //   if(daysAgo<=7){
-          //     return "#8ECBBE"
-          //   }else if(daysAgo<=45){
-          //     return "#5EBEA5"
-          //   }else if(daysAgo<=60){
-          //     return "#2AA285"
-          //   }else{
-          //     return "#EF6583"
-          //   }
-          // }
           // TESTING DYNAMIC MARKERS STATUS:WORKING ########
           // Marker position is reflected by latLng positions in turtlelog object
 
@@ -90,7 +77,7 @@ Template.desktop.onRendered(function () {
           // });
 
           var points_array = []
-          TurtleLogs.find({}).forEach(function(obj, idx, arr){
+          TurtleLogs.find({}, {limit:10} ).forEach(function(obj, idx, arr){
             // console.log(obj)
             // console.log(idx);
             // console.log(obj.turtlelog.latLng);
@@ -122,62 +109,7 @@ Template.desktop.onRendered(function () {
             return o;
           }
 
-          // ########
-          // var geoJson = [{
-          //   type: 'Feature',
-          //   "geometry": { "type": "Point", "coordinates": [114.033028, -21.847727]},
-          //   "properties": {
-          //     "marker-color": "#ff8888",
-          //     "title": "Turtle Town",
-          //     "url": "https://en.wikipedia.org/wiki/Chicago"
-          //   }
-          // }, {
-          //   type: 'Feature',
-          //   "geometry": { "type": "Point", "coordinates": [114.091414, -21.810967]},
-          //   "properties": {
-          //     "title": "Flipped Turtle",
-          //     "url": "https://en.wikipedia.org/wiki/Chicago",
-          //     "marker-color": "#7ec0ee"
-          //   }
-          // }, {
-          //   type: 'Feature',
-          //   "geometry": { "type": "Point", "coordinates": [1, 1]},
-          //   "properties": {
-          //     "title": "Flipped Turtle",
-          //     "url": "https://en.wikipedia.org/wiki/Chicago",
-          //     "marker-color": "#7ec0ee"
-          //   }
-          // }];
-
-          var geoJson = [{
-            type: 'Feature',
-            "geometry": { "type": "Point", "coordinates": [114.033028, -21.847727]},
-            "properties": {
-              // "image": "images/trans.png",
-              "marker-color": "#ff8888",
-              "title": "Turtle Town",
-              "url": "https://en.wikipedia.org/wiki/Chicago"
-              // "marker-size": "large",
-            }
-          }, {
-            type: 'Feature',
-            "geometry": { "type": "Point", "coordinates": [114.091414, -21.810967]},
-            "properties": {
-              // "image": "images/trans.png",
-              "title": "Flipped Turtle",
-              "url": "https://en.wikipedia.org/wiki/Chicago",
-              "marker-color": "#7ec0ee"
-            }
-          }, {
-            type: 'Feature',
-            "geometry": { "type": "Point", "coordinates": [1, 1]},
-            "properties": {
-              // "image": "images/trans.png",
-              "title": "Flipped Turtle",
-              "url": "https://en.wikipedia.org/wiki/Chicago",
-              "marker-color": "#7ec0ee"
-            }
-          }];
+ 
 
 
             // ADDS POPUP WINDOW
@@ -225,6 +157,79 @@ Template.desktop.onRendered(function () {
     }
   });
 });
+
+
+Meteor.subscribe("turtlelogs");
+Template.desktop.helpers({
+    turtlelogs: function (e) {  //change in list.html
+      return TurtleLogs.find({}, {limit:10});
+    }
+    // sortLogs:function(field,order){ //change in list.html
+    //   var orderString = order>0?"asc":"desc";
+    //   var o = {}
+    //   o[field]=order;
+    //   var sort = {sort:o};
+    //   return TurtleLogs.find({},sort);
+
+    // },
+    // sortingBy:function(){
+    //   return Session.get("sortingBy");
+    // },
+    // sortOrder:function(){
+    //   return Session.get("sortOrder")||1;
+    // }
+  });
+// Template.sortingFields.events({
+//   "change #sortingSelect":function(e){
+//     var sortingBy = $( "#sortingSelect option:selected" ).text();
+//     if(sortingBy.length==0){
+//       Session.set("sortingBy",undefined);
+//     }else{
+//       Session.set("sortingBy",sortingBy);
+//     }
+//   },
+//   "click #sortOrder":function(){
+//       if(Session.get("sortOrder")){
+//         Session.set("sortOrder",-Session.get("sortOrder"));
+//       }else{
+//         Session.set("sortOrder",-1)
+//       }
+//     }
+// });
+// Session.set("sortingBy","date");
+// Template.sortingFields.helpers({
+//   fields:[
+//     {fieldName:"date"},
+//     {fieldName:"division"},
+//     {fieldName:"section"},
+//     {fieldName:"subsection"},
+//     {fieldName:"species"}
+
+//   ]
+// });
+
+
+
+Template.desktop.events({
+  "click #turtle-list":function (e) {
+    e.preventDefault();
+    this.$(".toggle-row").toggle();
+    console.log(e.target.href);
+    Router.go('/itempage/'+this._id);
+  }
+});
+
+Template.desktop.onRendered(function () {
+  $('.turtle-list').hover(function () {
+    $('.turtle-row').toggle(100);
+  })
+});
+
+
+Template.desktop.turtlelogs = function () {
+  var result = HTTP.call("GET", '/itempage/'+this._id)
+  return Session.get('result');
+};
 
 
 // OPTION FOR USING GOOGLE MAPS
