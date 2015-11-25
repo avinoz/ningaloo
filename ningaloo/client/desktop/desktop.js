@@ -76,7 +76,7 @@ Template.desktop.onRendered(function () {
           // });
 
           var points_array = []
-          TurtleLogs.find({}).forEach(function(obj, idx, arr){
+          TurtleLogs.find({}, {limit:10} ).forEach(function(obj, idx, arr){
             // console.log(obj)
             // console.log(idx);
             // console.log(obj.turtlelog.latLng);
@@ -111,35 +111,35 @@ Template.desktop.onRendered(function () {
           }
 
           // ########
-          var geoJson = [{
-            type: 'Feature',
-            "geometry": { "type": "Point", "coordinates": [114.033028, -21.847727]},
-            "properties": {
-              // "image": "images/trans.png",
-              "marker-color": "#ff8888",
-              "title": "Turtle Town",
-              "url": "https://en.wikipedia.org/wiki/Chicago"
-              // "marker-size": "large",
-            }
-          }, {
-            type: 'Feature',
-            "geometry": { "type": "Point", "coordinates": [114.091414, -21.810967]},
-            "properties": {
-              // "image": "images/trans.png",
-              "title": "Flipped Turtle",
-              "url": "https://en.wikipedia.org/wiki/Chicago",
-              "marker-color": "#7ec0ee"
-            }
-          }, {
-            type: 'Feature',
-            "geometry": { "type": "Point", "coordinates": [1, 1]},
-            "properties": {
-              // "image": "images/trans.png",
-              "title": "Flipped Turtle",
-              "url": "https://en.wikipedia.org/wiki/Chicago",
-              "marker-color": "#7ec0ee"
-            }
-          }];
+          // var geoJson = [{
+          //   type: 'Feature',
+          //   "geometry": { "type": "Point", "coordinates": [114.033028, -21.847727]},
+          //   "properties": {
+          //     // "image": "images/trans.png",
+          //     "marker-color": "#ff8888",
+          //     "title": "Turtle Town",
+          //     "url": "https://en.wikipedia.org/wiki/Chicago"
+          //     // "marker-size": "large",
+          //   }
+          // }, {
+          //   type: 'Feature',
+          //   "geometry": { "type": "Point", "coordinates": [114.091414, -21.810967]},
+          //   "properties": {
+          //     // "image": "images/trans.png",
+          //     "title": "Flipped Turtle",
+          //     "url": "https://en.wikipedia.org/wiki/Chicago",
+          //     "marker-color": "#7ec0ee"
+          //   }
+          // }, {
+          //   type: 'Feature',
+          //   "geometry": { "type": "Point", "coordinates": [1, 1]},
+          //   "properties": {
+          //     // "image": "images/trans.png",
+          //     "title": "Flipped Turtle",
+          //     "url": "https://en.wikipedia.org/wiki/Chicago",
+          //     "marker-color": "#7ec0ee"
+          //   }
+          // }];
 
 
             // ADDS POPUP WINDOW
@@ -205,6 +205,71 @@ Template.desktop.helpers({
     }
   }
 });
+
+
+Meteor.subscribe("turtlelogs");
+Template.desktop.helpers({
+    turtlelogs: function (e) {  //change in list.html
+      return TurtleLogs.find({}, {limit:10});
+    },
+    sortLogs:function(field,order){ //change in list.html
+      var orderString = order>0?"asc":"desc";
+      var o = {}
+      o[field]=order;
+      var sort = {sort:o};
+      return TurtleLogs.find({},sort);
+
+    },
+    sortingBy:function(){
+      return Session.get("sortingBy");
+    },
+    sortOrder:function(){
+      return Session.get("sortOrder")||1;
+    }
+  });
+Template.sortingFields.events({
+  "change #sortingSelect":function(e){
+    var sortingBy = $( "#sortingSelect option:selected" ).text();
+    if(sortingBy.length==0){
+      Session.set("sortingBy",undefined);
+    }else{
+      Session.set("sortingBy",sortingBy);
+    }
+  },
+  "click #sortOrder":function(){
+      if(Session.get("sortOrder")){
+        Session.set("sortOrder",-Session.get("sortOrder"));
+      }else{
+        Session.set("sortOrder",-1)
+      }
+    }
+});
+Session.set("sortingBy","date");
+Template.sortingFields.helpers({
+  fields:[
+    {fieldName:"date"},
+    {fieldName:"division"},
+    {fieldName:"section"},
+    {fieldName:"subsection"},
+    {fieldName:"species"}
+
+  ]
+});
+
+
+
+Template.desktop.events({
+  "click a":function (e) {
+    e.preventDefault();
+    console.log(e.target.href);
+    Router.go('/itempage/'+this._id);
+  }
+});
+
+
+Template.desktop.turtlelogs = function () {
+  return Session.get('result');
+};
 
 
 // OPTION FOR USING GOOGLE MAPS

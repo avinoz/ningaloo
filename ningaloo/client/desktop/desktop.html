@@ -84,9 +84,24 @@
           <option value="burrows - jurabi point">Burrows - Jurabi Point</option>
         </select>
       </div>
-    </div>
+        <div>
+          <div class="turtle-list">
+            <ul>
+              
+                {{#each turtlelogs}}
+                  {{> task}}
+                {{/each}}
+            </ul>
+          </div>
+            </div>
+      </div>
 </div>
 
 
-<div class="indiview">INDIVIDUAL ENTRY</div>
+<div class="indiview">
+      <div>
+        {{turtlelogs _id}}
+      </div>
+</div>
+
 </template>
