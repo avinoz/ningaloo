@@ -35,46 +35,40 @@ Template.form.events({
     var field7 = $('textarea').val();
     var latfield5 = parseFloat(field5);
     var lonfield6 = parseFloat(field6);
-
-
-    var image_id="No Image";
-    var thing = document.getElementById("photo").src;
-    Images.insert(thing, function (err, fileObj) {
-     if(err){
-        console.log(err);
-      }else if(fileObj){
-        console.log("File saved!");
-        console.log(fileObj);
-        image_id = fileObj._id;
-        var turtlelog = {
-          date : new Date(),
-          img_id: image_id,
-          division: field1,
-          section: field2,
-          subsection: field3,
-          species: field4,
-          notes: field7,
-          loc: {
-            coordinates:[latfield5, lonfield6],
-            type: "Point"
-            }
-        };
-
-        var turtletext = JSON.stringify(turtlelog, null, 2)
-
-        new Confirmation({
-          message: turtletext,
-          title: "Confirmation",
-          cancelText: "Cancel",
-          okText: "Confirm",
-          success: true // whether the button should be green or red
-        }, function (ok) {
-            // ok is true if the user clicked on "ok", false otherwise
-            if (ok){
-              TurtleLogs.insert(turtlelog)
-              // AFTER SUBMIT REDIRECT
-              Router.go('/list');
-            }
+  var image_id="No Image";
+  var thing = document.getElementById("photo").src;
+  Images.insert(thing, function (err, fileObj) {
+    if(err){
+      console.log(err);
+    }else if(fileObj){
+      console.log("File saved!");
+      console.log(fileObj);
+      image_id = fileObj._id;
+      var turtlelog = {
+        date : new Date(),
+        img_id: image_id,
+        division: field1,
+        section: field2,
+        subsection: field3,
+        species: field4,
+        notes: field7,
+        loc: {
+          coordinates:[latfield5, lonfield6],
+          type: "Point"
+          }
+      };
+      var turtletext = JSON.stringify(turtlelog, null, 2)
+      new Confirmation({
+        message: turtletext,
+        title: "Confirmation",
+        cancelText: "Cancel",
+        okText: "Confirm",
+        success: true
+      }, function (ok) {
+          if (ok){
+            TurtleLogs.insert(turtlelog)
+            Router.go('/list');
+          }
         });
   }
 });

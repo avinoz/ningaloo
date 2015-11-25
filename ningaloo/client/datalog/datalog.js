@@ -1,6 +1,6 @@
 Template.datalog.helpers({
 	turtlelogs:function(t) {
-  	return TurtleLogs.find({}, {limit:100}); 
+  	return TurtleLogs.find({}, {limit:100});
 	}
 })
 
