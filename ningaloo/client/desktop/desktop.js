@@ -268,8 +268,8 @@ Template.desktop.events({
 });
 
 Template.desktop.onRendered(function () {
-  $('#turtle-list').hover(function () {
-    $('#turtle-row').toggle(100);
+  $('.turtle-list').hover(function () {
+    $('.turtle-row').toggle(100);
   })
 });
 
