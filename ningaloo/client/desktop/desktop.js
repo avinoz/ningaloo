@@ -285,6 +285,3 @@ Template.speciesbutton.events({
    // Session.set("findSpecies", select)
   }
 });
-
-
->>>>>>> master
