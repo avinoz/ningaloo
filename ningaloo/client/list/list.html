@@ -30,12 +30,12 @@
   </div>
 </template>
 <template name="sortingFields">
-  <button id="sortOrder">Reverse Order</button>
   <select id="sortingSelect">
     {{#each fields}}
       <option value={{fieldName}}>{{fieldName}}</option>
     {{/each}}
   </select>
+  <button id="sortOrder">reverse</button>
 </template>
 
 

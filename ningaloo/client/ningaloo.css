@@ -1,9 +1,8 @@
-body {
+/*body {
   font-family: 'Roboto', Arial, sans-serif;
   font-weight: 300;
   font-size: 100%;
   font-style: normal;
-  /*color: #444;*/
   background-color: gray;
   background-attachment: fixed;
 
@@ -17,11 +16,6 @@ body {
   margin: 0;
 }
 
-/*a {
-  text-decoration: none!important;
-  color: gray;
-}*/
-
 h1 {
   text-align: center;
   color: white;
@@ -33,11 +27,13 @@ h1 {
   min-height: 100%;
   background: #D8D8D8;
 }
-
+#list-options{
+  text-align: center;
+}
 table #itempage{
-  /*border:yellow 1px dotted;*/
 }
 .thumbnail{
   width:40vw;
   height:40vw;
 }
+*/

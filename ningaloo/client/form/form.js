@@ -33,75 +33,48 @@ Template.form.events({
     var field5 = $( '#lat' ).text();
     var field6 = $( '#lon' ).text();
     var field7 = $('textarea').val();
-
-    // var field8 =
-
-    // CREATES K/V OBJECT
-
-
-    // CREATES K/V OBJECT
-    // console.log(turtlelog)
-
-    //ADDS OBJ TO DB
-    var thing = document.getElementById("photo").src;
-    var image_id="No Image";
-    Images.insert(thing, function (err, fileObj) {
-      if(err){
-        console.log(err);
-      }
-      if(fileObj){
-        console.log("File saved!");
-        console.log(fileObj);
-        image_id = fileObj._id;
-        var turtlelog = {
-          //date
-          //species
-          //nestid
-          //loc
-            //coordinates
-              //0-longitude
-              //1-latitude
-          date : new Date(),
-          img_id: image_id,
-          division: field1,
-          section: field2,
-          subsection: field3,
-          species: field4,
-          notes: field7,
-          loc: {
-            coordinates:[field6,field5]
-            }
-        };
-
-        var turtletext = JSON.stringify(turtlelog, null, 2)
-
-    // AFTER SUBMIT REDIRECT
-
-    // ###### CONFIRM BEFORE DATA INSERT
-
-    // var turtletext = JSON.stringify(turtlelog, null, 2)
-
-    new Confirmation({
-      message: turtletext,
-      title: "Confirmation",
-      cancelText: "Cancel",
-      okText: "Confirm",
-      success: true // whether the button should be green or red
-    }, function (ok) {
-        // ok is true if the user clicked on "ok", false otherwise
-        if (ok){
-          TurtleLogs.insert(turtlelog)
-          Router.go('/list');
-        }
-      });
+    var latfield5 = parseFloat(field5);
+    var lonfield6 = parseFloat(field6);
+  var image_id="No Image";
+  var thing = document.getElementById("photo").src;
+  Images.insert(thing, function (err, fileObj) {
+    if(err){
+      console.log(err);
+    }else if(fileObj){
+      console.log("File saved!");
+      console.log(fileObj);
+      image_id = fileObj._id;
+      var turtlelog = {
+        date : new Date(),
+        img_id: image_id,
+        division: field1,
+        section: field2,
+        subsection: field3,
+        species: field4,
+        notes: field7,
+        loc: {
+          coordinates:[latfield5, lonfield6],
+          type: "Point"
+          }
+      };
+      var turtletext = JSON.stringify(turtlelog, null, 2)
+      new Confirmation({
+        message: turtletext,
+        title: "Confirmation",
+        cancelText: "Cancel",
+        okText: "Confirm",
+        success: true
+      }, function (ok) {
+          if (ok){
+            TurtleLogs.insert(turtlelog)
+            Router.go('/list');
+          }
+        });
   }
 });
 
-Session.set("photo",undefined);
-
+},//submit form callback close
  // PORTS DATA FROM BELOW TO OPTION SELECT
-
-},
 "change #form_select1":function(e){
   var division = $( "#form_select1 option:selected" ).text();
   Session.set("division",division)
@@ -116,7 +89,6 @@ Session.set("photo",undefined);
 }
 
 });
-
 
 
 

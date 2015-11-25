@@ -1,4 +1,34 @@
+
 <template name="form">
+  <div class="top-container">
+    <div class="logo">NINGALOO</div>
+    <div class="mtop mleft mbtn mnav">PHOTO</div>
+    <button class="savebtn mtop mright" type="submit">SAVE</button>
+  </div>
+
+  <div class="form-container">
+    <form>
+
+      {{>form_s1}}
+      {{>form_s2}}
+      {{>form_s3}}
+      {{>form_s4}}
+
+      <div class="text-cont">
+        <textarea autofocus name="tur_notes" class="form-notes" placeholder="NOTES"></textarea>
+      </div>
+      <div class="form-rescue">RESCUE</div>
+    </form>
+  </div>
+
+  <div class="bottom-container">
+    <a href="/"><div class="mlower mleft mbtn">FORM</div></a>
+    <a href="/list"><div class="mlower mright mbtn">LIST</div></a>
+  </div>
+</template>
+
+
+<!-- <template name="form">
   <div class='container'>
     <form>
       {{>form_s1}}
@@ -8,7 +38,7 @@
       <textarea autofocus name="tur_notes" placeholder="Notes"></textarea>
 
       <input type="submit" value="Log!">
-
+      
       {{> takePhoto}}
     </form>
     <div class="append_cont">
@@ -16,3 +46,4 @@
     </div>
   </div>
 </template>
+ -->

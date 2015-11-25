@@ -1,6 +1,6 @@
 <template name="form_s3" form="data_form">
-  <select id="form_select3">
-    <option value disable selected>--Subsections--</option>
+  <select id="form_select3" class="form-opt">
+    <option value disable selected>-Subsections-</option>
     {{#if sectionSelected}}
     {{#each subsections divisionSelected sectionSelected}}
       <option value="subsection">{{name}}</option>
