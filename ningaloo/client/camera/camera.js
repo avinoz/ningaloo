@@ -1,5 +1,5 @@
 Template.takePhoto.events({
-  'click .capture': function(){
+  'click #capture': function(){
 
     var cameraOptions = {
       width: 640,
