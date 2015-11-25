@@ -46,8 +46,10 @@ h4 {
   resize:none;
   text-align: left;
 
+  position: absolute;
   height: 3vh;
-  margin: 37% 15% 10% 15%;
+  bottom: 77%;
+  margin: 0 15% 0 15%;
   background: #8ecbbe;
   border-radius: 0;
   width: 70%;
@@ -55,11 +57,13 @@ h4 {
 }
 
 #marker-list {
+  text-align: left;
   position: absolute;
+  left: 0;
   top: 26%;
   z-index: 2;
-  height: (100%-130px);
-  width: 20%;
+  height: 70%;
+  width: 100%;
   bottom:0;
   overflow-x: hidden;
   margin:0;

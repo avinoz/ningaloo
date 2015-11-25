@@ -1,25 +1,20 @@
-  <template name='desktop'>
+
+<template name='desktop'>
   <div class="raleway">
     <div id='map'></div>
-
+    <!-- {{> map}} -->
     <div id="d-left-con">
       <p id="d-logo">NINGALOO</p>
       <form name="fuzzy">
         <!-- <input type="text" name="fsearch" id="fsearch" placeholder="SEARCH"> -->
-        <div id="fsearch" contenteditable>
-        SEARCH
-        </div>
+        <div id="fsearch" contenteditable>SEARCH </div>
       </form>
 
       <a href="http://www.ningalooturtles.org.au/"><div id="copyright">COPYRIGHT TURTLETOWN 2015</div></a>
-    </div>
 
-    <div id="d-marker">
+
       <ul id='marker-list'>
-        <li>Baker Beach</li>
-        <li>Brooke Sproke</li>
-        <li>Graveyard</li>
-        <li>Baker Beach</li>
+          <li>Baker Beach</li>
         <li>Brooke Sproke</li>
         <li>Graveyard</li>
         <li>Baker Beach</li>
@@ -39,8 +34,6 @@
       {{> locationsort}}
 
     </div>
-
-    {{> map}}
-</div>
+  </div>
 
 </template>
