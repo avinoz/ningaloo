@@ -1,4 +1,10 @@
-
+h4 {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 200;
+  /*margin: 10%;*/
+  font-size: 1.1em;
+  line-height: 1.5em;
+}
 
 .raleway{
   font-family: 'Raleway', sans-serif;
@@ -28,20 +34,20 @@
 }
 
 #d-logo {
-  font-size: 3.3em;
+  font-size: 2.7vw;
+  /*font-size: 3.3em;*/
   color: white;
   padding-top: 15%;
 }
 
 #fsearch {
-  padding: 1%;
   color: #2aa285;
   font-size: 1.4em;
-  height: 1em;
   resize:none;
   text-align: left;
 
-  margin: 35% 15% 10% 15%;
+  height: 3vh;
+  margin: 37% 15% 10% 15%;
   background: #8ecbbe;
   border-radius: 0;
   width: 70%;
@@ -69,12 +75,18 @@
   font-size: 1.2em;
   padding: 2.5%;
   padding-left: 5%;
+  cursor: pointer;
 }
 
 #marker-list li:hover {
   background:#5ebea5;
+  color: white;
 }
 
+#marker-list li:active {
+  background: #383c3d;
+  color: white;
+}
 
 #copyright {
   font-size: .8em;
@@ -87,6 +99,7 @@
   color: black;
   cursor: pointer;
 }
+
 /* MIDDLE CONTAINER */
 
 #dataview {
@@ -101,9 +114,7 @@
   top: 0;
 }
 
-.buttonsort {
-  background: white;
-}
+/* INDIVIEW */
 
 #indiview {
   width: 80%;
@@ -134,15 +145,6 @@
   color: white;
   box-sizing: border-box;
   padding: 3%;
-  /*background: red;*/
-}
-
-h4 {
-  font-family: 'Raleway', sans-serif;
-  font-weight: 200;
-  /*margin: 10%;*/
-  font-size: 1.1em;
-  line-height: 1.5em;
 }
 
 #indi-date {
@@ -164,6 +166,10 @@ h4 {
   box-sizing: border-box;
   border: 2px solid #383c3d;
 }
+
+
+
+
 
 /*COLOR CODES {
   color: #e7ebeb; light gray
