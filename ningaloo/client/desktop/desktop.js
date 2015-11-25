@@ -267,6 +267,12 @@ Template.desktop.events({
   }
 });
 
+Template.desktop.onRendered(function () {
+  $('#turtle-list').hover(function () {
+    $('#turtle-row').toggle(100);
+  })
+});
+
 
 Template.desktop.turtlelogs = function () {
   var result = HTTP.call("GET", '/itempage/'+this._id)

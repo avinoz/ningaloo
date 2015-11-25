@@ -85,12 +85,12 @@
         </select>
       </div>
         <div>
-          <div class="turtle-list">
+          <div id="turtle-list">
             <ul>
               
                 {{#each turtlelogs}}
                   {{> task}}
-                  <tr class="toggle-row" data-href="/itempage/{{_id}}">
+                  <tr id="toggle-row" data-href="/itempage/{{_id}}">
                   <!-- <td>{{_id}}</td> -->
                   <td>{{date}}</td>
                   <td>{{division}}</td>
