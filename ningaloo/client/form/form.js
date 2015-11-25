@@ -33,6 +33,9 @@ Template.form.events({
     var field5 = $( '#lat' ).text();
     var field6 = $( '#lon' ).text();
     var field7 = $('textarea').val();
+    var latfield5 = parseFloat(field5);
+    var lonfield6 = parseFloat(field6);
+
 
     var image_id="No Image";
     var thing = document.getElementById("photo").src;
@@ -52,7 +55,8 @@ Template.form.events({
           species: field4,
           notes: field7,
           loc: {
-            coordinates:[field6,field5]
+            coordinates:[latfield5, lonfield6],
+            type: "Point"
             }
         };
 
