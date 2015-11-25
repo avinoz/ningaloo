@@ -1,6 +1,7 @@
 
 Mapbox.load();
 
+
 Template.desktop.onRendered(function () {
   Mapbox.debug = true;
   Mapbox.load({
@@ -49,7 +50,7 @@ Template.desktop.onRendered(function () {
           // var statusColorLogs = function(obj){
           //   var now = new Date();
           //   var daysAgo = millisecondsToDays(now)-millisecondsToDays(new Date(obj.date));
-            
+
           //   if(daysAgo<=7){
           //     return "#8ECBBE"
           //   }else if(daysAgo<=45){
@@ -82,7 +83,7 @@ Template.desktop.onRendered(function () {
           //     }
           //   }
           //   console.log(geoJson2);
-            
+
 
           //     points_array2.push(geoJson2);
           //   }
@@ -106,13 +107,11 @@ Template.desktop.onRendered(function () {
                 "url":""
               }
             }
-            // console.log(geoJson);
-            
 
               points_array.push(geoJson);
             }
           });
-          
+
 
           function coord(v) {
             var coords = v.replace(trimSpace, '').split(splitSpace),
@@ -124,6 +123,32 @@ Template.desktop.onRendered(function () {
           }
 
           // ########
+          // var geoJson = [{
+          //   type: 'Feature',
+          //   "geometry": { "type": "Point", "coordinates": [114.033028, -21.847727]},
+          //   "properties": {
+          //     "marker-color": "#ff8888",
+          //     "title": "Turtle Town",
+          //     "url": "https://en.wikipedia.org/wiki/Chicago"
+          //   }
+          // }, {
+          //   type: 'Feature',
+          //   "geometry": { "type": "Point", "coordinates": [114.091414, -21.810967]},
+          //   "properties": {
+          //     "title": "Flipped Turtle",
+          //     "url": "https://en.wikipedia.org/wiki/Chicago",
+          //     "marker-color": "#7ec0ee"
+          //   }
+          // }, {
+          //   type: 'Feature',
+          //   "geometry": { "type": "Point", "coordinates": [1, 1]},
+          //   "properties": {
+          //     "title": "Flipped Turtle",
+          //     "url": "https://en.wikipedia.org/wiki/Chicago",
+          //     "marker-color": "#7ec0ee"
+          //   }
+          // }];
+
           var geoJson = [{
             type: 'Feature',
             "geometry": { "type": "Point", "coordinates": [114.033028, -21.847727]},
@@ -174,49 +199,31 @@ Template.desktop.onRendered(function () {
         // ADDS DATA TO MAP
         myLayer.setGeoJSON(points_array);
         // myLayer.setGeoJSON(points_array2); //LIVE DATA ARRAY FEEDING FROM TASKS COLLECTION (***WILL NOT DISPLAY IF 'points_array' is being used first)
+
+
+        // MARKER LIST ISSUE
+
+        var markerList = document.getElementById('marker-list');
+
+        map.featureLayer.on('ready', function(e) {
+          map.featureLayer.eachLayer(function(layer) {
+            var item = markerList.appendChild(document.createElement('li'));
+            item.innerHTML = layer.toGeoJSON().properties.title;
+            item.onclick = function() {
+             map.setView(layer.getLatLng(), 14);
+             layer.openPopup();
+            };
+          });
+        });
+
+        // END
+
       } else {
         console.log(error)
       }
     })
-}
-});
-
-// this.autorun(function () {
-//   if (Mapbox.loaded()) {
-//     geojson = Tasks.find().fetch()
-//     view.featureLayer.setGeoJSON(geojson);
-//   }
-// });
-});
-
-
-Template.desktop.helpers({
-  geolocationError: function() {
-    var error = Geolocation.error();
-    return error && error.message;
-  },
-  mapOptions: function() {
-    let latLng = Geolocation.latLng();
-    var pulse = JSON.stringify(latLng)
-
-    $('#lat').html(latLng.lat.toFixed(6))
-    $('#lon').html(latLng.lng.toFixed(6))
-    $('#coord_cont').html("Current Coordinates")
-
-    L.marker([22.03501,113.54410]).addTo(mapLeaflet);
-    L.marker([37.775408,-122.413682]).addTo(mapLeaflet);
-    // -21.788816, 114.159740
-
-    console.log(latLng)
-
-    // INITIALIZE THE MAP WHEN WE HAVE COORDS
-    if (GoogleMaps.loaded() && latLng) {
-      return {
-        center: new google.maps.LatLng(latLng.lat, latLng.lng),
-        // zoom: MAP_ZOOM  // GOOGLE MAP OPTIONS
-      };
     }
-  }
+  });
 });
 
 
@@ -266,7 +273,7 @@ Template.desktop.helpers({
   // }
   // findSpecies: function(field, species){
   //   var o = {};
-  //   o[field] = 
+  //   o[field] =
 
   // }
 // });
@@ -280,3 +287,4 @@ Template.speciesbutton.events({
 });
 
 
+>>>>>>> master

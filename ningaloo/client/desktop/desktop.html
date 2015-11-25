@@ -1,5 +1,6 @@
 <template name='desktop'>
   <div id='map'></div>
+
   <ul id='marker-list'></ul>
 
   <div class="dataview">DATA VIEW
@@ -91,7 +92,12 @@
 </div>
 
 
-<div class="indiview">INDIVIDUAL ENTRY</div>
+<div class="indiview">
+  <p>INDIVIDUAL ENTRY</p>
+
+  {{> map}}
+</div>
+
 </template>
 
 <template name="speciesbutton">
@@ -108,5 +114,5 @@
       <a href="">Unidentified</a>
     </button> -->
   </form>
-	
+
 </template>

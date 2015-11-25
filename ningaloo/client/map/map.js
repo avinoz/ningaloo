@@ -49,7 +49,7 @@ Template.map.onRendered(function () {
           // var statusColorLogs = function(obj){
           //   var now = new Date();
           //   var daysAgo = millisecondsToDays(now)-millisecondsToDays(new Date(obj.date));
-            
+
           //   if(daysAgo<=7){
           //     return "#8ECBBE"
           //   }else if(daysAgo<=45){
@@ -82,7 +82,7 @@ Template.map.onRendered(function () {
           //     }
           //   }
           //   console.log(geoJson2);
-            
+
 
           //     points_array2.push(geoJson2);
           //   }
@@ -107,12 +107,12 @@ Template.map.onRendered(function () {
               }
             }
             // console.log(geoJson);
-            
+
 
               points_array.push(geoJson);
             }
           });
-          
+
 
           function coord(v) {
             var coords = v.replace(trimSpace, '').split(splitSpace),
@@ -191,10 +191,10 @@ Template.map.onRendered(function () {
 
 
 Template.map.helpers({
-  geolocationError: function() {
-    var error = Geolocation.error();
-    return error && error.message;
-  },
+  // geolocationError: function() {
+  //   var error = Geolocation.error();
+  //   return error && error.message;
+  // },
   mapOptions: function() {
     let latLng = Geolocation.latLng();
     var pulse = JSON.stringify(latLng)
@@ -203,58 +203,6 @@ Template.map.helpers({
     $('#lon').html(latLng.lng.toFixed(6))
     $('#coord_cont').html("Current Coordinates")
 
-    L.marker([22.03501,113.54410]).addTo(mapLeaflet);
-    L.marker([37.775408,-122.413682]).addTo(mapLeaflet);
-    // -21.788816, 114.159740
-
     console.log(latLng)
-
-    // INITIALIZE THE MAP WHEN WE HAVE COORDS
-    if (GoogleMaps.loaded() && latLng) {
-      return {
-        center: new google.maps.LatLng(latLng.lat, latLng.lng),
-        // zoom: MAP_ZOOM  // GOOGLE MAP OPTIONS
-      };
-    }
   }
 });
-
-
-// OPTION FOR USING GOOGLE MAPS
-
-// var MAP_ZOOM = 20;
-
-// Meteor.startup(function() {
-//   GoogleMaps.load();
-// });
-
-// Template.map.onCreated(function() {
-//   var self = this;
-
-//   GoogleMaps.ready('map', function(map) {
-//     var marker;
-
-//     // Create and move the marker when latLng changes.
-//     self.autorun(function() {
-//       var latLng = Geolocation.latLng();
-//       if (! latLng)
-//         return;
-
-//       // If the marker doesn't yet exist, create it.
-//       if (! marker) {
-//         marker = new google.maps.Marker({
-//           position: new google.maps.LatLng(latLng.lat, latLng.lng),
-//           map: map.instance
-//         });
-//       }
-//       // The marker already exists, so we'll just change its position.
-//       else {
-//         marker.setPosition(latLng);
-//       }
-
-//       // Center and zoom the map view onto the current position.
-//       map.instance.setCenter(marker.getPosition());
-//       map.instance.setZoom(MAP_ZOOM);
-//     });
-//   });
-// });
