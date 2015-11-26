@@ -10,7 +10,6 @@ Template.home.events({
         success: true
       }, function (ok) {
           {
-            // TurtleLogs.insert(turtlelog)
           }
         });
             Router.go('/form');
