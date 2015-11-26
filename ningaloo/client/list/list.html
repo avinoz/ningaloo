@@ -12,33 +12,37 @@
         <button id="hasImages">Has Image</button>
       </div> -->
     </div>
-    <div class="task-list">
-      <ul>
-        {{#if sortingBy}}
-          {{#each sortLogs sortingBy sortOrder}}
-            {{> task}}
-          {{/each}}
-        {{else}}
-          {{#if filteringBy}}
-            {{#each filterLogs}}
+    <div id="tasklistcontainer">
+      <div class="task-list">
+        <ul>
+          {{#if sortingBy}}
+            {{#each sortLogs sortingBy sortOrder}}
               {{> task}}
             {{/each}}
           {{else}}
-            {{#each turtlelogs}}
-              {{> task}}
-            {{/each}}
+            {{#if filteringBy}}
+              {{#each filterLogs}}
+                {{> task}}
+              {{/each}}
+            {{else}}
+              {{#each turtlelogs}}
+                {{> task}}
+              {{/each}}
+            {{/if}}
           {{/if}}
-        {{/if}}
-      </ul>
-    </div>
-    <div class="bottom-container">
-      <a href="/form"><div class="mlower mleft mbtn">FORM</div></a>
-      <a href="/list"><div class="mlower mright mbtn">LIST</div></a>
+        </ul>
+      </div>
+      <div class="bottom-container">
+        <a href="/form"><div class="mlower mleft mbtn">FORM</div></a>
+        <a href="/list"><div class="mlower mright mbtn">LIST</div></a>
+      </div>
     </div>
 </template>
 
 
 <template name="sortingFields">
+  <div class="top-container">
+    <div class="logo">NINGALOO</div>
   <select id="sortingSelect" class="sortoptbtn">
       <option value="" disabled selected>SORT BY</option>
     {{#each fields}}
@@ -46,6 +50,7 @@
     {{/each}}
   </select>
   <button id="sortOrder" class="savebtn mtop mright">REVERSE</button>
+  </div>
 </template>
 
 
