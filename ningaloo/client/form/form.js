@@ -86,10 +86,14 @@ Template.form.events({
 "change #form_select3":function(e){
   var subsection = $( "#form_select3 option:selected" ).text();
   Session.set("subsection",subsection)
-}
+},
+"load #photo":function(e){
+  console.log(e.target)
+  var style = $('textarea').attr( "style" )
+   $('textarea').attr( "style", "background: url(" + $('#photo').attr("src") + ")center;"+style )
+ }
 
 });
-
 
 
 /// DYNAMIC DATA SORTING LOGIC
