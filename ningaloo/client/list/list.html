@@ -2,8 +2,6 @@
 
   <div class="top-container">
     <div class="logo">NINGALOO</div>
-    <!-- <div class="mtop mleft mbtn mnav">SORT BY</div> -->
-    <!-- <button class="savebtn mtop mright" type="submit">REVERSE</button> -->
   </div>
 
     <div id="list-options">
@@ -41,7 +39,7 @@
 
 
 <template name="sortingFields">
-  <select id="sortingSelect" class="mtop mleft mbtn mnav">
+  <select id="sortingSelect" class="sortoptbtn">
       <option value="" disabled selected>SORT BY</option>
     {{#each fields}}
       <option value="">{{fieldName}}</option>
