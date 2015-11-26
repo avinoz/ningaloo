@@ -58,7 +58,7 @@ Meteor.startup(function(e){
       return Meteor.settings.mapBoxKey
     }
   });
-  
+
   Meteor.publish('divisions',function(){
     return Divisions.find({});
   })
@@ -69,7 +69,5 @@ Meteor.startup(function(e){
     // var count=count||15;
     // return TurtleLogs.find({limit:count})
     return TurtleLogs.find({},{sort:{date:-1},limit:25})
-
   });
-
 });

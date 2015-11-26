@@ -14,4 +14,4 @@ Images.deny({
  download: function(){
  return false;
  }
- });
+});
