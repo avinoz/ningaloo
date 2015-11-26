@@ -1,6 +1,7 @@
 html {
   margin: 0;
   overflow-x: hidden;
+   -webkit-overflow-scrolling: touch;
 }
 
 body {
@@ -8,7 +9,7 @@ body {
   src: url(https://fonts.googleapis.com/css?family=Raleway:400,200,300);
   font-family: 'Raleway', sans-serif;
   margin: 0;
-  overflow-x: hidden;
+  overflow: hidden;
   font-weight: 200;
 }
 
@@ -18,7 +19,7 @@ body {
   height: 100vh;
   width: 100wh;
   margin: 0 auto;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 /* TOP CONTAINER */
@@ -31,6 +32,7 @@ body {
   width: 100%;
   top: 0px;
   z-index: 2;
+  visibility: visible;
 }
 
 .logo {
@@ -58,6 +60,7 @@ body {
   height: 45px;
   width: 100%;
   bottom: 0px;
+  visibility: visible;
 }
 
 .mlower {
@@ -135,6 +138,9 @@ body {
 
 /* LOGIN PAGE */
 
+#username {
+}
+
 .homelogin {
   color: white;
   font-weight: 200;
@@ -143,7 +149,6 @@ body {
   text-align: left;
   display: inline-block;
   float: left;
-
   padding-top: 8%;
 
   height: 3vh;

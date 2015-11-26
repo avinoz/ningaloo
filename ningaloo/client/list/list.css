@@ -154,38 +154,36 @@
   color: white;
 }
 
-/*#tasklistcontainer {
-  overflow: hidden;
-  position: relative;
-  background: red;
-  width: 100%;
-  height: 100%;
-}*/
-
-.task-list {
-}
-
 .task-list a {
   text-decoration: none;
   color: black;
+  display: inline-block;
+  width: 100%;
 }
 
 .task-list ul {
-  overflow-y: auto;
+  overflow-y: scroll;
   position: absolute;
   top: 100px;
   width: 100vw;
   margin: 0;
   list-style-type: none;
-  border-bottom: black solid 1px;
+  border-bottom: #e0e0e0 solid 100px;
+ /* -webkit-overflow-scrolling: touch;*/
 }
 
-.task-list li:nth-child(odd) {
-  padding: 1%;
+.task-list li {
+  transition: background 0.2s ease;
+  padding: 1.2% 1.2% 1.2% 3%;
   background: white;
 }
 
 .task-list li:nth-child(even) {
-  padding: 1%;
   background: #d3d3d3;
+}
+
+.task-list li:active {
+  transition: background 0.2s ease;
+  background: #999999;
+  color: white;
 }

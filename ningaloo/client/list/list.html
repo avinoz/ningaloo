@@ -12,30 +12,28 @@
         <button id="hasImages">Has Image</button>
       </div> -->
     </div>
-    <div id="tasklistcontainer">
-      <div class="task-list">
-        <ul>
-          {{#if sortingBy}}
-            {{#each sortLogs sortingBy sortOrder}}
+    <div class="task-list">
+      <ul>
+        {{#if sortingBy}}
+          {{#each sortLogs sortingBy sortOrder}}
+            {{> task}}
+          {{/each}}
+        {{else}}
+          {{#if filteringBy}}
+            {{#each filterLogs}}
               {{> task}}
             {{/each}}
           {{else}}
-            {{#if filteringBy}}
-              {{#each filterLogs}}
-                {{> task}}
-              {{/each}}
-            {{else}}
-              {{#each turtlelogs}}
-                {{> task}}
-              {{/each}}
-            {{/if}}
+            {{#each turtlelogs}}
+              {{> task}}
+            {{/each}}
           {{/if}}
-        </ul>
-      </div>
-      <div class="bottom-container">
-        <a href="/form"><div class="mlower mleft mbtn">FORM</div></a>
-        <a href="/list"><div class="mlower mright mbtn">LIST</div></a>
-      </div>
+        {{/if}}
+      </ul>
+    </div>
+    <div class="bottom-container">
+      <a href="/form"><div class="mlower mleft mbtn">FORM</div></a>
+      <a href="/list"><div class="mlower mright mbtn">LIST</div></a>
     </div>
 </template>
 
