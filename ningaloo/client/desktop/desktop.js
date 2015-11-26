@@ -1,11 +1,13 @@
 
 Mapbox.load();
+
 // Template.desktop.onCreated(function(){
 //   this.subscribe("turtlelogs",25)
 // });
+
 Template.desktop.helpers({
     turtlelogs: function (e) {  //change in list.html
-      return TurtleLogs.find({}, {sort: {date: -1},limit:10});
+      return TurtleLogs.find({}, {sort: {date: -1}});
       }
 });
 
@@ -98,7 +100,7 @@ Template.desktop.onRendered(function () {
           // });
 
           var points_array = []
-          TurtleLogs.find({}, {limit: 200}).forEach(function(obj, idx, arr){
+          TurtleLogs.find({}).forEach(function(obj, idx, arr){
             // console.log(obj)
             // console.log(idx);
             // console.log(obj.turtlelog.latLng);
