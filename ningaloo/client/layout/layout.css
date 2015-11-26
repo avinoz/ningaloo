@@ -5,7 +5,7 @@ html {
 
 body {
   background: #fafafa;
-  src: url(https://fonts.googleapis.com/css?family=Raleway:300,200);
+  src: url(https://fonts.googleapis.com/css?family=Raleway:400,200,300);
   font-family: 'Raleway', sans-serif;
   margin: 0;
   overflow: hidden;
@@ -222,14 +222,17 @@ textarea {
   padding: 8px;
   resize: none;
   color: white;
-  font-size: 15px;
+  text-shadow: 0px 0px 3px white;
+  font-size: 22px;
   letter-spacing: 1px;
-  font-weight: 300;
+  line-height: 25px;
+  font-weight: 400;
   margin-top: 2%;
   color: black;
   background: rgba(255, 255, 255, 0.5);
   background-size: cover;
   overflow: hidden;
+  vertical-align: middle;
 }
 
 /* LIST */
