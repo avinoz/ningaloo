@@ -1,22 +1,4 @@
-// var turtlelogsDump = Assets.getText('packages.dump').split('\n').filter(function(p) {
-//   return !!p;
-// });
-
-// if(Packages.find().count() < packagesDump.length) {
-//   console.log("adding initial set of packages (%s)", packagesDump.length);
-//   for(var lc=0; lc<packagesDump.length; lc++) {
-//     if(lc > 0 && lc % 500 == 0) {
-//       console.log("  added packages: ", lc);
-//     }
-//     var p = packagesDump[lc];
-//     p = EJSON.parse(p);
-//     SavePackage(p.packageName, p);
-//   };
-//   console.log("completed!");
-// }
-
-// TurtleLogs
-// Seeds the turtle logs into the DB collection "turtlelogs" 500 at a time
+// For fuzzy search - Seeds the turtle logs into the DB collection "turtlelogs" 500 at a time
 var turtlelogDump = Assets.getText('turtlelogs.dump').split('\n').filter(function(p) {
   return !!p;
 });
