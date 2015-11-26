@@ -9,27 +9,25 @@
 
   <div class="form-container">
     <form id="turtle-form">
-      
-      <!-- {{> takePhoto}} -->
 
       {{>form_s1}}
       {{>form_s2}}
       {{>form_s3}}
       {{>form_s4}}
-      
+
       <script type="text/javascript">
         $('#photo').appendTo( $(".form-container") )
       </script>
 
       <div class="text-cont">
-        <textarea autofocus name="tur_notes" class="form-notes" placeholder="NOTES"></textarea>
+        <textarea autofocus name="tur_notes" class="form-notes" style="background: url(/images/turtle.jpg); background-size:cover;" placeholder="NOTES"></textarea>
       </div>
       <div class="form-rescue">RESCUE</div>
     </form>
   </div>
 
   <div class="bottom-container">
-    <a href="/"><div class="mlower mleft mbtn">FORM</div></a>
+    <a href="/form"><div class="mlower mleft mbtn">FORM</div></a>
     <a href="/list"><div class="mlower mright mbtn">LIST</div></a>
   </div>
 </template>
@@ -45,7 +43,7 @@
       <textarea autofocus name="tur_notes" placeholder="Notes"></textarea>
 
       <input type="submit" value="Log!">
-      
+
     </form>
     <div class="append_cont">
       <p>{{> map}}</p>
