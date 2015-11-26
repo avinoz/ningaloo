@@ -24,6 +24,7 @@
   width: 600px;
   height: 500px
 }
+*/
 
 .leaflet-popup-tip-container {
   visibility: hidden;
@@ -35,7 +36,4 @@
 
 .leaflet-popup-content {
   text-align: center;
-  /*background-color: red;*/
 }
-
-*/

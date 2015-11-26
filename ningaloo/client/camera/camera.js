@@ -1,9 +1,9 @@
 Template.takePhoto.events({
-  'click .capture': function(){
+  'click #capture': function(){
 
     var cameraOptions = {
-      width: 800,
-      height: 600
+      width: 640,
+      height: 480
     };
 
     MeteorCamera.getPicture(cameraOptions, function(error, data) {

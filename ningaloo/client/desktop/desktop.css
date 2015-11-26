@@ -46,6 +46,7 @@ h4 {
   resize:none;
   text-align: left;
 
+  padding-top: 2%;
   position: absolute;
   height: 3vh;
   bottom: 77%;
@@ -176,6 +177,7 @@ h4 {
 
 
 /*COLOR CODES {
+  color: #383c3d; dark gray
   color: #e7ebeb; light gray
   color: #8ecbbe; light green
   color: #5ebea5; medium green

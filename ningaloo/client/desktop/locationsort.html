@@ -1,19 +1,18 @@
 <template name="locationsort">
-  <div id="location_sort">
-    <div>
-      <select id="divisionsort">
-        <option value disable selected>--Divisions--</option>
+  <div id="locationsort">
+    <div class="headerbar">LOCATION</div>
+
+      <select class="divisionsort sortbar">
+        <option value disable selected>-Divisions-</option>
         <!-- {{#each divisions}} -->
         <!-- <option value="division">{{name}}</option> -->
         <!-- {{/each}} -->
         <option value="cape range">Cape Range</option>
         <option value="northwest cape">Northwest Cape</option>
       </select>
-    </div>
 
-    <div>
-      <select id="section_sort">
-        <option value disable selected>--Sections--</option>
+      <select class="sectionsort sortbar">
+        <option value disable selected>-Sections-</option>
         <!-- {{#if divisionSelected}} -->
         <!-- {{#each sections divisionSelected}} -->
         <!-- <option value="section">{{name}}</option> -->
@@ -25,11 +24,9 @@
         <!-- {{/each}} -->
         <!-- {{/if}} -->
       </select>
-    </div>
 
-    <div>
-      <select id="subsection_sort">
-        <option value disable selected>--Subsections--</option>
+      <select class="subsectionsort sortbar">
+        <option value disable selected>-Subsections-</option>
         <!-- {{#if sectionSelected}}
         {{#each subsections divisionSelected sectionSelected}}
         <option value="subsection">{{name}}</option>
@@ -47,7 +44,6 @@
         <option value="surf beach - hunters">Surf Beach - Hunters</option>
         <option value="burrows - jurabi point">Burrows - Jurabi Point</option>
       </select>
-    </div>
-
+    <div class="headerbar">TIME</div>
   </div>
 </template>

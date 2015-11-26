@@ -19,17 +19,20 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 insecure                # Allow all DB writes from clients (for prototyping)
 accounts-ui
 accounts-password
+
 bootstrap
 iron:router
-dburles:google-maps
-mdg:geolocation
 mrt:moment
 mdg:camera
-pauloborges:mapbox@2.1.5
 
+mdg:geolocation
+dburles:google-maps
+pauloborges:mapbox@2.1.5
 mrt:leaflet
-cfs:standard-packages
+
 matdutour:popup-confirm
-cfs:filesystem
+
 aldeed:collection2
+cfs:standard-packages
+cfs:filesystem
 meteorhacks:search-source
