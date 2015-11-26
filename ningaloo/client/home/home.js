@@ -1,12 +1,31 @@
 Template.home.events({
-  'submit form': function(event){
+  'click #homelogin': function(event){
     event.preventDefault();
 
       new Confirmation({
         message: "",
-        title: "Login",
+        title: "Welcome Alvin!",
+        cancelText: "LOGOUT",
+        okText: "GO",
+        success: true
+      }, function (ok) {
+          {
+            // TurtleLogs.insert(turtlelog)
+          }
+        });
+            Router.go('/form');
+   }
+});
+
+Template.home.events({
+  'click #adminlogin': function(event){
+    event.preventDefault();
+
+      new Confirmation({
+        message: "",
+        title: "ADMIN ACCESS ONLY",
         cancelText: "Cancel",
-        okText: "Confirm",
+        okText: "CONSOLE",
         success: true
       }, function (ok) {
           if (ok){
