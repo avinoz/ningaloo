@@ -1,5 +1,13 @@
 
 Mapbox.load();
+// Template.desktop.onCreated(function(){
+//   this.subscribe("turtlelogs",25)
+// });
+Template.desktop.helpers({
+    turtlelogs: function (e) {  //change in list.html
+      return TurtleLogs.find({}, {sort: {date: -1},limit:10});
+      }
+});
 
 
 Template.desktop.onRendered(function () {
@@ -90,7 +98,7 @@ Template.desktop.onRendered(function () {
           // });
 
           var points_array = []
-          TurtleLogs.find({}).forEach(function(obj, idx, arr){
+          TurtleLogs.find({}, {limit: 200}).forEach(function(obj, idx, arr){
             // console.log(obj)
             // console.log(idx);
             // console.log(obj.turtlelog.latLng);
@@ -278,10 +286,10 @@ Template.desktop.onRendered(function () {
   // }
 // });
 
-Template.speciesbutton.events({
-  "click #speciesSelect" : function(e){
-    var what = $('input[name="species"]:checked', '#speciesSelect').val();
-    console.log(what);
-   // Session.set("findSpecies", select)
-  }
-});
+// Template.speciesbutton.events({
+//   "click #speciesSelect" : function(e){
+//     var what = $('input[name="species"]:checked', '#speciesSelect').val();
+//     console.log(what);
+//    // Session.set("findSpecies", select)
+//   }
+// });

@@ -2,17 +2,24 @@
 <template name="form">
   <div class="top-container">
     <div class="logo">NINGALOO</div>
-    <div class="mtop mleft mbtn mnav">PHOTO</div>
-    <button class="savebtn mtop mright" type="submit">SAVE</button>
+    <div class="mtop mleft mbtn mnav">{{> takePhoto}}</div>
+    <!-- <div class="mtop mleft mbtn mnav">PHOTO</div> -->
+    <button form="turtle-form" class="savebtn mtop mright">SAVE</button>
   </div>
 
   <div class="form-container">
-    <form>
+    <form id="turtle-form">
+
+      <!-- {{> takePhoto}} -->
 
       {{>form_s1}}
       {{>form_s2}}
       {{>form_s3}}
       {{>form_s4}}
+
+      <script type="text/javascript">
+        $('#photo').appendTo( $(".form-container") )
+      </script>
 
       <div class="text-cont">
         <textarea autofocus name="tur_notes" class="form-notes" placeholder="NOTES"></textarea>
@@ -39,7 +46,6 @@
 
       <input type="submit" value="Log!">
 
-      {{> takePhoto}}
     </form>
     <div class="append_cont">
       <p>{{> map}}</p>
