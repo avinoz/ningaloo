@@ -1,8 +1,7 @@
 <template name="map">
   <div class="map_append">
-    <p id="coord_cont"></p>
-    <div id="lat"></div>
     <div id="lon"></div>
+    <div id="lat"></div>
   </div>
 
   <div class="map-container">
@@ -12,7 +11,4 @@
       Geolocation failed: {{geolocationError}}
     {{/unless}} -->
   </div>
-
-  <div id="map" class="mapbox"></div>
-
 </template>
