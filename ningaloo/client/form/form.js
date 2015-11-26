@@ -35,12 +35,8 @@ Template.form.events({
     var field7 = $('textarea').val();
     var latfield5 = parseFloat(field5);
     var lonfield6 = parseFloat(field6);
-    var image_id="No Image";
-    var thing = document.getElementById("photo").src;
-
-    console.log("hellloooo")
-    console.log(field5)
-
+  var image_id="No Image";
+  var thing = document.getElementById("photo").src;
   Images.insert(thing, function (err, fileObj) {
     if(err){
       console.log(err);
@@ -61,11 +57,7 @@ Template.form.events({
           type: "Point"
           }
       };
-
-      console.log(turtlelog)
-
-      var turtletext =  "<p>" + field5 + "<br>" + field6 + "</p>" + turtlelog.division + "<br>" + turtlelog.section + "<br>" + turtlelog.subsection + "<br>" + turtlelog.species + "<p></p>" + turtlelog.notes
-
+      var turtletext = JSON.stringify(turtlelog, null, 2)
       new Confirmation({
         message: turtletext,
         title: "Confirmation",
