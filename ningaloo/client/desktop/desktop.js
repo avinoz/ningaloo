@@ -1,7 +1,11 @@
 
 Mapbox.load();
-
-
+Template.desktop.helpers({
+  logs:function(){
+    return TurtleLogs.find({})
+  }
+});
+// Meteor.subscribe("turtlelogs");
 Template.desktop.onRendered(function () {
   Mapbox.debug = true;
   Mapbox.load({
@@ -89,12 +93,14 @@ Template.desktop.onRendered(function () {
           //   }
           // });
 
-          var points_array = []
+          var points_array = [];
+          console.log(TurtleLogs.find({}).count());
           TurtleLogs.find({}).forEach(function(obj, idx, arr){
             // console.log(obj)
             // console.log(idx);
-            // console.log(obj.turtlelog.latLng);
-            if(obj.loc.coordinates.length!==0){
+            
+            if(obj.loc.coordinates[0]){
+              console.log("being displayed..."+idx);
             var geoJson = {
               type:'Feature',
               "geometry":{
@@ -110,6 +116,7 @@ Template.desktop.onRendered(function () {
 
               points_array.push(geoJson);
             }
+
           });
 
 
