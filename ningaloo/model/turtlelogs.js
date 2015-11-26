@@ -1,1 +1,1 @@
-TurtleLogs = new Meteor.Collection('turtlelogs');
+// TurtleLogs = new Meteor.Collection('turtlelogs');
