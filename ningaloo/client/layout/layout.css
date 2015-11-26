@@ -205,12 +205,16 @@ select:hover {
 }
 
 .text-cont {
-  width: 94%;
+  width: 100%;
   margin: 2%;
+  height: 200px;
+  overflow: hidden;
+  /*background: blue;*/
+  float: left;
 }
 
 textarea {
-  /*background:*/
+  box-sizing: border-box;
   border-radius: 0;
   border: 1px solid #8ecbbe;
   width: 100%;
@@ -223,6 +227,9 @@ textarea {
   font-weight: 300;
   margin-top: 2%;
   color: black;
+  background: rgba(255, 255, 255, 0.5);
+  background-size: cover;
+  overflow: hidden;
 }
 
 /* LIST */
