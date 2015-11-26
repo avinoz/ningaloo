@@ -22,15 +22,15 @@ Template.home.events({
 
       new Confirmation({
         message: "",
-        title: "ADMIN ACCESS ONLY",
-        cancelText: "Cancel",
+        title: "ADMIN CONSOLE",
+        cancelText: "BACK",
         okText: "CONSOLE",
         success: true
       }, function (ok) {
-          if (ok){
-            // TurtleLogs.insert(turtlelog)
-            Router.go('/form');
+        if(ok) {
+            
           }
         });
+            Router.go('/desktop');
    }
 });
