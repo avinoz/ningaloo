@@ -57,7 +57,9 @@ Template.form.events({
           type: "Point"
           }
       };
-      var turtletext = JSON.stringify(turtlelog, null, 2)
+      // var turtletext = JSON.stringify(turtlelog, null, 2)
+      var turtletext =  "<p>" + field5 + "<br>" + field6 + "</p>" + turtlelog.division + "<br>" + turtlelog.section + "<br>" + turtlelog.subsection + "<br>" + turtlelog.species + "<p></p>" + turtlelog.notes
+      
       new Confirmation({
         message: turtletext,
         title: "Confirmation",
