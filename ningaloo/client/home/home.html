@@ -1,10 +1,18 @@
 <template name="home">
-  <div class='container'>
-    <h1>Save the Turtles</h1>
+<div id="homecontainer">
+
+  <div id="logincontainer">
+    <div class="homelogin">
+      <div id="username" contenteditable>username</div>
+    </div>
+    <div class="homelogin">
+      <div id="password" contenteditable>password</div>
+    </div>
   </div>
 
   <div class="bottom-container">
-    <a href="/"><div class="lower left btn">FORM</div></a>
-    <a href="/list"><div class="lower right btn">LIST</div></a>
+    <a href="/form"><div class="mlower mleft mbtn">FORM</div></a>
+    <a href="/list"><div class="mlower mright mbtn">LIST</div></a>
   </div>
+</div>
 </template>

@@ -1,5 +1,12 @@
 <template name="list">
-  <div class="container">
+
+  <div class="top-container">
+    <div class="logo">SORT BY</div>
+    <div class="mtop mleft mbtn mnav">REVERSE</div>
+    <button class="savebtn mtop mright" type="submit">SAVE</button>
+  </div>
+
+
     <div id="list-options">
       <div id="sort">
         Sort by:{{> sortingFields}}
@@ -27,8 +34,13 @@
         {{/if}}
       </ul>
     </div>
-  </div>
+    <div class="bottom-container">
+      <a href="/form"><div class="mlower mleft mbtn">FORM</div></a>
+      <a href="/list"><div class="mlower mright mbtn">LIST</div></a>
+    </div>
 </template>
+
+
 <template name="sortingFields">
   <select id="sortingSelect">
     {{#each fields}}

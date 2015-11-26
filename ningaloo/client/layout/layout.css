@@ -229,11 +229,13 @@ textarea {
 
 .body-container {
   background: #fafafa;
+  text-align: center;
   position: absolute;
   top: 100px;
-  height: 500px;
+  height: 510px;
   box-sizing: border-box;
   width: 100%;
+  padding: 7% 10% 5% 7%;
 }
 
 .item-list {
@@ -339,3 +341,50 @@ textarea {
   background: #496159;
   color: white;
 }
+
+.homelogin {
+  color: white;
+  font-size: 1.4em;
+  resize:none;
+  text-align: left;
+  display: inline-block;
+  float: left;
+
+  padding-top: 8%;
+
+  height: 3vh;
+  width: 50%;
+  margin: 0 25% 0 25%;
+  /*background: #8ecbbe;*/
+  border-radius: 0;
+  border-bottom: 2px solid white;
+}
+
+#homecontainer {
+  background: url("images/homepg.jpg");
+  background-size: cover;
+  z-index: 1px;
+  width: 100wh;
+  height: 100vh;
+
+
+}
+
+#logincontainer {
+  padding: 3%;
+  box-sizing: border-box;
+  position: absolute;
+  background: rgba(16, 60, 49, 0.4);
+  top: 29%;
+  width: 100%;
+  height: 25%;
+}
+
+/*COLOR CODES {
+  color: #383c3d; dark gray
+  color: #e7ebeb; light gray
+  color: #8ecbbe; light green
+  color: #5ebea5; medium green
+  color: #2aa285; dark green
+  color: #ea6782; red
+}*/
