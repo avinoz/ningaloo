@@ -64,7 +64,7 @@ Template.form.events({
 
       console.log(turtlelog)
 
-      var turtletext =  "<p>" + turtlelog.loc.coordinates + "</p>" + turtlelog.division + "<br>" + turtlelog.section + "<br>" + turtlelog.subsection + "<br>" + turtlelog.species + "<p></p>" + turtlelog.notes
+      var turtletext =  "<p>" + field5 + "<br>" + field6 + "</p>" + turtlelog.division + "<br>" + turtlelog.section + "<br>" + turtlelog.subsection + "<br>" + turtlelog.species + "<p></p>" + turtlelog.notes
 
       new Confirmation({
         message: turtletext,
@@ -94,10 +94,14 @@ Template.form.events({
 "change #form_select3":function(e){
   var subsection = $( "#form_select3 option:selected" ).text();
   Session.set("subsection",subsection)
-}
+},
+"load #photo":function(e){
+  console.log(e.target)
+  var style = $('textarea').attr( "style" )
+   $('textarea').attr( "style", "background: url(" + $('#photo').attr("src") + ")center;"+style )
+ }
 
 });
-
 
 
 /// DYNAMIC DATA SORTING LOGIC

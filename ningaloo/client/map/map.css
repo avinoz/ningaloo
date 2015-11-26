@@ -9,18 +9,13 @@
   width: 100%;
 }
 
-#lat {
+#lat, #lon {
   width: 50%;
   display: inline-block;
   float: left;
   text-align: left;
-}
-
-#lon {
-  width: 50%;
-  display: inline-block;
-  float: left;
-  text-align: left;
+  padding-left: 2%;
+  box-sizing: border-box;
 }
 
 .leaflet-popup-tip-container {
