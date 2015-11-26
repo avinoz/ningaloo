@@ -8,7 +8,7 @@ Template.list.helpers({
       var orderString = order>0?"asc":"desc";
       var o = {}
       o[field]=order;
-      var sort = {sort:o,limit:25};
+      var sort = {sort:o};
       console.log(sort);
       return TurtleLogs.find({},sort);
 
