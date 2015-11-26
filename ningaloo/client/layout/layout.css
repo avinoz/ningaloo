@@ -9,6 +9,7 @@ body {
   font-family: 'Raleway', sans-serif;
   margin: 0;
   overflow: hidden;
+  font-weight: 200;
 }
 
 /* CONTAINER */
@@ -76,6 +77,7 @@ body {
   color: white;
   background: #393c3d;
   cursor: pointer;
+  /*border-radius: 0px 15px 0px 0px;*/
 }
 
 .mbtn:hover {
@@ -95,13 +97,13 @@ body {
   text-align: center;
   font-size: 20px;
   line-height: 40px;
-  font-weight: 200;
   transition: background 0.5s ease;
   transition: color 0.5s ease;
   color: white;
   background: #393c3d;
   cursor: pointer;
   border: 0;
+  /*border-radius: 0px 15px 0px 0px;*/
 }
 
 .savebtn:hover {
@@ -222,7 +224,7 @@ textarea {
   padding: 8px;
   resize: none;
   color: white;
-  text-shadow: 0px 0px 3px white;
+  text-shadow: 0px 0px 8px white;
   font-size: 22px;
   letter-spacing: 1px;
   line-height: 25px;
@@ -388,6 +390,7 @@ textarea {
   width: 100%;
   height: 25%;
 }
+
 
 /*COLOR CODES {
   color: #383c3d; dark gray
