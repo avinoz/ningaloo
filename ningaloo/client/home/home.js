@@ -22,7 +22,7 @@ Template.home.events({
 
       new Confirmation({
         message: "",
-        title: "ADMIN ACCESS ONLY",
+        title: "ADMIN ACCESS",
         cancelText: "Cancel",
         okText: "CONSOLE",
         success: true
