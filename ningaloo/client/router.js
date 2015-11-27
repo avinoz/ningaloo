@@ -14,7 +14,7 @@ Router.map(function(){
 });
 
 Router.route('/itempage/:_id', function () {
-  var find = {nest_ID:this.params._id};
+  var find = {nest_ID:parseInt(this.params._id)};
   var item = TurtleLogs.findOne(find);
   console.log(item);
   this.render('itempage', {data: item});
