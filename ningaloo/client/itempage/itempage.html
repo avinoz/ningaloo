@@ -7,23 +7,36 @@
 
 
   <div class="item-container">
-      {{division}}
-      {{section}}
-      {{subsection}}
-      {{species}}
-      {{fromNow date}}
-      {{notes}}
 
-      <!-- {{#if imageView}} -->
-        <!-- {{> imageView id=img_id}} -->
-      <!-- {{/if}} -->
 
-      {{loc.coordinates.[0]}}
-      {{loc.coordinates.[1]}}
+      {{> imageView id=img_id}}
+
+    <div id="iteminner">
+      <p id="itemtitle">DIVISION <h6>{{division}}</h6></p>
+      <p id="itemtitle">SECTION <h6>{{section}}</h6></p> 
+      <p id="itemtitle">SUBSECTION <h6>{{subsection}}</h6></p> 
+      <p id="itemtitle">SPECIES <h6>{{species}}</h6></p> 
+      <p id="itemtitle">TIME <h6>{{fromNow date}}</h6></p> 
+      <p id="itemtitle">NOTES <h6>{{notes}}</h6></p> 
+      <p id="itemtitle">LATITUDE<h6>{{loc.coordinates.[0]}}</h6></p> 
+      <p id="itemtitle">LONGITUDE<h6>{{loc.coordinates.[1]}}</h6></p> 
+      
+    </div>
   </div>
   <div class="bottom-container">
     <a href="/form"><div class="mlower mleft mbtn">FORM</div></a>
     <a href="/list"><div class="mlower mright mbtn">LIST</div></a>
   </div>
 
+</template>
+
+
+<template name="imageView">
+  <div class="imageView">
+  {{#each getImage id}}
+    <div id="itempiccontainer">
+      <img src="{{this.url}}" alt="" class="thumbnail itempic" />
+    </div>
+  {{/each}}
+  </div>
 </template>
