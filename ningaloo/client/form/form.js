@@ -23,6 +23,11 @@ if(Session.get("division")){
 Meteor.subscribe('divisions');
 
 // FORMATS OBJECTS TO SEND TO DB VIA LIST
+Template.form.helpers({
+  'changePhoto':function(){
+    
+  }
+});
 Template.form.events({
   'submit form': function(event){
     event.preventDefault();
@@ -35,8 +40,12 @@ Template.form.events({
     var field7 = $('textarea').val();
     var latfield5 = parseFloat(field5);
     var lonfield6 = parseFloat(field6);
+
+    var regexlat = field5.replace("^\d+(?:\.\d+|)$") 
+    var regexlon = field6.replace("^\d+(?:\.\d+|)$")
+
   var image_id="No Image";
-  var thing = document.getElementById("photo").src;
+  var thing = Session.get("photo");
   Images.insert(thing, function (err, fileObj) {
     if(err){
       console.log(err);
@@ -53,11 +62,13 @@ Template.form.events({
         species: field4,
         notes: field7,
         loc: {
-          coordinates:[latfield5, lonfield6],
+          coordinates:[field6, field5],
           type: "Point"
           }
       };
-      var turtletext = JSON.stringify(turtlelog, null, 2)
+      // var turtletext = JSON.stringify(turtlelog, null, 2)
+      var turtletext =  "<p>" + field5 + "<br>" + field6 + "</p>" + turtlelog.division + "<br>" + turtlelog.section + "<br>" + turtlelog.subsection + "<br>" + turtlelog.species + "<p></p>" + turtlelog.notes
+      
       new Confirmation({
         message: turtletext,
         title: "Confirmation",
@@ -86,10 +97,14 @@ Template.form.events({
 "change #form_select3":function(e){
   var subsection = $( "#form_select3 option:selected" ).text();
   Session.set("subsection",subsection)
-}
+},
+"load #photo":function(e){
+  console.log(e.target)
+  var style = $('textarea').attr( "style" );
+   $('textarea').attr( "style", "background: url(" + $('#photo').attr("src") + ")center;"+style );
+ }
 
 });
-
 
 
 /// DYNAMIC DATA SORTING LOGIC

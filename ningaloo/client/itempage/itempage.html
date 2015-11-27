@@ -1,41 +1,29 @@
 <template name='itempage'>
-  <div class="container">
-    <table id="itempage">
-      <tr id="place">
-        <td id="division">{{division}}</td>
-        <td>></td>
-        <td id="section">{{section}}</td>
-        <td>></td>
-        <td id="subsection">{{subsection}}</td>
-      </tr>
-      <tr>
-        <td id="species">{{species}}</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td id="date">{{fromNow date}} ago</td>
-      </tr>
-      <tr>
-        <td id="notes" colspan="3">{{notes}}</td>
-      </tr>
-      <tr>
-        <td colspan="5">{{> imageView id=img_id}}</td>
-      </tr>
-      <tr>
-        <td id="map" colspan="3">
-          {{loc.coordinates}},
-          {{loc.coordinates}}
-        </td>
-      </tr>
-    </table>
+  <div class="top-container">
+    <div class="logo">NINGALOO</div>
+      <button id="itemdelete" class="mtop mright">DELETE</button>
+      <button id="itemedit" class="mleft mtop ">EDIT</button>
+    </div>
+
+
+  <div class="item-container">
+      {{division}}
+      {{section}}
+      {{subsection}}
+      {{species}}
+      {{fromNow date}}
+      {{notes}}
+
+      <!-- {{#if imageView}} -->
+        <!-- {{> imageView id=img_id}} -->
+      <!-- {{/if}} -->
+
+      {{loc.coordinates.[0]}}
+      {{loc.coordinates.[1]}}
   </div>
-</template>
-<template name="imageView">
-  <div class="imageView">
-    {{#each getImage id}}
-      <div>
-          <img src="{{this.url}}" alt="" class="thumbnail" />
-      </div>
-    {{/each}}
+  <div class="bottom-container">
+    <a href="/form"><div class="mlower mleft mbtn">FORM</div></a>
+    <a href="/list"><div class="mlower mright mbtn">LIST</div></a>
   </div>
+
 </template>

@@ -30,9 +30,11 @@ dburles:google-maps
 pauloborges:mapbox@2.1.5
 mrt:leaflet
 
-matdutour:popup-confirm
 
 aldeed:collection2
 cfs:standard-packages
 cfs:filesystem
 meteorhacks:search-source
+jji:popup-confirm
+ejson
+check

@@ -18,6 +18,9 @@ Template.takePhoto.events({
 
 Template.takePhoto.helpers({
   'photo': function(){
-    return Session.get('photo')
+    console.log("FIRING")
+    var style = $('textarea').attr( "style" );
+   $('textarea').attr( "style", "background: url(" + Session.get("photo") + ")center;background-repeat:no-repeat;" );
   }
 });
+

@@ -29,8 +29,22 @@ Template.list.helpers({
       return Session.get("filteringBy");
     }
   });
+
+Template.list.events({
+  "click #listtitle":function(){
+    $(".top-container").fadeIn("fast");
+    $(".bottom-container").fadeIn("fast");
+  }
+});
+
 Template.sortingFields.events({
+  "click #sortingSelect":function(e){
+    $(".top-container").fadeToggle("slow");
+    $(".bottom-container").fadeToggle("slow");
+  },
   "change #sortingSelect":function(e){
+    $(".top-container").fadeToggle("slow");
+    $(".bottom-container").fadeToggle("slow");
     var sortingBy = $( "#sortingSelect option:selected" ).text();
     if(sortingBy.length==0){
       Session.set("sortingBy",undefined);
