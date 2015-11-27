@@ -17,5 +17,8 @@ Router.route('/itempage/:_id', function () {
   var find = {nest_ID:parseInt(this.params._id)};
   var item = TurtleLogs.findOne(find);
   console.log(item);
+  // if(!item){
+  //   Meteor.subscribe("turtlelogs")
+  // }
   this.render('itempage', {data: item});
 });

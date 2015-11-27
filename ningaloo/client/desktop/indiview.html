@@ -1,25 +1,30 @@
 <template name="indiview">
-
+{{#with info}}
 <div id="indiview">
   <div id="indi-l">
     <h4>NEST ID</h4>
     <h4>DIVISION</h4>
-    <h4>SECTIONS</h4>
-    <h4>SUBSECTIONS</h4>
+    <h4>SECTION</h4>
+    <h4>SUBSECTION</h4>
     <h4>SPECIES</h4>
     <h4>COORDINATES</h4>
   </div>
   <div id="indi-r">
-    <h4>DATA</h4>
-    <h4>DATA</h4>
-    <h4>DATA</h4>
-    <h4>DATA</h4>
-    <h4>DATA</h4>
-    <h4>DATA</h4>
+    <h4>{{nest_ID}}</h4>
+    <h4>{{division}}</h4>
+    <h4>{{section}}</h4>
+    <h4>{{subsection}}</h4>
+    <h4>{{species}}</h4>
+    <h4>{{loc.coordinates}}</h4>
   </div>
-  <div id="indi-date"><h4>11/25/15</h4></div>
+  <div id="indi-date"><h4>{{fromNow date}}</h4></div>
   <div id="indi-img">
-    <img src="/images/turtle.jpg"></div>
+  {{#if img_id}}
+    <img src="{{getImg img_id}}">
+  {{else}}
+    <img src="/images/turtle.jpg">
+  {{/if}}
+  </div>
 </div>
-
+{{/with}}
 </template>
