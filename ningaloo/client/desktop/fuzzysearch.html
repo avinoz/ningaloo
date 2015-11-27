@@ -4,7 +4,7 @@
 </template>
 
 <template name="searchBox">
-  <input type="text" id="search-box" placeholder="search turtle data here" />
+  <input type="text" style="width:82%" id="search-box" placeholder="search" />
 </template>
 
 <template name="searchResult">
@@ -14,7 +14,8 @@
         searching for the turtles ...
       {{/if}}
     </div>
-    <!-- {{#each getTurtles}}
+
+    {{#each getTurtles}}
       <div class="package">
         <li class="toggle-row">
           <h4 class="name">
@@ -27,6 +28,6 @@
           </div>
         </li>
       </div>
-    {{/each}} -->
+    {{/each}}
   </div>
 </template>

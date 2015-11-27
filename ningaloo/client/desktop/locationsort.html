@@ -3,7 +3,7 @@
     <div class="headerbar">LOCATION</div>
 
       <select class="divisionsort sortbar">
-        <option value disable selected>-Divisions-</option>
+        <option value disable selected>Division</option>
         <!-- {{#each divisions}} -->
         <!-- <option value="division">{{name}}</option> -->
         <!-- {{/each}} -->
@@ -12,7 +12,7 @@
       </select>
 
       <select class="sectionsort sortbar">
-        <option value disable selected>-Sections-</option>
+        <option value disable selected>Section</option>
         <!-- {{#if divisionSelected}} -->
         <!-- {{#each sections divisionSelected}} -->
         <!-- <option value="section">{{name}}</option> -->
@@ -26,7 +26,7 @@
       </select>
 
       <select class="subsectionsort sortbar">
-        <option value disable selected>-Subsections-</option>
+        <option value disable selected>Subsection</option>
         <!-- {{#if sectionSelected}}
         {{#each subsections divisionSelected sectionSelected}}
         <option value="subsection">{{name}}</option>
@@ -45,5 +45,6 @@
         <option value="burrows - jurabi point">Burrows - Jurabi Point</option>
       </select>
     <div class="headerbar">TIME</div>
+          {{> incubation}}
   </div>
 </template>
