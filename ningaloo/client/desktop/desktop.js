@@ -60,7 +60,11 @@ Template.desktop.onRendered(function () {
                 "url":""
               }
             }
-            my_layers.push(L.mapbox.featureLayer(geoJson).addTo(myLayer));
+            try{
+              L.mapbox.featureLayer(geoJson).addTo(myLayer);
+            }catch(err){
+              console.log(err);
+            }
             // console.log(myLayer);
               // points_array.push(geoJson);
             }
