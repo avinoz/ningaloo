@@ -1,4 +1,8 @@
 Meteor.subscribe("images");
+Meteor.subscribe("turtlelogs",function(){
+  console.log("Subscription READY");
+  Template.desktop.__helpers[" reactivity"]();
+});
 Mapbox.load();
 Template.desktop.events({
   "click #marker-list li":function(){
@@ -11,6 +15,9 @@ Template.desktop.helpers({
     },
     listItemSelected:function(e){
       return Session.get("listItemSelected")
+    },reactivity:function(){
+      console.log("Reactivity SIZZLING");
+      meteorCall();
     }
 });
 Template.desktop.events({
@@ -45,9 +52,8 @@ Template.desktop.onRendered(function () {
     meteorCall();
   });
 });
-
-function meteorCall(){
   var map,myLayer;
+function meteorCall(){
   if (Mapbox.loaded()) {
   ///////////////////////////////////////
       Meteor.call('getMapBoxKey', function(error, result){
@@ -84,9 +90,12 @@ function meteorCall(){
             var results;
           if(Session.get("fuzzy")){
             results=Template.searchResult.__helpers[" getTurtles"]();
-            Session.set("fuzzy",undefined)
+            Session.set("fuzzy",undefined);
+            console.log("trying from fuzzy search");
           }else{
+            console.log("trying from regular search");
             results=TurtleLogs.find({});
+            console.log(results.fetch());
           }
           results.forEach(function(obj, idx, arr){
             if(obj.loc.coordinates.length!==0){
