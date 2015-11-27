@@ -1,3 +1,6 @@
+.marker-list{
+  overflow:scroll;
+}
 h4 {
   font-family: 'Raleway', sans-serif;
   font-weight: 200;
@@ -17,6 +20,7 @@ h4 {
   bottom:0;
   right: 0px;
   width:50%;
+  z-index:5;
 }
 
 /* LEFT CONTAINER */
