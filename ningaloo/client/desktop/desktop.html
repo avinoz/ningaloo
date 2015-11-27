@@ -9,7 +9,9 @@
       <form name="fuzzy">
         {{>fuzzySearch}}
       </form>
-      {{> indiview}}
+      {{#if listItemSelected}}
+        {{> indiview id=listItemSelected}}
+      {{/if}}
       <a href="http://www.ningalooturtles.org.au/"><div id="copyright">COPYRIGHT TURTLETOWN 2015</div></a>
     </div>
 
