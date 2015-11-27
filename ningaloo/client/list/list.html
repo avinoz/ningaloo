@@ -1,34 +1,7 @@
 <template name="list">
-
   <div class="top-container">
     <div class="logo">NINGALOO</div>
     <script type="text/javascript">
-      
-      // $('.top-container').toggle();
-
-      // var entryheight = $('.task-list').height();
-
-      // // on click hide 
-
-      // $('.top-container').click(function () {
-      // //   var y = $(this).scrollTop();
-      // //   if (y > 350 && y < entryheight) {
-      // //    $('.top-container').fadeIn();
-      // //  } else {
-      // //   $('.top-container').fadeOut();
-      // // }
-      // // $(this).toggle()
-      // //     }.done(function(){
-      // //       $(this).toggle();
-      // //     }
-      //   $(this).hide( function() {
-      //     onLoad(function(){
-      //       $('.top-container').show();
-      //     })
-      //   })
-
-      //   }
-
       $('top-container').toggle();
     </script>
 
@@ -66,17 +39,15 @@
       <a href="/list"><div class="mlower mright mbtn">LIST</div></a>
     </div>
   </template>
-
-
   <template name="sortingFields">
     <div class="top-container">
       <div class="logo">NINGALOO</div>
-      <select id="sortingSelect" class="sortoptbtn">
-        <option value="" disabled selected>SORT BY</option>
-        {{#each fields}}
-        <option value="">{{fieldName}}</option>
-        {{/each}}
-      </select>
+        <select id="sortingSelect" class="sortoptbtn">
+          <option value="" disabled selected>SORT BY</option>
+          {{#each fields}}
+            <option value="">{{fieldName}}</option>
+          {{/each}}
+        </select>
       <button id="sortOrder" class="savebtn mtop mright">REVERSE</button>
     </div>
   </template>

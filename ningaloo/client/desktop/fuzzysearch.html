@@ -1,0 +1,33 @@
+<template name="fuzzySearch">
+    {{> searchBox }}
+    {{> searchResult}}
+</template>
+
+<template name="searchBox">
+  <input type="text" id="search-box" placeholder="search turtle data here" />
+</template>
+
+<template name="searchResult">
+  <div id='search-result'>
+    <div id="search-meta">
+      {{#if isLoading}}
+        searching for the turtles ...
+      {{/if}}
+    </div>
+
+
+    <!-- {{#each getTurtles}}
+        <div class="package">
+      <li class="toggle-row">
+        <h4 class="name">
+          <a href="/itempage/{{_id}}" >{{{subsection}}} - {{{species}}} @ {{{loc.coordinates}}}</a>
+        </h4>
+        <div class="description">
+          {{{date}}}
+          {{{division}}} > {{{section}}} > {{{subsection}}}
+          {{{notes}}}
+        </div>
+      </li>
+    {{/each}} -->
+  </div>
+</template>
