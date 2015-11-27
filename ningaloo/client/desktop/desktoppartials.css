@@ -1,32 +1,122 @@
 
 #locationsort {
-  /*background: red;*/
+  background: #383c3d;
   width: 100%;
   text-align: left;
+  height: 59px;
+  border-bottom: solid white 1px;
 }
 
 .headerbar {
-  width: 23%;
+  width: 25%;
+  height: 30px;
   padding: 1% 1% 1% 3%;
   color: white;
   background: #383c3d;
   display: inline-block;
   float: left;
   margin: 0;
+  border-bottom: 1px solid white;
+  box-sizing: border-box;
 }
 
 .sortbar {
   display: inline-block;
   float: left;
-  width: 23%;
+  width: 25%;
+  font-size: 14px;
+  line-height: 15px;
   margin: 0;
+  padding-left: 5%;
   background: gray;
   border-radius: 0;
+  border: 0;
+  border-bottom: 1px solid white;
   color: #333333;
   box-sizing: border-box;
   -webkit-appearance: none;
   vertical-align: middle;
 }
 
-.locationsortheader {
+#incubation_sort button{
+  width: 18.75%;
+  height: 30px;
+  font-size: 14px;
+  box-sizing: border-box;
+  margin: 0;
+  border: 0;
+  background: gray;
+  border-bottom: 1px solid white;
+  float: left;
+}
+
+#incubation_sort button:hover{
+  background: #2aa285;
+}
+
+#incubation_sort a {
+  text-decoration: none;
+  color: #383c3d;
+}
+
+
+/* FUZZY SEARCH */
+
+#search-box {
+  top: 10%;
+  border: 0;
+  border-radius: 0;
+  right: 0;
+  height: 30px;
+  box-sizing: border-box;
+  position: absolute;
+}
+
+#search-result {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  top: 13%;
+  z-index: 2;
+}
+
+.package {
+  /*width: 300%;*/
+  /*box-sizing: border-box;*/
+  background: white;
+  box-shadow: 3px -1px 2px #888888;
+}
+
+.package:nth-child(even) {
+  background: #e7ebeb;
+}
+
+.togglerow {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style-type: none;
+}
+.name {
+  margin: 0;
+  padding: 0 0 0 5%;
+}
+
+.name a {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  font-weight: 300;
+  color: black;
+
+}
+
+.description {
+  font-weight: 200;
+  margin: 0;
+  padding: 0;
+  color: #333333;
+  padding: 0 0 0 5%;
 }

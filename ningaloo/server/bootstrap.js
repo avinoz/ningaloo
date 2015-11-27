@@ -5,7 +5,7 @@ var turtlelogDump = Assets.getText('turtlelogs.dump').split('\n').filter(functio
 
 if(TurtleLogs.find().count() < turtlelogDump.length) {
   console.log("adding initial set of turtlelogs (%s)", turtlelogDump.length);
-  for(var lc=0; lc<turtlelogDump.length; lc++) {
+  for(var lc=0; lc<turtlelogDump.length-1; lc++) {
     if(lc > 0 && lc % 500 == 0) {
       console.log("  added turtlelogs: ", lc);
     }

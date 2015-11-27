@@ -1,10 +1,7 @@
-.marker-list{
-  overflow:scroll;
-}
+
 h4 {
   font-family: 'Raleway', sans-serif;
   font-weight: 200;
-  /*margin: 10%;*/
   font-size: 1.1em;
   line-height: 1.5em;
 }
@@ -20,7 +17,6 @@ h4 {
   bottom:0;
   right: 0px;
   width:50%;
-  z-index:5;
 }
 
 /* LEFT CONTAINER */
@@ -29,18 +25,20 @@ h4 {
   position: absolute;
   background: #8ecbbe;
   top: 0;
+  left: 0;
   bottom: 0;
   width: 20%;
-  text-align: center;
-  z-index: 1;
-  margin: 0 auto;
+  z-index: 2;
   box-shadow: 3px 0px 2px #888888;
 }
 
 #d-logo {
-  font-size: 2.7vw;
+  width: 100%;
+  text-align: center;
+  font-size: 2.5vw;
   /*font-size: 3.3em;*/
   color: white;
+  box-sizing: border-box;
   padding-top: 15%;
 }
 
@@ -61,13 +59,19 @@ h4 {
   border-bottom: 2px solid #2aa285;
 }
 
+/* MARKERLIST */
+
+#abovenav {
+  height: 10%;
+}
+
 #marker-list {
   text-align: left;
   position: absolute;
   left: 0;
-  top: 26%;
-  z-index: 2;
-  height: 70%;
+  top: calc(10% + 60px);
+  /*z-index: 1;*/
+  height: calc(90% - 60px);
   width: 100%;
   bottom:0;
   overflow-x: hidden;
@@ -75,16 +79,20 @@ h4 {
 }
 
 #marker-list li {
-  border-bottom: solid 1px gray;
+  border-bottom: solid 1px #999999;
   margin:0;
   list-style-type:none;
   width: 100%;
   background-color: white;
   color: black;
-  font-size: 1.2em;
-  padding: 2.5%;
+  font-size: 1.1em;
+  padding: 2.3%;
   padding-left: 5%;
   cursor: pointer;
+}
+
+#marker-list li:nth-child(odd){
+  background: #e7ebeb;
 }
 
 #marker-list li:hover {
@@ -121,6 +129,7 @@ h4 {
   left: 20%;
   bottom: 0;
   top: 0;
+  z-index: 1;
 }
 
 /* INDIVIEW */
@@ -132,6 +141,8 @@ h4 {
   height: 50%;
   position: absolute;
   background-color: #383c3d;
+  z-index: 1;
+  display: visible;
 }
 
 #indi-l {
@@ -175,8 +186,6 @@ h4 {
   box-sizing: border-box;
   border: 2px solid #383c3d;
 }
-
-
 
 
 

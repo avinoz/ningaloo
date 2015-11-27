@@ -1,26 +1,25 @@
 
 <template name='desktop'>
   <div class="raleway">
-    <div id='map'></div>
+    <div id='map'>
+    </div>
     <!-- {{> map}} -->
     <div id="d-left-con">
       <p id="d-logo">NINGALOO</p>
-      <ul id="marker-list">
-      </ul>
       <form name="fuzzy">
         {{>fuzzySearch}}
       </form>
+      {{> indiview}}
       <a href="http://www.ningalooturtles.org.au/"><div id="copyright">COPYRIGHT TURTLETOWN 2015</div></a>
     </div>
 
     <div id="dataview">
-
-      {{> speciesbtn}}
-      {{> indiview}}
-      {{> incubation}}
+      <div id="abovenav"></div>
+      <!-- {{> speciesbtn}} -->
       {{> locationsort}}
-
+      <ul id="marker-list"></ul>
     </div>
+
   </div>
 
 </template>
