@@ -27,7 +27,7 @@ Router.route('/itempage/:_id',{
     }
   },data:function(){
     var find;
-    if(typeof this.params._id === "string"){
+    if(this.params._id.length>5){
        find={_id:this.params._id};
     }else{
       find={_id:parseInt(this.params._id)};
