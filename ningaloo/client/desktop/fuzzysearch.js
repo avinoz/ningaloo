@@ -9,13 +9,13 @@ Template.searchResult.helpers({
   getTurtles: function() {
     return TurtleSearch.getData({
       transform: function(matchText, regExp) {
-        return matchText.replace(regExp, "<b>$&</b>")
+        return matchText.replace(regExp, "<b>$&</b>");
         console.log('Y U NO WERK');
       },
       sort: {isoScore: -1}
     });
   },
-  
+
   isLoading: function() {
     return TurtleSearch.getStatus().loading;
   }

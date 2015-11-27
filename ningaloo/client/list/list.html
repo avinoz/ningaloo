@@ -1,12 +1,9 @@
 <template name="list">
 
-  <div class="top-container">
-    <div class="logo">NINGALOO</div>
-  </div>
-
     <div id="list-options">
       <div id="sort">
-        Sort by:{{> sortingFields}}
+        <div id="listtitle">DATA LIST</div>
+        {{> sortingFields}}
       </div>
       <!-- <div id="filter">
         <button id="hasImages">Has Image</button>
@@ -37,9 +34,8 @@
     </div>
 </template>
 
-
 <template name="sortingFields">
-  <div class="top-container">
+    <div class="top-container">
     <div class="logo">NINGALOO</div>
   <select id="sortingSelect" class="sortoptbtn">
       <option value="" disabled selected>SORT BY</option>
@@ -48,7 +44,7 @@
     {{/each}}
   </select>
   <button id="sortOrder" class="savebtn mtop mright">REVERSE</button>
-  </div>
+    </div>
 </template>
 
 

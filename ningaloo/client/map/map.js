@@ -7,8 +7,10 @@ Template.map.helpers({
     let latLng = Geolocation.latLng();
     var pulse = JSON.stringify(latLng)
 
-    $('#lat').html("Lattitude  " + latLng.lat.toFixed(6))
-    $('#lon').html("Longitude  " + latLng.lng.toFixed(6))
+    $('#lat').html(latLng.lat.toFixed(6))
+    // $('#lat').html("Lattitude  " + latLng.lat.toFixed(6))
+    $('#lon').html(latLng.lng.toFixed(6))
+    // $('#lon').html("Longitude  " + latLng.lng.toFixed(6))
 
     console.log(latLng)
   }

@@ -8,13 +8,28 @@
   width: 100%;
 }
 
+.maplonglat-fix {
+  z-index: 1;
+  font-weight: 400;
+  color: #383c3d;
+  height: auto;
+  width: 50%;
+  display: inline-block;
+  float: left;
+}
+
+p {
+  padding-left: 2%;
+  text-align: left;
+}
+
 #lat, #lon {
   width: 50%;
   display: inline-block;
   float: left;
   text-align: left;
-  padding-left: 2%;
   box-sizing: border-box;
+  font-size: 1.1em;
 }
 
 .leaflet-popup-tip-container {
@@ -27,4 +42,11 @@
 
 .leaflet-popup-content {
   text-align: center;
+}
+
+#words {  
+  float: left;
+  padding: 0 5px 0 10px;
+  font-size: 1.1em;
+  color: #999999;
 }

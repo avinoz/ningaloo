@@ -5,34 +5,13 @@
     <!-- {{> map}} -->
     <div id="d-left-con">
       <p id="d-logo">NINGALOO</p>
-
-      <form name="fuzzy">
-        <!-- <input type="text" name="fsearch" id="fsearch" placeholder="SEARCH"> -->
-        {{>fuzzySearch}}
-        <div id="fsearch" contenteditable>SEARCH </div>
-      </form>
-
-      <a href="http://www.ningalooturtles.org.au/"><div id="copyright">COPYRIGHT TURTLETOWN 2015</div></a>
-
-      <ul id='marker-list'>
-
-        <!-- <li>Baker Beach</li>
-        <li>Brooke Sproke</li>
-        <li>Graveyard</li>
-        <li>Baker Beach</li>
-        <li>Brooke Sproke</li>
-        <li>Graveyard</li>
-        <li>Baker Beach</li>
-        <li>Brooke Sproke</li>
-        <li>Graveyard</li> -->
-        {{#each turtlelogs}}
-        <li>{{> task}}</li>
-          <tr class="toggle-row" data-href="/itempage/{{_id}}">
-        </tr>
-        {{/each}}
-        <li></li>
-
+      <ul id="marker-list">
       </ul>
+      <form name="fuzzy">
+        {{>fuzzySearch}}
+        <!-- <div id="fsearch" contenteditable>SEARCH </div> -->
+      </form>
+      <a href="http://www.ningalooturtles.org.au/"><div id="copyright">COPYRIGHT TURTLETOWN 2015</div></a>
     </div>
 
     <div id="dataview">
@@ -46,5 +25,3 @@
   </div>
 
 </template>
-
-
