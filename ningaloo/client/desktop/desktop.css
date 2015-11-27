@@ -1,10 +1,7 @@
-.marker-list{
-  overflow:scroll;
-}
+
 h4 {
   font-family: 'Raleway', sans-serif;
   font-weight: 200;
-  /*margin: 10%;*/
   font-size: 1.1em;
   line-height: 1.5em;
 }
@@ -20,7 +17,6 @@ h4 {
   bottom:0;
   right: 0px;
   width:50%;
-  z-index:5;
 }
 
 /* LEFT CONTAINER */
@@ -33,7 +29,7 @@ h4 {
   bottom: 0;
   width: 20%;
   /*text-align: center;*/
-  z-index: 1;
+  z-index: 2;
   /*margin: 0 auto;*/
   box-shadow: 3px 0px 2px #888888;
 }
@@ -65,13 +61,19 @@ h4 {
   border-bottom: 2px solid #2aa285;
 }
 
+/* MARKERLIST */
+
+#abovenav {
+  height: 10%;
+}
+
 #marker-list {
   text-align: left;
   position: absolute;
   left: 0;
-  top: 26%;
-  z-index: 2;
-  height: 68%;
+  top: calc(10% + 60px);
+  /*z-index: 1;*/
+  height: calc(90% - 60px);
   width: 100%;
   bottom:0;
   overflow-x: hidden;
@@ -79,7 +81,7 @@ h4 {
 }
 
 #marker-list li {
-  border-bottom: solid 1px gray;
+  border-bottom: solid 1px #999999;
   margin:0;
   list-style-type:none;
   width: 100%;
@@ -129,6 +131,7 @@ h4 {
   left: 20%;
   bottom: 0;
   top: 0;
+  z-index: 1;
 }
 
 /* INDIVIEW */
