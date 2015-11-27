@@ -187,3 +187,12 @@
   background: #999999;
   color: white;
 }
+
+#listtitle {
+  font-weight: 300;
+  letter-spacing: 1px;
+  text-align: center;
+  font-size: 30px;
+  line-height: 100px;
+  cursor: pointer;
+}
