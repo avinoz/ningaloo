@@ -57,7 +57,10 @@ Template.desktop.onRendered(function () {
               "properties":{
                 "marker-color": statusColor(obj),
                 "title":obj.species,
-                "url":""
+                "url":"/itempage/"+obj.nest_ID,
+                "section":obj.section,
+                "subsection":obj.subsection,
+                "division":obj.division
               }
             }
             my_layers.push(L.mapbox.featureLayer(geoJson).addTo(myLayer));
@@ -128,7 +131,8 @@ Template.desktop.onRendered(function () {
           myLayer.eachLayer(function(layer) {
             console.log(layer.toGeoJSON())
             var item = markerList.appendChild(document.createElement('li'));
-            console.log(layer.toGeoJSON().features[0].geometry.coordinates)
+            // console.log(layer.toGeoJSON().properties)
+            item.innerHTML = layer.toGeoJSON().features[0].properties.subsection;
             item.onclick = function(e) {
               e.preventDefault();
              map.panTo(reverse(layer.toGeoJSON().features[0].geometry.coordinates));
