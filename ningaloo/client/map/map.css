@@ -29,7 +29,7 @@ p {
   float: left;
   text-align: left;
   box-sizing: border-box;
-  font-size: 1.1em;
+  font-size: 0.95em;
 }
 
 .leaflet-popup-tip-container {
@@ -47,6 +47,6 @@ p {
 #words {  
   float: left;
   padding: 0 5px 0 10px;
-  font-size: 1.1em;
+  font-size: 0.95em;
   color: #999999;
 }
