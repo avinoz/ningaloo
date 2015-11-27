@@ -1,15 +1,6 @@
 <template name="fuzzySearch">
-  <div class="container">
-    {{#each logs}}
-      <p id="{{_id}}">{{species}}</p>
-    {{/each}}
-    <div id="heading">
-      <h4>search</h4>
-    </div>
-    <!-- search box here -->
     {{> searchBox }}
     {{> searchResult}}
-  </div>
 </template>
 
 <template name="searchBox">
@@ -24,9 +15,10 @@
       {{/if}}
     </div>
 
-    {{#each getTurtles}}
-    <div class="package">
-      <li>
+
+    <!-- {{#each getTurtles}}
+        <div class="package">
+      <li class="toggle-row">
         <h4 class="name">
           <a href="/itempage/{{_id}}" >{{{subsection}}} - {{{species}}} @ {{{loc.coordinates}}}</a>
         </h4>
@@ -36,7 +28,6 @@
           {{{notes}}}
         </div>
       </li>
-    </div>
-    {{/each}}
+    {{/each}} -->
   </div>
 </template>
