@@ -75,3 +75,40 @@
   background: black;
   color: orange;
 }
+
+.itempic {
+  background-color: #8ecbbe;
+  margin: 0 auto;
+  box-sizing: border-box;
+  border: 0;
+  border-radius: 0;
+}
+
+.item-container {
+  width: 100vw;
+  height: auto;
+}
+
+#iteminner {
+  background-color: #8ecbbe;
+  padding: 10%;
+}
+
+#itemtitle{
+  font-size: .8em;
+  /*background-color: blue;*/
+}
+
+
+h6 {
+  margin: 0;
+  font-size: 1.6em;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 200;
+  display: inline;
+  margin-left: 2%;
+
+
+  }
+
+
