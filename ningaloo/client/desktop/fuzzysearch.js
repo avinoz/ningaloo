@@ -30,5 +30,6 @@ Template.searchBox.events({
     console.log("hello from searchbox")
     var text = $(e.target).val().trim();
     TurtleSearch.search(text);
+    Session.set("fuzzy",text)
   }, 200)
 });
