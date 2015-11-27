@@ -16,21 +16,21 @@ Template.home.events({
    }
 });
 
-Template.home.events({
-  'click #adminlogin': function(event){
-    event.preventDefault();
+// Template.home.events({
+//   'click #adminlogin': function(event){
+//     event.preventDefault();
 
-      new Confirmation({
-        message: "",
-        title: "ADMIN CONSOLE",
-        cancelText: "BACK",
-        okText: "CONSOLE",
-        success: true
-      }, function (ok) {
-        if(ok) {
+//       new Confirmation({
+//         message: "",
+//         title: "ADMIN CONSOLE",
+//         cancelText: "BACK",
+//         okText: "CONSOLE",
+//         success: true
+//       }, function (ok) {
+//         if(ok) {
             
-          }
-        });
-            Router.go('/desktop');
-   }
-});
+//           }
+//         });
+//             Router.go('/desktop');
+//    }
+// });
