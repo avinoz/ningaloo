@@ -45,7 +45,7 @@ Template.form.events({
     var regexlon = field6.replace("^\d+(?:\.\d+|)$")
 
   var image_id="No Image";
-  var thing = document.getElementById("photo").src;
+  var thing = Session.get("photo");
   Images.insert(thing, function (err, fileObj) {
     if(err){
       console.log(err);
