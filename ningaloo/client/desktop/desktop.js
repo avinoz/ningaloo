@@ -57,20 +57,7 @@ Template.desktop.onRendered(function () {
             }
           }
 
-          // var statusColorLogs = function(obj){
-          //   var now = new Date();
-          //   var daysAgo = millisecondsToDays(now)-millisecondsToDays(new Date(obj.date));
-
-          //   if(daysAgo<=7){
-          //     return "#8ECBBE"
-          //   }else if(daysAgo<=45){
-          //     return "#5EBEA5"
-          //   }else if(daysAgo<=60){
-          //     return "#2AA285"
-          //   }else{
-          //     return "#EF6583"
-          //   }
-          // }
+          
           // TESTING DYNAMIC MARKERS STATUS:WORKING ########
           // Marker position is reflected by latLng positions in turtlelog object
 
@@ -134,32 +121,7 @@ Template.desktop.onRendered(function () {
             return o;
           }
 
-          // ########
-          // var geoJson = [{
-          //   type: 'Feature',
-          //   "geometry": { "type": "Point", "coordinates": [114.033028, -21.847727]},
-          //   "properties": {
-          //     "marker-color": "#ff8888",
-          //     "title": "Turtle Town",
-          //     "url": "https://en.wikipedia.org/wiki/Chicago"
-          //   }
-          // }, {
-          //   type: 'Feature',
-          //   "geometry": { "type": "Point", "coordinates": [114.091414, -21.810967]},
-          //   "properties": {
-          //     "title": "Flipped Turtle",
-          //     "url": "https://en.wikipedia.org/wiki/Chicago",
-          //     "marker-color": "#7ec0ee"
-          //   }
-          // }, {
-          //   type: 'Feature',
-          //   "geometry": { "type": "Point", "coordinates": [1, 1]},
-          //   "properties": {
-          //     "title": "Flipped Turtle",
-          //     "url": "https://en.wikipedia.org/wiki/Chicago",
-          //     "marker-color": "#7ec0ee"
-          //   }
-          // }];
+          
 
           var geoJson = [{
             type: 'Feature',
