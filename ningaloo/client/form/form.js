@@ -67,7 +67,7 @@ Template.form.events({
           }
       };
       // var turtletext = JSON.stringify(turtlelog, null, 2)
-      var turtletext =  "<p>" + field5 + "<br>" + field6 + "</p>" + turtlelog.division + "<br>" + turtlelog.section + "<br>" + turtlelog.subsection + "<br>" + turtlelog.species + "<p></p>" + turtlelog.notes
+      var turtletext =  "<p> Latitude  " + field5 + "<br> Longitude " + field6 + "</p>" + turtlelog.division + "<br>" + turtlelog.section + "<br>" + turtlelog.subsection + "<br>" + turtlelog.species + "<p></p>" + turtlelog.notes
       
       new Confirmation({
         message: turtletext,
