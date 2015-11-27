@@ -1,10 +1,16 @@
 <template name="list">
+  <div class="top-container">
+    <div class="logo">NINGALOO</div>
+    <script type="text/javascript">
+      $('top-container').toggle();
+    </script>
 
-    <div id="list-options">
-      <div id="sort">
-        <div id="listtitle">DATA LIST</div>
-        {{> sortingFields}}
-      </div>
+  </div>
+
+  <div id="list-options">
+    <div id="sort">
+      Sort by:{{> sortingFields}}
+    </div>
       <!-- <div id="filter">
         <button id="hasImages">Has Image</button>
       </div> -->
@@ -12,19 +18,19 @@
     <div class="task-list">
       <ul>
         {{#if sortingBy}}
-          {{#each sortLogs sortingBy sortOrder}}
-            {{> task}}
-          {{/each}}
+        {{#each sortLogs sortingBy sortOrder}}
+        {{> task}}
+        {{/each}}
         {{else}}
-          {{#if filteringBy}}
-            {{#each filterLogs}}
-              {{> task}}
-            {{/each}}
-          {{else}}
-            {{#each turtlelogs}}
-              {{> task}}
-            {{/each}}
-          {{/if}}
+        {{#if filteringBy}}
+        {{#each filterLogs}}
+        {{> task}}
+        {{/each}}
+        {{else}}
+        {{#each turtlelogs}}
+        {{> task}}
+        {{/each}}
+        {{/if}}
         {{/if}}
       </ul>
     </div>
@@ -32,19 +38,18 @@
       <a href="/form"><div class="mlower mleft mbtn">FORM</div></a>
       <a href="/list"><div class="mlower mright mbtn">LIST</div></a>
     </div>
-</template>
-
-<template name="sortingFields">
+  </template>
+  <template name="sortingFields">
     <div class="top-container">
-    <div class="logo">NINGALOO</div>
-  <select id="sortingSelect" class="sortoptbtn">
-      <option value="" disabled selected>SORT BY</option>
-    {{#each fields}}
-      <option value="">{{fieldName}}</option>
-    {{/each}}
-  </select>
-  <button id="sortOrder" class="savebtn mtop mright">REVERSE</button>
+      <div class="logo">NINGALOO</div>
+        <select id="sortingSelect" class="sortoptbtn">
+          <option value="" disabled selected>SORT BY</option>
+          {{#each fields}}
+            <option value="">{{fieldName}}</option>
+          {{/each}}
+        </select>
+      <button id="sortOrder" class="savebtn mtop mright">REVERSE</button>
     </div>
-</template>
+  </template>
 
 

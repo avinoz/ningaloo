@@ -23,6 +23,11 @@ if(Session.get("division")){
 Meteor.subscribe('divisions');
 
 // FORMATS OBJECTS TO SEND TO DB VIA LIST
+Template.form.helpers({
+  'changePhoto':function(){
+    
+  }
+});
 Template.form.events({
   'submit form': function(event){
     event.preventDefault();
@@ -35,6 +40,10 @@ Template.form.events({
     var field7 = $('textarea').val();
     var latfield5 = parseFloat(field5);
     var lonfield6 = parseFloat(field6);
+
+    var regexlat = field5.replace("^\d+(?:\.\d+|)$") 
+    var regexlon = field6.replace("^\d+(?:\.\d+|)$")
+
   var image_id="No Image";
   var thing = document.getElementById("photo").src;
   Images.insert(thing, function (err, fileObj) {
@@ -53,7 +62,7 @@ Template.form.events({
         species: field4,
         notes: field7,
         loc: {
-          coordinates:[latfield5, lonfield6],
+          coordinates:[field6, field5],
           type: "Point"
           }
       };
@@ -91,8 +100,8 @@ Template.form.events({
 },
 "load #photo":function(e){
   console.log(e.target)
-  var style = $('textarea').attr( "style" )
-   $('textarea').attr( "style", "background: url(" + $('#photo').attr("src") + ")center;"+style )
+  var style = $('textarea').attr( "style" );
+   $('textarea').attr( "style", "background: url(" + $('#photo').attr("src") + ")center;"+style );
  }
 
 });

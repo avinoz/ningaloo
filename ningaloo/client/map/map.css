@@ -8,6 +8,21 @@
   width: 100%;
 }
 
+.maplonglat-fix {
+  z-index: 1;
+  font-weight: 400;
+  color: #383c3d;
+  height: auto;
+  width: 50%;
+  display: inline-block;
+  float: left;
+}
+
+p {
+  padding-left: 2%;
+  text-align: left;
+}
+
 #lat, #lon {
   width: 50%;
   display: inline-block;
