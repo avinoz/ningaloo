@@ -20,6 +20,7 @@ Template.desktop.events({
 });
 Template.indiview.helpers({
   info:function(){
+    console.log("Trying to load data");
     return TurtleLogs.findOne(Session.get("listItemSelected"))
   }//,
 });
@@ -30,7 +31,6 @@ Template.desktop.onRendered(function () {
     plugins: ['Leaflet']
   });
   this.autorun(function(e){
-    // _dep.depend();
     console.log(Template.currentData());
     console.log("This.autorun RUNNING");
     /////////////////////////////////////
@@ -39,13 +39,12 @@ Template.desktop.onRendered(function () {
 });
 
 function meteorCall(){
-  var map,Lmapbox,myLayer;
+  var map,myLayer;
   if (Mapbox.loaded()) {
   ///////////////////////////////////////
       Meteor.call('getMapBoxKey', function(error, result){
         if (!error) {
           if(!myLayer){
-            // Lmapbox = L.mapbox;
             L.mapbox.accessToken = result;
             map = L.mapbox.map('map', 'avinoz.o7nj93k2');
             map.setView([-21.854578, 114.103581], 12, {pan: {animate: true, duration: 2}, zoom: {animate: true}})
@@ -92,6 +91,8 @@ function meteorCall(){
                 "properties":{
                   "marker-color": statusColor(obj),
                   "title":obj.species,
+                  "nest_ID":obj.nest_ID,
+                  "species":obj.species,
                   "url":"/itempage/"+obj.nest_ID,
                   "section":obj.section,
                   "subsection":obj.subsection,
@@ -126,7 +127,8 @@ function meteorCall(){
             item.onclick = function(e) {
               e.preventDefault();
               // item.dataset.id=layer.toGeoJSON().features[0].properties.nest_id;
-              Session.set("listItemSelected",layer.toGeoJSON().features[0].properties.nest_id);
+              console.log(layer.toGeoJSON().features[0].properties.nest_ID);
+              Session.set("listItemSelected",layer.toGeoJSON().features[0].properties.nest_ID);
               map.panTo(reverse(layer.toGeoJSON().features[0].geometry.coordinates));
               layer.openPopup();
             };
