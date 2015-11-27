@@ -23,6 +23,11 @@ if(Session.get("division")){
 Meteor.subscribe('divisions');
 
 // FORMATS OBJECTS TO SEND TO DB VIA LIST
+Template.form.helpers({
+  'changePhoto':function(){
+    
+  }
+});
 Template.form.events({
   'submit form': function(event){
     event.preventDefault();
@@ -95,8 +100,8 @@ Template.form.events({
 },
 "load #photo":function(e){
   console.log(e.target)
-  var style = $('textarea').attr( "style" )
-   $('textarea').attr( "style", "background: url(" + $('#photo').attr("src") + ")center;"+style )
+  var style = $('textarea').attr( "style" );
+   $('textarea').attr( "style", "background: url(" + $('#photo').attr("src") + ")center;"+style );
  }
 
 });
