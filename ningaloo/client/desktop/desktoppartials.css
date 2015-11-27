@@ -76,7 +76,8 @@
   position: absolute;
   margin: 0;
   padding: 0;
-  top: 13%;
+  /*left: -650px;*/
+  top: 12.4%;
   z-index: 2;
 }
 
@@ -108,15 +109,16 @@ li {
   padding: 0;
   margin: 0;
   text-decoration: none;
-  font-weight: 300;
+  font-weight: 400;
+  font-size: 1.1em;
   color: black;
-
 }
 
 .description {
   font-weight: 200;
   margin: 0;
   padding: 0;
+  font-size: .9em;
   color: #333333;
   padding: 0 0 0 5%;
 }
