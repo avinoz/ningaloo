@@ -44,46 +44,64 @@ Template.form.events({
     var regexlat = field5.replace("^\d+(?:\.\d+|)$")
     var regexlon = field6.replace("^\d+(?:\.\d+|)$")
 
-  var image_id="No Image";
-  var thing = Session.get("photo");
-  Images.insert(thing, function (err, fileObj) {
-    if(err){
-      console.log(err);
-    }else if(fileObj){
-      console.log("File saved!");
-      console.log(fileObj);
-      image_id = fileObj._id;
-      var turtlelog = {
-        date : new Date(),
-        img_id: image_id,
-        division: field1,
-        section: field2,
-        subsection: field3,
-        species: field4,
-        notes: field7,
-        loc: {
-          coordinates:[field6, field5],
-          type: "Point"
+    var image_id="No Image";
+    var turtletext;
+    var turtlelog
+    var thing = Session.get("photo");
+    try{
+      Images.insert(thing, function (err, fileObj) {
+        if(err){
+          console.log(err);
+        }else if(fileObj){
+          console.log("File saved!");
+          console.log(fileObj);
+          image_id = fileObj._id;
+          turtlelog = {
+            date : new Date(),
+            img_id: image_id,
+            division: field1,
+            section: field2,
+            subsection: field3,
+            species: field4,
+            notes: field7,
+            loc: {
+              coordinates:[field6, field5],
+              type: "Point"
+              }
+          };
+          // var turtletext = JSON.stringify(turtlelog, null, 2)
+         turtletext =  "<p> Latitude  " + field5 + "<br> Longitude " + field6 + "</p>" + turtlelog.division + "<br>" + turtlelog.section + "<br>" + turtlelog.subsection + "<br>" + turtlelog.species + "<p></p>" + turtlelog.notes;
           }
-      };
-      // var turtletext = JSON.stringify(turtlelog, null, 2)
-      var turtletext =  "<p> Latitude  " + field5 + "<br> Longitude " + field6 + "</p>" + turtlelog.division + "<br>" + turtlelog.section + "<br>" + turtlelog.subsection + "<br>" + turtlelog.species + "<p></p>" + turtlelog.notes
-      }
-      new Confirmation({
-        message: turtletext,
-        title: "Confirmation",
-        cancelText: "Cancel",
-        okText: "Confirm",
-        success: true
-      }, function (ok) {
-          if (ok){
-            TurtleLogs.insert(turtlelog)
-            Router.go('/list');
+      });
+    }catch(err){
+      turtlelog = {
+            date : new Date(),
+            // img_id: image_id,
+            division: field1,
+            section: field2,
+            subsection: field3,
+            species: field4,
+            notes: field7,
+            loc: {
+              coordinates:[field6, field5],
+              type: "Point"
+              }
           }
-        });
-
-});
-
+      turtletext =  "<p> Latitude  " + field5 + "<br> Longitude " + field6 + "</p>" + turtlelog.division + "<br>" + turtlelog.section + "<br>" + turtlelog.subsection + "<br>" + turtlelog.species + "<p></p>" + turtlelog.notes;
+      console.log("No image...");
+    }
+    new Confirmation({
+          message: turtletext,
+          title: "Confirmation",
+          cancelText: "Cancel",
+          okText: "Confirm",
+          success: true
+    }, function (ok) {
+            if (ok){
+              TurtleLogs.insert(turtlelog)
+              Router.go('/list');
+            }
+    });
 },//submit form callback close
  // PORTS DATA FROM BELOW TO OPTION SELECT
 "change #form_select1":function(e){
@@ -112,7 +130,7 @@ Template.form.events({
 
 Template.form_s1.helpers({
   divisions: function(){
-    return Divisions.find().fetch();
+    return divisions;//Divisions.find().fetch();
   }
 });
 Template.form_s2_all.helpers({
@@ -126,25 +144,28 @@ Template.form_s2_all.events({
   }
 });
 Template.form_s2.helpers({
- sections: function(div_id){
-  return Divisions.find({name:div_id}).fetch()[0].sections;
+ sections: function(div_name){
+
+  return getStaticSections(div_name);
 },
 divisionSelected:getDiv
 });
 
 Template.form_s3.helpers({
-  subsections: function(div_id,sec_name){
-    console.log(div_id)
-    console.log(Divisions.find({name:div_id}).fetch());
-    var sections = Divisions.find({name:div_id}).fetch()[0].sections;
-    for(var section in sections){
-      console.log("The section is = "+section);
-      console.log("or = "+sections[section]);
-      if(sections[section].name===sec_name){
-        return sections[section].subsections;
-      }
-    }
-    return;
+  subsections:
+  function(div_id,sec_name){
+    return getStaticSubsections(div_id,sec_name);
+    // console.log(div_id)
+    // console.log(Divisions.find({name:div_id}).fetch());
+    // var sections = Divisions.find({name:div_id}).fetch()[0].sections;
+    // for(var section in sections){
+    //   console.log("The section is = "+section);
+    //   console.log("or = "+sections[section]);
+    //   if(sections[section].name===sec_name){
+    //     return sections[section].subsections;
+    //   }
+    // }
+    // return;
   },
   divisionSelected:getDiv,
   sectionSelected:getSec
@@ -164,4 +185,22 @@ function getDiv(){
 function getSec(){
   console.log("sectionSelected firing");
   return Session.get("section");
+}
+function getStaticSections(name){
+  for(var division in divisions){
+    if(divisions[division].name===name){
+      return divisions[division].sections;
+    }
+  }
+}
+function getStaticSubsections(div_name,sect_name){
+  for(var division in divisions){
+    if(divisions[division].name===div_name)
+      var sections = divisions[division].sections;
+      for(var section in sections){
+        if(sections[section].name===sect_name){
+          return sections[section].subsections;
+        }
+      }
+  }
 }
