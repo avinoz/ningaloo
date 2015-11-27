@@ -72,6 +72,18 @@ Template.form.events({
           // var turtletext = JSON.stringify(turtlelog, null, 2)
          turtletext =  "<p> Latitude  " + field5 + "<br> Longitude " + field6 + "</p>" + turtlelog.division + "<br>" + turtlelog.section + "<br>" + turtlelog.subsection + "<br>" + turtlelog.species + "<p></p>" + turtlelog.notes;
           }
+          new Confirmation({
+            message: turtletext,
+            title: "Confirmation",
+            cancelText: "Cancel",
+            okText: "Confirm",
+            success: true
+          }, function (ok) {
+                  if (ok){
+                    TurtleLogs.insert(turtlelog)
+                    Router.go('/list');
+                  }
+          });
       });
     }catch(err){
       turtlelog = {
@@ -88,20 +100,20 @@ Template.form.events({
               }
           }
       turtletext =  "<p> Latitude  " + field5 + "<br> Longitude " + field6 + "</p>" + turtlelog.division + "<br>" + turtlelog.section + "<br>" + turtlelog.subsection + "<br>" + turtlelog.species + "<p></p>" + turtlelog.notes;
-      console.log("No image...");
-    }
-    new Confirmation({
+      new Confirmation({
           message: turtletext,
           title: "Confirmation",
           cancelText: "Cancel",
           okText: "Confirm",
           success: true
-    }, function (ok) {
-            if (ok){
-              TurtleLogs.insert(turtlelog)
-              Router.go('/list');
-            }
-    });
+      }, function (ok) {
+              if (ok){
+                TurtleLogs.insert(turtlelog)
+                Router.go('/list');
+              }
+      });
+      console.log("No image...");
+    }
 },//submit form callback close
  // PORTS DATA FROM BELOW TO OPTION SELECT
 "change #form_select1":function(e){
