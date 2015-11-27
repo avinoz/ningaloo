@@ -35,6 +35,10 @@ Template.form.events({
     var field7 = $('textarea').val();
     var latfield5 = parseFloat(field5);
     var lonfield6 = parseFloat(field6);
+
+    var regexlat = field5.replace("^\d+(?:\.\d+|)$") 
+    var regexlon = field6.replace("^\d+(?:\.\d+|)$")
+
   var image_id="No Image";
   var thing = document.getElementById("photo").src;
   Images.insert(thing, function (err, fileObj) {
@@ -53,7 +57,7 @@ Template.form.events({
         species: field4,
         notes: field7,
         loc: {
-          coordinates:[latfield5, lonfield6],
+          coordinates:[field6, field5],
           type: "Point"
           }
       };

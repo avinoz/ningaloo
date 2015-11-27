@@ -99,6 +99,8 @@ Template.desktop.onRendered(function () {
           //   }
           // });
 
+          
+
           var points_array = []
           TurtleLogs.find({}).forEach(function(obj, idx, arr){
             // console.log(obj)
