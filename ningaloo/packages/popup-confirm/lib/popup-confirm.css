@@ -123,10 +123,13 @@ h3 {
 
 #pc-ok:hover {
   background: #57C96A;
-
 }
 
-
+#contentpopup {
+  width: 100%;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
 
 
 
