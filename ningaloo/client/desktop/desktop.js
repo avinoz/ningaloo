@@ -1,4 +1,4 @@
-
+Meteor.subscribe("images");
 Mapbox.load();
 Template.desktop.events({
   "click #marker-list li":function(){
@@ -8,10 +8,10 @@ Template.desktop.events({
 Template.desktop.helpers({
     turtlelogs: function (e) {  //change in list.html
       return TurtleLogs.find({}, {sort: {date: -1}});
-      },
-      listItemSelected:function(e){
-        return Session.get("listItemSelected")
-      }
+    },
+    listItemSelected:function(e){
+      return Session.get("listItemSelected")
+    }
 });
 Template.desktop.events({
   "click #marker-list li":function(thing){
@@ -21,8 +21,16 @@ Template.desktop.events({
 Template.indiview.helpers({
   info:function(){
     console.log("Trying to load data");
-    return TurtleLogs.findOne(Session.get("listItemSelected"))
-  }//,
+    var find = {_id:Session.get("listItemSelected")};
+    console.log(find);
+    return TurtleLogs.findOne(find)
+  },
+  getImage:function(id){
+    console.log("Trying to find image...");
+    var result = Images.find(id);
+    console.log(result.fetch());
+    return result;
+  }
 });
 Template.desktop.onRendered(function () {
   console.log("Desktop rendered.");
@@ -91,6 +99,7 @@ function meteorCall(){
                 "properties":{
                   "marker-color": statusColor(obj),
                   "title":obj.species,
+                  "id":obj._id,
                   "nest_ID":obj.nest_ID,
                   "species":obj.species,
                   "url":"/itempage/"+obj.nest_ID,
@@ -128,7 +137,7 @@ function meteorCall(){
               e.preventDefault();
               // item.dataset.id=layer.toGeoJSON().features[0].properties.nest_id;
               console.log(layer.toGeoJSON().features[0].properties.nest_ID);
-              Session.set("listItemSelected",layer.toGeoJSON().features[0].properties.nest_ID);
+              Session.set("listItemSelected",layer.toGeoJSON().features[0].properties.id);
               map.panTo(reverse(layer.toGeoJSON().features[0].geometry.coordinates));
               layer.openPopup();
             };

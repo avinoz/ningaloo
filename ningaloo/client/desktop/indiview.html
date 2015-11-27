@@ -18,13 +18,11 @@
     <h4>{{loc.coordinates}}</h4>
   </div>
   <div id="indi-date"><h4>{{fromNow date}}</h4></div>
+  {{#each getImage img_id}}
   <div id="indi-img">
-  {{#if img_id}}
-    <img src="{{getImg img_id}}">
-  {{else}}
-    <img src="/images/turtle.jpg">
-  {{/if}}
+    <img src="{{url}}">
   </div>
+  {{/each}}
 </div>
 {{/with}}
 </template>

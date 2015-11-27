@@ -30,6 +30,14 @@ Template.searchBox.events({
     console.log("hello from searchbox")
     var text = $(e.target).val().trim();
     TurtleSearch.search(text);
+     if(text.length==0){
+      console.log(this);
+      $("#search-result").css("left","-650px");
+     }else{
+      $("#search-result").css("left","0");
+     }
     Session.set("fuzzy",text)
-  }, 200)
+  }, 200),
+  "unfocus #search-box":function(){
+  }
 });

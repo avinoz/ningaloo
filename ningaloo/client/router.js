@@ -13,12 +13,27 @@ Router.map(function(){
   this.route('datalog', {path: '/datalog'});
 });
 
-Router.route('/itempage/:_id', function () {
-  var find = {nest_ID:parseInt(this.params._id)};
-  var item = TurtleLogs.findOne(find);
-  console.log(item);
-  // if(!item){
-  //   Meteor.subscribe("turtlelogs")
-  // }
-  this.render('itempage', {data: item});
+Router.route('/itempage/:_id',{
+  subscriptions:function(){
+    console.log("Trying to subscribe!@");
+    return Meteor.subscribe("turtlelog",parseInt(this.params._id));
+  },
+  action:function () {
+    if (this.ready()) {
+      this.render('itempage');
+    } else {
+      // console.log(this);
+      // this.render('home');
+    }
+  },data:function(){
+    var find;
+    if(isNaN(parseInt(this.params._id))){
+       find={_id:this.params._id};
+    }else{
+      find={_id:parseInt(this.params._id)};
+    }
+    console.log(find)
+    return TurtleLogs.findOne(find);
+  }
+
 });

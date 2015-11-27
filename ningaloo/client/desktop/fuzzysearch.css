@@ -11,7 +11,13 @@
 }
 
 #search-result {
-  margin: 20px 0 100px 0;;
+  margin: 40px 0 100px 0;
+  position:relative;
+  left:-650px;
+  overflow-y: scroll;
+  overflow-x:visible;
+  max-height:80vh;
+  min-width:650px;
 }
 
 #search-meta {
