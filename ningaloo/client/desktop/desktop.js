@@ -3,23 +3,51 @@ Mapbox.load();
 Template.desktop.helpers({
     turtlelogs: function (e) {  //change in list.html
       return TurtleLogs.find({}, {sort: {date: -1}});
-      }
+      },
+    regetTurtles:getTurtles
 });
-Template.desktop.onRendered(function () {
-  console.log("Desktop rendered.");
+Template.desktop.onRendered(function (context) {
   Mapbox.debug = true;
   Mapbox.load({
     plugins: ['Leaflet']
   });
+  this.autorun(function (e) {
+    console.log("This.autorun RUNNING");
+    populate();
+  });
+});
+function panUpLeft(arr){
+  var ble=[]
+  for(var i=0;i<arr.length;i++){
+    console.log(arr[i]);
+    ble.push(arr[i]+10);
+  }
+  console.log(ble)
+  return ble;
+}
+function reverse(arr){
 
-  this.autorun(function () {
-    if (Mapbox.loaded()) {
+  return [arr[1],arr[0]];
+}
+function getTurtles(){
+  console.log("getTurtles RUNNING");
+  return Template.searchResult.__helpers[" getTurtles"]()
+}
+function populate(){
+  console.log("populate RUNNING");
+  var map,Lmapbox,myLayer;
+  if (Mapbox.loaded()) {
+    return (function(){
       Meteor.call('getMapBoxKey', function(error, result){
         if (!error) {
-          L.mapbox.accessToken = result
-          let map = L.mapbox.map('map', 'avinoz.o7nj93k2');
-          map.setView([-21.854578, 114.103581], 12, {pan: {animate: true, duration: 2}, zoom: {animate: true}})
-          var myLayer = L.mapbox.featureLayer().addTo(map);
+          if(!myLayer){
+            Lmapbox = L.mapbox;
+            Lmapbox.accessToken = result;
+            map = L.mapbox.map('map', 'avinoz.o7nj93k2');
+            map.setView([-21.854578, 114.103581], 12, {pan: {animate: true, duration: 2}, zoom: {animate: true}})
+            myLayer = L.mapbox.featureLayer().addTo(map);
+          }
+          console.log(myLayer);
           var millisecondsToDays = function(milliseconds){
             var seconds = milliseconds/1000;
             var minutes = seconds/60;
@@ -43,123 +71,66 @@ Template.desktop.onRendered(function () {
           var points_array = []
           var my_layers = [];
           var markerList = document.getElementById('marker-list');
-          TurtleLogs.find({}).forEach(function(obj, idx, arr){
-            // console.log(obj)
-            // console.log(idx);
-            // console.log(obj.turtlelog.latLng);
+          console.log("Hello from populate");
+          getTurtles().forEach(function(obj, idx, arr){
             if(obj.loc.coordinates.length!==0){
-            var geoJson = {
-              type:'Feature',
-              "geometry":{
-                "type":"Point",
-                "coordinates":[obj.loc.coordinates[0], obj.loc.coordinates[1]]
-              },
-              "properties":{
-                "marker-color": statusColor(obj),
-                "title":obj.species,
-                "url":"/itempage/"+obj.nest_ID,
-                "section":obj.section,
-                "subsection":obj.subsection,
-                "division":obj.division
+              var geoJson = {
+                type:'Feature',
+                "geometry":{
+                  "type":"Point",
+                  "coordinates":obj.loc.coordinates
+                },
+                "properties":{
+                  "marker-color": statusColor(obj),
+                  "title":obj.species,
+                  "url":"/itempage/"+obj.nest_ID,
+                  "section":obj.section,
+                  "subsection":obj.subsection,
+                  "division":obj.division
+                }
+              }
+              try{
+                console.log(geoJson);
+                console.log(L);
+                console.log(L.mapbox);
+                console.log(myLayer);
+                L.mapbox.featureLayer(geoJson).addTo(myLayer);
+              }catch(err){
+                console.log(err,obj);
               }
             }
-            try{
-              L.mapbox.featureLayer(geoJson).addTo(myLayer);
-            }catch(err){
-              console.log(err);
-            }
-            // console.log(myLayer);
-              // points_array.push(geoJson);
-            }
           });
+          myLayer.on('layeradd', function(e) {
+            var marker = e.layer,
+            feature = marker.feature;
 
+            var popupContent = '<a target="_blank" class="popup" href="' + feature.properties.url + '">' + feature.properties.title + '</a>' + '<p>' + feature.geometry.coordinates + '</p>'; //'<img src="' + feature.properties.image + '" />' +
 
-          function coord(v) {
-            var coords = v.replace(trimSpace, '').split(splitSpace),
-              o = [];
-            for (var i = 0; i < coords.length; i++) {
-              o.push(coord1(coords[i]));
-            }
-            return o;
-          }
-
-          var geoJson = [{
-            type: 'Feature',
-            "geometry": { "type": "Point", "coordinates": [114.033028, -21.847727]},
-            "properties": {
-              // "image": "images/trans.png",
-              "marker-color": "#ff8888",
-              "title": "Turtle Town",
-              "url": "https://en.wikipedia.org/wiki/Chicago"
-              // "marker-size": "large",
-            }
-          }, {
-            type: 'Feature',
-            "geometry": { "type": "Point", "coordinates": [114.091414, -21.810967]},
-            "properties": {
-              // "image": "images/trans.png",
-              "title": "Flipped Turtle",
-              "url": "https://en.wikipedia.org/wiki/Chicago",
-              "marker-color": "#7ec0ee"
-            }
-          }, {
-            type: 'Feature',
-            "geometry": { "type": "Point", "coordinates": [1, 1]},
-            "properties": {
-              // "image": "images/trans.png",
-              "title": "Flipped Turtle",
-              "url": "https://en.wikipedia.org/wiki/Chicago",
-              "marker-color": "#7ec0ee"
-            }
-          }];
-
-
-            // ADDS POPUP WINDOW
-
-            myLayer.on('layeradd', function(e) {
-              var marker = e.layer,
-              feature = marker.feature;
-
-              var popupContent = '<a target="_blank" class="popup" href="' + feature.properties.url + '">' + feature.properties.title + '</a>' + '<p>' + feature.geometry.coordinates + '</p>'; //'<img src="' + feature.properties.image + '" />' +
-
-              // http://leafletjs.com/reference.html#popup
-              marker.bindPopup(popupContent,{
-                closeButton: false,
-                minWidth: 100,
-                keepInView: true,
-              });
+            // http://leafletjs.com/reference.html#popup
+            marker.bindPopup(popupContent,{
+              closeButton: false,
+              minWidth: 100,
+              keepInView: true,
             });
-        var markerList = document.getElementById('marker-list');
-        console.log(myLayer);
-        // myLayer.on('ready', function(e) {
+          });
+          var markerList = document.getElementById('marker-list');
           myLayer.eachLayer(function(layer) {
-            console.log(layer.toGeoJSON())
+            // console.log(layer.toGeoJSON())
             var item = markerList.appendChild(document.createElement('li'));
             // console.log(layer.toGeoJSON().properties)
             item.innerHTML = layer.toGeoJSON().features[0].properties.subsection;
             item.onclick = function(e) {
               e.preventDefault();
-             map.panTo(reverse(layer.toGeoJSON().features[0].geometry.coordinates));
-             layer.openPopup();
+              map.panTo(reverse(layer.toGeoJSON().features[0].geometry.coordinates));
+              layer.openPopup();
             };
           });
-      } else {
-        console.log(error)
-      }
-    })
-    }
-  });
-});
-function panUpLeft(arr){
-  var ble=[]
-  for(var i=0;i<arr.length;i++){
-    console.log(arr[i]);
-    ble.push(arr[i]+10);
+        } else {
+          console.log(error)
+        }
+      });
+    })()
+  }else{
+    console.log(error)
   }
-  console.log(ble)
-  return ble;
-}
-function reverse(arr){
-
-  return [arr[1],arr[0]];
 }
