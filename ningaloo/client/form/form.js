@@ -25,7 +25,7 @@ Meteor.subscribe('divisions');
 // FORMATS OBJECTS TO SEND TO DB VIA LIST
 Template.form.helpers({
   'changePhoto':function(){
-    
+
   }
 });
 Template.form.events({
@@ -41,7 +41,7 @@ Template.form.events({
     var latfield5 = parseFloat(field5);
     var lonfield6 = parseFloat(field6);
 
-    var regexlat = field5.replace("^\d+(?:\.\d+|)$") 
+    var regexlat = field5.replace("^\d+(?:\.\d+|)$")
     var regexlon = field6.replace("^\d+(?:\.\d+|)$")
 
   var image_id="No Image";
@@ -68,7 +68,7 @@ Template.form.events({
       };
       // var turtletext = JSON.stringify(turtlelog, null, 2)
       var turtletext =  "<p> Latitude  " + field5 + "<br> Longitude " + field6 + "</p>" + turtlelog.division + "<br>" + turtlelog.section + "<br>" + turtlelog.subsection + "<br>" + turtlelog.species + "<p></p>" + turtlelog.notes
-      
+      }
       new Confirmation({
         message: turtletext,
         title: "Confirmation",
@@ -81,7 +81,7 @@ Template.form.events({
             Router.go('/list');
           }
         });
-  }
+
 });
 
 },//submit form callback close
