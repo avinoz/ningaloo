@@ -58,3 +58,65 @@
   text-decoration: none;
   color: #383c3d;
 }
+
+
+/* FUZZY SEARCH */
+
+#search-box {
+  top: 10%;
+  border: 0;
+  border-radius: 0;
+  right: 0;
+  height: 30px;
+  box-sizing: border-box;
+  position: absolute;
+}
+
+#search-result {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  top: 13%;
+  z-index: 2;
+}
+
+.package {
+  /*width: 300%;*/
+  /*box-sizing: border-box;*/
+  background: white;
+  box-shadow: 3px -1px 2px #888888;
+}
+
+.package:nth-child(even) {
+  background: #e7ebeb;
+}
+
+.togglerow {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style-type: none;
+}
+.name {
+  margin: 0;
+  padding: 0 0 0 5%;
+}
+
+.name a {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  font-weight: 300;
+  color: black;
+
+}
+
+.description {
+  font-weight: 200;
+  margin: 0;
+  padding: 0;
+  color: #333333;
+  padding: 0 0 0 5%;
+}

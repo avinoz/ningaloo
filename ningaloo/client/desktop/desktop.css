@@ -28,9 +28,7 @@ h4 {
   left: 0;
   bottom: 0;
   width: 20%;
-  /*text-align: center;*/
   z-index: 2;
-  /*margin: 0 auto;*/
   box-shadow: 3px 0px 2px #888888;
 }
 
@@ -143,6 +141,8 @@ h4 {
   height: 50%;
   position: absolute;
   background-color: #383c3d;
+  z-index: 1;
+  display: visible;
 }
 
 #indi-l {
