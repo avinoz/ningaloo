@@ -68,6 +68,6 @@ Meteor.startup(function(e){
   Meteor.publish("turtlelogs", function(count){
     // var count=count||15;
     // return TurtleLogs.find({limit:count})
-    return TurtleLogs.find({},{sort:{date:-1}})
+    return TurtleLogs.find({},{sort:{date:-1},limit:25})
   });
 });
