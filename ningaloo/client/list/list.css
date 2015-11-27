@@ -158,7 +158,8 @@
   text-decoration: none;
   color: black;
   display: inline-block;
-  width: 100%;
+  width: 100vw;
+  padding: 1.2% 1.2% 1.2% 3%;
 }
 
 .task-list ul {
@@ -174,7 +175,6 @@
 
 .task-list li {
   transition: background 0.2s ease;
-  padding: 1.2% 1.2% 1.2% 3%;
   background: white;
 }
 
