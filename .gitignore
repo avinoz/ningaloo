@@ -1,0 +1,16 @@
+ Created by https://www.gitignore.io/api/meteorjs
+
+### MeteorJS ###
+# default meteor build and local packages
+.meteor/local
+
+# meteor settings file
+settings.json
+
+# meteor build output files
+*.tar.gz
+
+# general swp files from vim
+*.swp
+# google drive nodes
+*Icon*
